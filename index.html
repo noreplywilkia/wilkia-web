@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Gestión Profesional</title>
+    <title>wilkIA | Demo Interactivo</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.7"></script>
     <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
     <script type="importmap">
@@ -17,7 +17,7 @@
     }
     </script>
 </head>
-<body class="bg-[#0f172a] text-white">
+<body class="bg-[#0f172a] text-white overflow-x-hidden">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
         import React, { useState } from 'react';
@@ -25,57 +25,47 @@
 
         function App() {
             const images = ['articulos', 'escandallo', 'formatos', 'formatos2', 'marca'];
-            const [activeIndex, setActiveIndex] = useState(2);
+            const [activeIndex, setActiveIndex] = useState(2); // Empezamos en la del medio
 
             return (
                 <div className="min-h-screen flex flex-col items-center">
-                    {/* Menú Superior */}
-                    <nav className="w-full flex items-center justify-between p-6 md:p-8 max-w-6xl">
+                    <nav className="w-full flex items-center justify-between p-8">
                         <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
-                        <div className="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+                        <div className="flex gap-8 text-sm font-medium text-slate-300">
                             {['Inicio', 'Demo', 'Quienes Somos', 'Contacto'].map(item => 
                                 <a href="#" key={item} className="hover:text-blue-400 transition-all">{item}</a>
                             )}
                         </div>
                     </nav>
 
-                    {/* Contenido principal */}
-                    <main className="flex-grow flex flex-col items-center justify-center p-4 w-full">
-                        <section className="text-center mb-12">
-                            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                                Gestión profesional inteligente
-                            </h1>
-                            <p className="text-slate-400 text-lg">La arquitectura más avanzada para tu negocio en Jávea</p>
-                        </section>
+                    <div className="flex-grow flex flex-col items-center justify-center w-full py-10">
+                        <h1 className="text-5xl font-extrabold mb-16 text-center">Experiencia wilkIA</h1>
 
-                        {/* Area de Demo - Contenedor con altura fija para evitar saltos */}
-                        <div className="relative flex items-center justify-center w-full max-w-5xl h-[300px] md:h-[500px]">
+                        <div className="relative flex items-center justify-center w-full h-[500px] perspective-1000">
                             {images.map((img, i) => {
                                 const offset = i - activeIndex;
-                                const isActive = i === activeIndex;
+                                const isCenter = i === activeIndex;
 
                                 return (
                                     <div 
                                         key={img}
                                         onClick={() => setActiveIndex(i)}
-                                        className={`absolute transition-all duration-500 ease-in-out cursor-pointer 
-                                            ${isActive ? 'z-20 scale-100 opacity-100' : 'z-10 scale-50 opacity-40 hover:opacity-80'}
-                                        `}
+                                        className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40 hover:opacity-70'}`}
                                         style={{
-                                            transform: `translateX(${offset * (window.innerWidth < 768 ? 120 : 350)}px)`
+                                            transform: `translateX(${offset * 350}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -20 : 20) + 'deg)'}`
                                         }}
                                     >
                                         <img 
                                             src={`/images/${img}.png`} 
                                             alt={img}
-                                            className="w-[300px] md:w-[700px] rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
+                                            className="w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
                                         />
                                     </div>
                                 );
                             })}
                         </div>
-                        <p className="mt-12 text-slate-500 text-sm italic">Haz clic en las previsualizaciones para ver el sistema</p>
-                    </main>
+                        <p className="mt-20 text-slate-400">Haz clic en cualquier pantalla lateral para traerla al frente</p>
+                    </div>
                 </div>
             );
         }
