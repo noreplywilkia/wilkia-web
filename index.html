@@ -21,15 +21,15 @@
 <body class="bg-[#0f172a] text-white">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
-        import React from 'react';
+        import React, { useState, useRef } from 'react';
         import { createRoot } from 'react-dom/client';
 
         function App() {
             const images = ['articulos', 'escandallo', 'formatos', 'formatos2', 'marca'];
+            const scrollRef = useRef(null);
 
             return (
-                <div className="min-h-screen">
-                    {/* Navegación */}
+                <div className="min-h-screen overflow-x-hidden">
                     <nav className="flex items-center justify-between p-8">
                         <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
                         <div className="flex gap-8 text-sm font-medium text-slate-300">
@@ -39,31 +39,34 @@
                         </div>
                     </nav>
 
-                    {/* Hero y Carrusel */}
-                    <main className="container mx-auto px-6 py-10 text-center">
-                        <section className="mb-20">
+                    <main className="py-20 text-center">
+                        <section className="mb-16">
                             <h1 className="text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
                                 Gestión profesional inteligente
                             </h1>
-                            <p className="text-xl text-slate-400 max-w-lg mx-auto">Controla tu negocio con la arquitectura más avanzada para hostelería.</p>
+                            <p className="text-lg text-slate-400">Desliza para ver la potencia de tu nuevo sistema</p>
                         </section>
 
-                        {/* Carrusel Horizontal */}
-                        <div className="flex overflow-x-auto gap-8 pb-10 snap-x snap-mandatory scrollbar-hide">
+                        {/* Carrusel Centrado */}
+                        <div 
+                            ref={scrollRef}
+                            className="flex items-center justify-start overflow-x-auto gap-4 py-10 px-[calc(50vw-300px)] snap-x snap-mandatory scrollbar-hide"
+                        >
                             {images.map((img, i) => (
-                                <div key={img} className="snap-center shrink-0 w-[800px]">
-                                    <div className="p-2 bg-slate-800/50 rounded-2xl border border-white/5 backdrop-blur shadow-2xl">
+                                <div key={img} className="snap-center shrink-0 transition-all duration-700 ease-out transform scale-75 opacity-60 hover:scale-95 group">
+                                    <div className="w-[600px] bg-slate-800/50 rounded-2xl border border-white/10 p-2 shadow-2xl">
                                         <img 
                                             src={`/images/${img}.png`} 
                                             alt={img}
                                             className="w-full h-auto rounded-lg"
-                                            onError={(e) => e.target.src = 'https://via.placeholder.com/800x500?text=Imagen+No+Cargada'}
+                                            onError={(e) => e.target.src = 'https://via.placeholder.com/600x400?text=Procesando+Imagen'}
                                         />
                                     </div>
-                                    <p className="mt-6 text-blue-300 font-semibold uppercase tracking-widest text-sm">{img.replace(/([A-Z])/g, ' $1').trim()}</p>
+                                    {/* Clase para la imagen central activa sería dinámica en un caso real */}
                                 </div>
                             ))}
                         </div>
+                        <p className="text-slate-500 text-sm mt-8 animate-pulse">Desliza horizontalmente para navegar</p>
                     </main>
                 </div>
             );
@@ -73,6 +76,9 @@
     <style>
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Efecto visual de superposición */
+        .snap-center { transition: all 0.5s ease; }
+        .snap-center:first-child { margin-left: 0; }
     </style>
 </body>
 </html>
