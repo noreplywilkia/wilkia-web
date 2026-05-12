@@ -17,7 +17,7 @@
     }
     </script>
 </head>
-<body class="bg-[#0f172a] text-white overflow-x-hidden">
+<body class="bg-[#0f172a] text-white overflow-hidden">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
         import React, { useState } from 'react';
@@ -28,50 +28,41 @@
             const [activeIndex, setActiveIndex] = useState(2);
 
             return (
-                <div className="min-h-screen flex flex-col items-center">
-                    <nav className="w-full flex items-center justify-between p-6 md:p-8">
-                        <div className="text-2xl md:text-3xl font-black text-blue-400 italic">wilkIA</div>
-                        <div className="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-                            {['Inicio', 'Demo', 'Quienes Somos', 'Contacto'].map(item => 
-                                <a href="#" key={item} className="hover:text-blue-400 transition-all">{item}</a>
-                            )}
-                        </div>
+                <div className="h-screen flex flex-col">
+                    <nav className="p-6 flex justify-between items-center w-full">
+                        <div className="text-2xl font-bold text-blue-400 italic">wilkIA</div>
                     </nav>
 
-                    <div className="flex-grow flex flex-col items-center justify-center w-full py-10 px-4">
-                        <h1 className="text-3xl md:text-5xl font-extrabold mb-10 text-center">Experiencia wilkIA</h1>
+                    <div className="flex-grow flex items-center justify-center relative w-full pt-10">
+                        {images.map((img, i) => {
+                            const isActive = i === activeIndex;
+                            const isPrev = i < activeIndex;
+                            const isNext = i > activeIndex;
 
-                        {/* Contenedor principal */}
-                        <div className="relative flex items-center justify-center w-full h-[300px] md:h-[500px] perspective-1000">
-                            {images.map((img, i) => {
-                                const offset = i - activeIndex;
-                                const isCenter = i === activeIndex;
-
-                                return (
-                                    <div 
-                                        key={img}
-                                        onClick={() => setActiveIndex(i)}
-                                        className={`absolute transition-all duration-500 cursor-pointer 
-                                            ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-50 md:scale-75 opacity-30 hover:opacity-70'}
-                                        `}
-                                        style={{
-                                            // En móvil reducimos el desplazamiento (offset) para que no se salgan de pantalla
-                                            transform: `translateX(${offset * (window.innerWidth < 768 ? 80 : 350)}px)`
-                                        }}
-                                    >
-                                        <img 
-                                            src={`/images/${img}.png`} 
-                                            alt={img}
-                                            className="w-[300px] md:w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <p className="mt-16 md:mt-20 text-slate-400 text-sm md:text-base px-6 text-center">
-                            Haz clic en las previsualizaciones para ver el sistema en detalle
-                        </p>
+                            return (
+                                <div 
+                                    key={img}
+                                    onClick={() => setActiveIndex(i)}
+                                    className={`absolute transition-all duration-500 ease-out cursor-pointer flex justify-center items-center
+                                        ${isActive ? 'z-30 scale-100 opacity-100' : 'z-10 scale-[0.4] md:scale-[0.6] opacity-40 hover:opacity-70'}
+                                    `}
+                                    style={{
+                                        transform: isActive ? 'translateX(0px)' : `translateX(${(i - activeIndex) * (window.innerWidth < 768 ? 150 : 350)}px)`
+                                    }}
+                                >
+                                    <img 
+                                        src={`/images/${img}.png`} 
+                                        alt={img}
+                                        className="w-[300px] md:w-[800px] rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
+
+                    <p className="pb-10 text-center text-slate-500 text-xs uppercase tracking-widest">
+                        Toca las lateralas para navegar
+                    </p>
                 </div>
             );
         }
