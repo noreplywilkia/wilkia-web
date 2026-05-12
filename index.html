@@ -1,58 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Gestión Profesional</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.7"></script>
-    <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
-    <script type="importmap">
-    {
-        "imports": {
-            "react": "https://esm.sh/react@18.3.1",
-            "react/": "https://esm.sh/react@18.3.1/",
-            "react-dom": "https://esm.sh/react-dom@18.3.1",
-            "react-dom/": "https://esm.sh/react-dom@18.3.1/",
-            "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-            "lucide-react": "https://esm.sh/lucide-react@0.474.0?external=react"
-        }
-    }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wilkIA | Gestión Inteligente</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.7"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
+<script type="importmap">
+{
+"imports": {
+"react": "https://esm.sh/react@18.3.1?external=react",
+"react-dom": "https://esm.sh/react-dom@18.3.1?external=react",
+"react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+"lucide-react": "https://esm.sh/lucide-react@0.474.0?external=react"
+}
+}
+</script>
+<style>
+body { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+</style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
-    <div id="root"></div>
-    <script type="text/babel" data-type="module" data-presets="react">
-        import React from 'react';
-        import { createRoot } from 'react-dom/client';
-        import { Menu, X } from 'lucide-react';
-
-        function App() {
-            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-            return (
-                <div className="min-h-screen">
-                    <nav className="flex items-center justify-between p-6 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-                        <div className="text-2xl font-bold tracking-tighter text-blue-500">wilkIA</div>
-                        <div className="hidden md:flex gap-8 font-medium">
-                            {['Inicio', 'Demo', 'Quienes Somos', 'Contacto'].map((item) => (
-                                <a key={item} href="#" className="hover:text-blue-400 transition-colors">{item}</a>
-                            ))}
-                        </div>
-                        <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                            {isMenuOpen ? <X /> : <Menu />}
-                        </button>
-                    </nav>
-                    
-                    <header className="container mx-auto px-6 py-20 text-center">
-                        <h1 className="text-6xl font-extrabold mb-6">Gestión inteligente para tu negocio</h1>
-                        <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">wilkIA simplifica el control operativo de tu empresa en Jávea con una interfaz moderna y eficiente.</p>
-                        <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition-all">Solicitar Demo</button>
-                    </header>
-                </div>
-            );
-        }
-
-        createRoot(document.getElementById('root')).render(<App />);
-    </script>
+<body class="bg-[#0f172a] text-gray-100">
+<div id="root"></div>
+<script type="text/babel" data-type="module" data-presets="react">
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Menu, X } from 'lucide-react';
+function Navbar() {
+return (
+<nav className="flex justify-between items-center py-6 px-8 max-w-7xl mx-auto w-full">
+<div className="text-2xl font-bold tracking-tighter text-blue-400">wilkIA</div>
+<div className="hidden md:flex gap-8 font-medium text-sm text-gray-300">
+<a href="#" className="hover:text-blue-400 transition">Inicio</a>
+<a href="#demo-section" className="hover:text-blue-400 transition">Demo</a>
+<a href="#" className="hover:text-blue-400 transition">Quienes Somos</a>
+<a href="#" className="hover:text-blue-400 transition">Contacto</a>
+</div>
+</nav>
+);
+}
+function Hero() {
+return (
+<header className="px-8 py-20 text-center max-w-4xl mx-auto">
+<h1 className="text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white">
+Gestiona tu negocio con la <br/><span className="text-blue-400">inteligencia de wilkIA</span>
+</h1>
+<p className="text-xl text-slate-300 mb-10">La herramienta integral que convierte datos en decisiones.</p>
+</header>
+);
+}
+function Demo() {
+const [activeIndex, setActiveIndex] = React.useState(0);
+const screenshots = [
+{ src: "https://cms.aikit.es/api/tools/threads/6a03168bb0671160a04b27d9/file/6a03168bb0671160a04b27d9_pasted-image-1778610304776-0.png", title: "Gestión de Formatos" },
+{ src: "https://cms.aikit.es/api/tools/threads/6a03168bb0671160a04b27d9/file/6a03168bb0671160a04b27d9_pasted-image-1778610304778-1.png", title: "Catálogo de Artículos" },
+{ src: "https://cms.aikit.es/api/tools/threads/6a03168bb0671160a04b27d9/file/6a03168bb0671160a04b27d9_pasted-image-1778610304779-2.png", title: "Creación" },
+{ src: "https://cms.aikit.es/api/tools/threads/6a03168bb0671160a04b27d9/file/6a03168bb0671160a04b27d9_pasted-image-1778610304781-3.png", title: "Escandallos" },
+{ src: "https://cms.aikit.es/api/tools/threads/6a03168bb0671160a04b27d9/file/6a03168bb0671160a04b27d9_pasted-image-1778610304782-4.png", title: "Gestión de Marcas" }
+];
+return (
+<section id="demo-section" className="py-24 bg-[#0f172a] overflow-hidden">
+<div className="max-w-7xl mx-auto px-8">
+<h2 className="text-4xl font-bold text-center text-white mb-20">Vista previa de wilkIA</h2>
+<div className="relative h-[650px] flex justify-center items-center">
+{screenshots.map((s, i) => {
+const isActive = i === activeIndex;
+return (
+<div
+key={i}
+onClick={() => setActiveIndex(i)}
+className="absolute transition-all duration-500 ease-out cursor-pointer"
+style={{
+left: `calc(50% - 200px + ${(i - activeIndex) * 150}px)`,
+zIndex: isActive ? 10 : 5 - Math.abs(i - activeIndex),
+width: '400px',
+transform: isActive ? 'scale(1.1) translateY(-20px)' : 'scale(0.85) translateY(0px)',
+opacity: isActive ? 1 : 0.6
+}}
+>
+<div className="bg-[#1e293b] p-2 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-blue-800">
+<img src={s.src} alt={s.title} className="w-full rounded-xl" />
+<div className="p-4 text-center">
+<h4 className="font-bold text-white">{s.title}</h4>
+</div>
+</div>
+</div>
+);
+})}
+</div>
+</div>
+</section>
+);
+}
+function App() {
+return (
+<div className="min-h-screen bg-[#0f172a] text-gray-100 pb-20">
+<Navbar />
+<Hero />
+<Demo />
+</div>
+);
+}
+createRoot(document.getElementById('root')).render(<App />);
+</script>
 </body>
 </html>
