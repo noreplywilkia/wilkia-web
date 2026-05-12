@@ -3,73 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Demo Interactivo</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.7"></script>
-    <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
-    <script type="importmap">
-    {
-        "imports": {
-            "react": "https://esm.sh/react@18.3.1",
-            "react/": "https://esm.sh/react@18.3.1/",
-            "react-dom": "https://esm.sh/react-dom@18.3.1",
-            "react-dom/client": "https://esm.sh/react-dom@18.3.1/client"
-        }
-    }
-    </script>
+    <title>wilkIA | Gestión Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .demo-container { position: relative; height: 500px; display: flex; justify-content: center; align-items: center; }
+        .demo-img { position: absolute; width: 600px; transition: all 0.5s ease; cursor: pointer; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    </style>
 </head>
-<body class="bg-[#0f172a] text-white overflow-x-hidden">
-    <div id="root"></div>
-    <script type="text/babel" data-type="module" data-presets="react">
-        import React, { useState } from 'react';
-        import { createRoot } from 'react-dom/client';
-
-        function App() {
-            const images = ['articulos', 'escandallo', 'formatos', 'formatos2', 'marca'];
-            const [activeIndex, setActiveIndex] = useState(2); // Empezamos en la del medio
-
-            return (
-                <div className="min-h-screen flex flex-col items-center">
-                    <nav className="w-full flex items-center justify-between p-8">
-                        <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
-                        <div className="flex gap-8 text-sm font-medium text-slate-300">
-                            {['Inicio', 'Demo', 'Quienes Somos', 'Contacto'].map(item => 
-                                <a href="#" key={item} className="hover:text-blue-400 transition-all">{item}</a>
-                            )}
-                        </div>
-                    </nav>
-
-                    <div className="flex-grow flex flex-col items-center justify-center w-full py-10">
-                        <h1 className="text-5xl font-extrabold mb-16 text-center">Experiencia wilkIA</h1>
-
-                        <div className="relative flex items-center justify-center w-full h-[500px] perspective-1000">
-                            {images.map((img, i) => {
-                                const offset = i - activeIndex;
-                                const isCenter = i === activeIndex;
-
-                                return (
-                                    <div 
-                                        key={img}
-                                        onClick={() => setActiveIndex(i)}
-                                        className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40 hover:opacity-70'}`}
-                                        style={{
-                                            transform: `translateX(${offset * 350}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -20 : 20) + 'deg)'}`
-                                        }}
-                                    >
-                                        <img 
-                                            src={`/images/${img}.png`} 
-                                            alt={img}
-                                            className="w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <p className="mt-20 text-slate-400">Haz clic en cualquier pantalla lateral para traerla al frente</p>
-                    </div>
-                </div>
-            );
+<body class="bg-slate-950 text-white">
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <div class="text-2xl font-bold text-blue-500">wilkIA</div>
+        <div class="hidden md:flex gap-6 font-medium text-slate-300">
+            <a href="#">Inicio</a><a href="#">Demo</a><a href="#">Contacto</a>
+        </div>
+    </nav>
+    <header class="text-center py-12">
+        <h1 class="text-5xl font-extrabold mb-4">Gestión profesional inteligente</h1>
+        <p class="text-slate-400">Tu negocio en Jávea, bajo control.</p>
+    </header>
+    <section class="demo-container px-4">
+        <img src="/images/articulos.png" class="demo-img z-50" style="left: 20%; top: 50px;" onclick="bringToFront(this)">
+        <img src="/images/escandallo.png" class="demo-img z-40" style="left: 25%; top: 70px;" onclick="bringToFront(this)">
+        <img src="/images/formatos.png" class="demo-img z-30" style="left: 30%; top: 90px;" onclick="bringToFront(this)">
+    </section>
+    <script>
+        function bringToFront(el) {
+            document.querySelectorAll('.demo-img').forEach(img => img.style.zIndex = '10');
+            el.style.zIndex = '100';
+            el.style.transform = 'scale(1.1)';
         }
-        createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 </html>
