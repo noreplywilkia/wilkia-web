@@ -3,65 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA - Software de Gestión</title>
+    <title>wilkIA | Gestión Inteligente</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.7"></script>
-    <style>
-        .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-    </style>
-    <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
     <script type="importmap">
     {
         "imports": {
             "react": "https://esm.sh/react@18.3.1",
-            "react/": "https://esm.sh/react@18.3.1/",
             "react-dom": "https://esm.sh/react-dom@18.3.1",
-            "react-dom/": "https://esm.sh/react-dom@18.3.1/",
             "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
             "lucide-react": "https://esm.sh/lucide-react@0.474.0?external=react"
         }
     }
     </script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
         import React from 'react';
         import { createRoot } from 'react-dom/client';
-        import { BarChart3, Clock, LayoutDashboard, ShieldCheck, ArrowRight, Zap, ChevronRight } from 'lucide-react';
+        import { BarChart3, ShieldCheck, Zap, ArrowRight, MessageSquare } from 'lucide-react';
+
+        function Navbar() {
+            return (
+                <nav className="flex justify-between items-center py-6 px-8 max-w-7xl mx-auto w-full">
+                    <div className="text-2xl font-bold tracking-tighter text-blue-700">wilkIA</div>
+                    <div className="hidden md:flex gap-8 font-medium text-sm">
+                        <a href="#" className="hover:text-blue-600 transition">Inicio</a>
+                        <a href="#" className="hover:text-blue-600 transition">Demo</a>
+                        <a href="#" className="hover:text-blue-600 transition">Quienes Somos</a>
+                        <a href="#" className="hover:text-blue-600 transition">Contacto</a>
+                    </div>
+                </nav>
+            );
+        }
+
+        function Hero() {
+            return (
+                <header className="px-8 py-20 text-center max-w-4xl mx-auto">
+                    <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wide text-blue-700 uppercase bg-blue-50 rounded-full">
+                        Tu gestión, potenciada
+                    </div>
+                    <h1 className="text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                        Gestiona tu negocio con la <br/><span className="text-blue-700">inteligencia de wilkIA</span>
+                    </h1>
+                    <p className="text-xl text-gray-600 mb-10">
+                        La herramienta integral que convierte datos en decisiones. Simple, rápida y diseñada para escalar contigo.
+                    </p>
+                    <div className="flex gap-4 justify-center">
+                        <button className="bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition flex items-center gap-2">
+                            Comenzar demo gratis <ArrowRight size={18}/>
+                        </button>
+                    </div>
+                </header>
+            );
+        }
+
+        function Features() {
+            const items = [
+                { icon: <BarChart3 className="text-blue-600"/>, title: "Analytics Avanzados", description: "Visualiza el rendimiento real sin complicaciones." },
+                { icon: <ShieldCheck className="text-blue-600"/>, title: "Seguridad Robusta", description: "Tus datos protegidos con los estándares más altos." },
+                { icon: <Zap className="text-blue-600"/>, title: "Automatización Ágil", description: "Reduce tareas repetitivas y gana tiempo valioso." }
+            ];
+
+            return (
+                <section className="py-20 px-8 max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+                    {items.map((item, idx) => (
+                        <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                            <div className="mb-4 bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center">{item.icon}</div>
+                            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                            <p className="text-gray-600 text-sm">{item.description}</p>
+                        </div>
+                    ))}
+                </section>
+            );
+        }
 
         function App() {
             return (
-                <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
-                    {/* Header */}
-                    <nav className="flex items-center justify-between p-8 max-w-7xl mx-auto">
-                        <span className="text-2xl font-black text-white">wilk<span className="text-blue-500">IA</span></span>
-                        <button className="bg-white/5 hover:bg-white/10 px-6 py-2 rounded-full font-medium transition">Acceso</button>
-                    </nav>
-
-                    {/* Hero */}
-                    <section className="py-32 text-center px-6">
-                        <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8">Gestión al siguiente <br/><span className="gradient-text">nivel</span></h1>
-                        <p className="text-xl text-slate-400 mb-10 max-w-lg mx-auto">Automatización inteligente para un mundo moderno.</p>
-                        <button className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-full font-bold flex items-center gap-2 mx-auto">
-                            Comenzar <ChevronRight size={18}/>
-                        </button>
-                    </section>
-
-                    {/* Features */}
-                    <section className="max-w-6xl mx-auto px-6 pb-32 grid md:grid-cols-2 gap-4">
-                        {[
-                            { t: 'Dashboard', d: 'Vista unificada' },
-                            { t: 'Analítica', d: 'Datos predictivos' },
-                            { t: 'Automatización', d: 'Procesos fluidos' },
-                            { t: 'Seguridad', d: 'Enterprise-grade' }
-                        ].map((f, i) => (
-                            <div key={i} className="p-10 glass-card rounded-3xl hover:border-blue-500/50 transition">
-                                <h3 className="text-3xl font-bold mb-2">{f.t}</h3>
-                                <p className="text-slate-500">{f.d}</p>
-                            </div>
-                        ))}
-                    </section>
+                <div className="min-h-screen">
+                    <Navbar />
+                    <Hero />
+                    <Features />
                 </div>
             );
         }
