@@ -27,7 +27,7 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* TARJETAS GLASSMORPHISM MEJORADAS */
+        /* TARJETAS GLASSMORPHISM PREMIUM */
         .glass-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -55,7 +55,9 @@
             background: rgba(255, 255, 255, 0.05) !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             color: white !important;
+            outline: none;
         }
+        input:focus { border-color: var(--accent) !important; }
     </style>
 </head>
 <body>
@@ -86,7 +88,7 @@
                 Control de <br><span class="italic text-blue-500">márgenes.</span>
             </h1>
             <p class="text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto mb-14 leading-tight font-medium opacity-80">
-                La plataforma inteligente que transforma tus costes en beneficios estratégicos.
+                La plataforma inteligente que transforma tus costes en beneficios estratégicos reales.
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
                 <a href="#contacto" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-all shadow-xl shadow-white/5">Prueba Gratis</a>
@@ -95,7 +97,7 @@
         </div>
     </section>
 
-    <!-- MÉTRICAS -->
+    <!-- MÉTRICAS DE IMPACTO -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -113,7 +115,7 @@
         </div>
     </section>
 
-    <!-- INTERFAZ SOFTWARE -->
+    <!-- INTERFAZ SOFTWARE (TABS) -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -131,7 +133,7 @@
         </div>
     </section>
 
-    <!-- CÓMO FUNCIONA -->
+    <!-- MÉTODO / CÓMO FUNCIONA -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -141,12 +143,12 @@
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">01</div>
                     <h3 class="text-2xl font-bold mb-5 text-blue-500">Auditoría</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Analizamos tus bases de datos actuales para detectar fugas de rentabilidad.</p>
+                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Analizamos tus bases de datos actuales para detectar fugas de rentabilidad y procesos ineficientes.</p>
                 </div>
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.1s">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">02</div>
                     <h3 class="text-2xl font-bold mb-5 text-blue-500">Ajuste</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Configuramos el sistema según tus formatos de producción y necesidades de reporting.</p>
+                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Configuramos el sistema según tus formatos de producción real y necesidades de reporting.</p>
                 </div>
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.2s">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">03</div>
@@ -157,36 +159,48 @@
         </div>
     </section>
 
-    <!-- SECCIÓN MULTIDISPOSITIVO (TABLET + MÓVIL) -->
+    <!-- SECCIÓN MULTIDISPOSITIVO (MOCKUPS REALISTAS) -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 relative border-blue-500/20">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                
                 <div class="lg:w-1/2 reveal">
-                    <span class="bg-blue-600 text-[11px] font-black px-5 py-2 rounded-full mb-8 inline-block uppercase tracking-[0.2em]">Ecosistema Cloud</span>
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-10 italic leading-none text-white">Tu oficina <br>donde estés.</h2>
+                    <span class="bg-blue-600 text-[11px] font-black px-5 py-2 rounded-full mb-8 inline-block uppercase tracking-[0.2em]">Hardware Agnostic</span>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-10 italic leading-none text-white">Tu oficina <br>don de estés.</h2>
                     <p class="text-slate-200 text-lg mb-10 leading-relaxed opacity-90">
-                        wilkIA se adapta al soporte que necesites: desde el análisis profundo en tablet hasta el control rápido de formatos en el móvil.
+                        Diseñado para la precisión en tablet y la agilidad en movilidad. wilkIA se adapta al dispositivo del operario y del directivo de forma nativa.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Tablet Optimized</div>
-                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Mobile App Interface</div>
+                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Tablet Interface</div>
+                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Mobile Ready</div>
                     </div>
                 </div>
 
-                <div class="lg:w-1/2 relative min-h-[450px] w-full flex items-center justify-center reveal">
-                    <div class="absolute inset-0 bg-blue-600/20 blur-[120px] rounded-full"></div>
-                    <!-- TABLET -->
-                    <div class="relative z-10 border-[14px] border-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden w-[85%] md:w-[90%] transform -rotate-2 aspect-[4/3] bg-slate-800">
-                        <img src="images/articulos.png" alt="Tablet View" class="w-full h-full object-cover">
-                    </div>
-                    <!-- MÓVIL SUPERPUESTO -->
-                    <div class="absolute z-20 bottom-0 right-4 md:-right-4 border-[8px] border-slate-900 rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.7)] overflow-hidden w-[160px] md:w-[200px] transform rotate-6 translate-y-10">
-                        <div class="absolute top-0 w-full h-6 bg-slate-900 flex justify-center items-end pb-1">
-                            <div class="w-16 h-4 bg-black rounded-full"></div>
+                <div class="lg:w-1/2 relative flex items-center justify-center reveal py-12">
+                    <div class="absolute inset-0 bg-blue-600/15 blur-[120px] rounded-full"></div>
+
+                    <!-- TABLET MOCKUP -->
+                    <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-[0_50px_100px_rgba(0,0,0,0.8)] transform -rotate-3 overflow-hidden">
+                        <div class="absolute top-1/2 left-2 -translate-y-1/2 w-1.5 h-1.5 bg-white/10 rounded-full"></div>
+                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
+                            <img src="images/articulos.png" alt="Tablet View" class="w-full h-full object-cover">
                         </div>
-                        <img src="images/formatos2.png" alt="Mobile View" class="w-full">
                     </div>
+
+                    <!-- MÓVIL MOCKUP -->
+                    <div class="absolute z-30 bottom-[-20px] right-[-10px] md:right-[-20px] w-[180px] md:w-[220px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform rotate-6 overflow-hidden flex flex-col">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#334155] rounded-b-2xl z-40 flex justify-center items-center">
+                            <div class="w-8 h-1 bg-black/40 rounded-full mb-1"></div>
+                        </div>
+                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
+                            <img src="images/formatos2.png" alt="Mobile View" class="w-full h-full object-cover pt-4">
+                        </div>
+                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/20 rounded-full"></div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 w-[80%] h-4 bg-black/40 blur-xl rounded-full translate-y-10"></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -200,13 +214,13 @@
                     <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
                         ¿Cómo integro mis datos? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
                     </summary>
-                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">Realizamos la carga masiva inicial por ti. Solo necesitamos tus listados y en 48h estarás operando.</p>
+                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">Realizamos la carga masiva inicial por ti. Solo necesitamos tus listados y en 48h estarás operando con wilkIA.</p>
                 </details>
                 <details class="glass-card p-8 reveal cursor-pointer group border-white/10">
                     <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
                         ¿Es compatible con mi ERP? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
                     </summary>
-                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">wilkIA es el complemento perfecto para el control de costes específico que un ERP genérico no ofrece.</p>
+                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">wilkIA es el complemento perfecto para el control de costes analítico que un ERP genérico no suele ofrecer.</p>
                 </details>
             </div>
         </div>
@@ -222,36 +236,36 @@
                         <div class="space-y-8 mt-16">
                             <div class="flex gap-5">
                                 <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
-                                <p class="text-white font-medium text-sm opacity-90">Demo personalizada.</p>
+                                <p class="text-white font-medium text-sm opacity-90">Demo personalizada en 24h.</p>
                             </div>
                             <div class="flex gap-5">
                                 <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
-                                <p class="text-white font-medium text-sm opacity-90">Soporte directo.</p>
+                                <p class="text-white font-medium text-sm opacity-90">Soporte directo ilimitado.</p>
                             </div>
                         </div>
                     </div>
                     <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="flex-1 p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="flex flex-col gap-3">
                             <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Nombre</label>
-                            <input type="text" name="nombre" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all" required>
+                            <input type="text" name="nombre" class="w-full p-5 rounded-2xl transition-all" required>
                         </div>
                         <div class="flex flex-col gap-3">
                             <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Empresa</label>
-                            <input type="text" name="empresa" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all">
+                            <input type="text" name="empresa" class="w-full p-5 rounded-2xl transition-all">
                         </div>
                         <div class="flex flex-col gap-3">
                             <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Email Profesional</label>
-                            <input type="email" name="email" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all" required>
+                            <input type="email" name="email" class="w-full p-5 rounded-2xl transition-all" required>
                         </div>
                         <div class="flex flex-col gap-3">
                             <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Teléfono</label>
-                            <input type="tel" name="telefono" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all" required>
+                            <input type="tel" name="telefono" class="w-full p-5 rounded-2xl transition-all" required>
                         </div>
                         <div class="flex flex-col gap-3 md:col-span-2">
                             <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Mensaje</label>
-                            <textarea name="mensaje" rows="4" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all"></textarea>
+                            <textarea name="mensaje" rows="4" class="w-full p-5 rounded-2xl transition-all"></textarea>
                         </div>
-                        <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm transition-all shadow-2xl shadow-blue-600/40">Solicitar Acceso</button>
+                        <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm transition-all shadow-2xl shadow-blue-600/40 active:scale-95">Solicitar Acceso</button>
                     </form>
                 </div>
             </div>
@@ -268,13 +282,13 @@
     </footer>
 
     <script>
-        // Reveal animation
+        // Animación Reveal al Scroll
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Tab switching
+        // Navegación de Pestañas (Software)
         function tab(name, btn) {
             const img = document.getElementById('view');
             img.style.opacity = '0';
