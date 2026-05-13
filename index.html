@@ -3,169 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Smart Management</title>
+    <title>wilkIA | Management OS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #f8fafc; 
-            color: #0f172a;
-            scroll-behavior: smooth;
+            background-color: #020617; /* Fondo negro azulado profundo */
+            color: #f8fafc;
+            overflow-x: hidden;
         }
 
-        /* EFECTO APARECER AL BAJAR */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        /* ORBES DE LUZ DINÁMICOS */
+        .orb {
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
+            filter: blur(120px); z-index: -1; opacity: 0.3; pointer-events: none;
+        }
+
+        /* ANIMACIONES DE APARICIÓN */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* NAV GLASSMORFISM */
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-        }
-
-        /* BENTO CARDS */
+        /* BENTO CARDS CON EFECTO CRISTAL */
         .bento-card {
-            background: white;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 3rem;
+            transition: all 0.5s ease;
         }
-        .bento-card:hover { transform: translateY(-5px); }
+        .bento-card:hover {
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.01);
+        }
 
-        .tab-btn.active { background: #2563eb; color: white; }
-        
-        /* FIX MÓVIL PESTAÑAS */
-        .mobile-tabs { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 10px; }
-        .mobile-tabs::-webkit-scrollbar { display: none; }
+        /* BOTONES SHINY */
+        .btn-blue {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.5);
+        }
+
+        .tab-btn.active {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        /* MÓVIL OPTIMIZADO */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem !important; line-height: 0.9 !important; }
+            .bento-card { border-radius: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- MENÚ SUPERIOR RECUPERADO -->
-    <nav class="fixed w-full z-[100] glass-nav py-4 px-6">
+    <!-- ORBES -->
+    <div class="orb bg-blue-600 -top-40 -right-40"></div>
+    <div class="orb bg-indigo-800 top-[40%] -left-60"></div>
+
+    <!-- NAVBAR PREMIUM -->
+    <nav class="fixed w-full z-[100] py-6 px-8 bg-slate-950/20 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <!-- RUTA CORREGIDA: images/logo.png -->
-                <img src="images/logo.png" class="h-9 w-auto" alt="Logo">
-                <img src="images/logo_nombre.png" class="h-5 w-auto hidden sm:block" alt="wilkIA">
+            <div class="flex items-center gap-4">
+                <img src="images/logo.png" class="h-10 w-auto" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-6 w-auto hidden md:block" alt="wilkIA">
             </div>
-            <div class="flex items-center gap-4 md:gap-10">
-                <div class="hidden md:flex gap-8 font-bold text-[10px] uppercase tracking-widest text-slate-400">
-                    <a href="#nosotros" class="hover:text-blue-600 transition-colors">Nosotros</a>
-                    <a href="#solucion" class="hover:text-blue-600 transition-colors">Software</a>
-                    <a href="#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
-                </div>
-                <a href="#contacto" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
-                    Contacto
-                </a>
+            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+                <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
+                <a href="#nosotros" class="hover:text-blue-400 transition-all">Visión</a>
+                <a href="#faq" class="hover:text-blue-400 transition-all">Dudas</a>
             </div>
+            <a href="#contacto" class="btn-blue px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
+                Empezar
+            </a>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="pt-48 pb-20 px-6 text-center">
-        <div class="max-w-5xl mx-auto reveal">
-            <span class="text-blue-600 font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Management OS</span>
-            <h1 class="text-5xl md:text-[90px] font-extrabold tracking-tighter leading-none mb-8 text-slate-900">
-                Control total, <br><span class="italic text-blue-600">sin puntos ciegos.</span>
+    <!-- HERO SECTION (PUNCH VISUAL) -->
+    <section class="relative pt-56 pb-32 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center reveal">
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full mb-10">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Management Intelligence 2026</span>
+            </div>
+            <h1 class="hero-title text-6xl md:text-[130px] font-[800] tracking-tighter leading-[0.85] mb-12">
+                Domina tus <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">márgenes.</span>
             </h1>
-            <p class="text-slate-500 text-lg md:text-2xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Visualiza la rentabilidad de tu negocio en tiempo real con nuestra IA de gestión avanzada.
+            <p class="text-slate-400 text-xl md:text-3xl max-w-3xl mx-auto mb-16 font-medium leading-tight">
+                El OS definitivo para empresas que no se conforman con estimaciones.
             </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#contacto" class="btn-blue w-full md:w-auto px-12 py-6 rounded-3xl font-black text-lg shadow-2xl transition-all hover:brightness-110">Agendar Demo</a>
+                <a href="#solucion" class="w-full md:w-auto px-12 py-6 rounded-3xl font-bold text-lg border border-white/10 hover:bg-white/5 transition-all">Ver Módulos</a>
+            </div>
         </div>
     </section>
 
-    <!-- SOFTWARE SECTION (BENTO) -->
-    <section id="solucion" class="py-10 px-6">
-        <div class="max-w-6xl mx-auto bento-card overflow-hidden flex flex-col md:flex-row h-full md:h-[600px] reveal">
-            <!-- Selector de pantallas -->
-            <div class="w-full md:w-72 bg-slate-50 p-6 border-r border-slate-100">
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Módulos</p>
-                <div class="mobile-tabs md:flex-col">
-                    <button onclick="setTab('escandallo', this)" class="tab-btn active whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm transition-all">Escandallos</button>
-                    <button onclick="setTab('articulos', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Artículos</button>
-                    <button onclick="setTab('marca', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Marca</button>
-                    <button onclick="setTab('formatos', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Formatos</button>
+    <!-- BENTO SOFTWARE (FUNCIONAL) -->
+    <section id="solucion" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto reveal">
+            <div class="bento-card overflow-hidden flex flex-col lg:flex-row h-full lg:h-[700px]">
+                <!-- Sidebar -->
+                <div class="w-full lg:w-96 p-10 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col">
+                    <p class="text-[11px] font-black text-blue-500 uppercase tracking-widest mb-10">Módulos Core</p>
+                    <div class="flex flex-row lg:flex-col gap-3 overflow-x-auto no-scrollbar pb-4 lg:pb-0">
+                        <button onclick="updateDisplay('escandallo', this)" class="tab-btn active w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 transition-all whitespace-nowrap">Escandallos</button>
+                        <button onclick="updateDisplay('articulos', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Artículos</button>
+                        <button onclick="updateDisplay('marca', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Marca</button>
+                        <button onclick="updateDisplay('formatos', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Formatos</button>
+                    </div>
+                </div>
+                <!-- Visual -->
+                <div class="flex-1 bg-black/40 p-6 lg:p-16 flex items-center justify-center relative">
+                    <div class="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full"></div>
+                    <img id="software-frame" src="images/escandallo.png" class="relative z-10 max-w-full max-h-full rounded-[1.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.5)] transition-all duration-500 border border-white/10">
                 </div>
             </div>
-            <!-- Imagen dinámica -->
-            <div class="flex-1 p-6 md:p-12 flex items-center justify-center bg-white">
-                <img id="main-img" src="images/escandallo.png" class="max-w-full max-h-full rounded-xl shadow-2xl transition-opacity duration-300" alt="Preview">
-            </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-32 px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-12 text-center reveal italic">Preguntas</h2>
-            <div class="space-y-4">
-                <details class="bento-card p-6 reveal group cursor-pointer">
-                    <summary class="list-none font-bold text-lg flex justify-between items-center">
-                        ¿Cómo se integra? <span class="text-blue-600 group-open:rotate-180 transition-transform">↓</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500">Importamos tus datos actuales de forma masiva para que empieces en 24 horas.</p>
-                </details>
-                <details class="bento-card p-6 reveal group cursor-pointer">
-                    <summary class="list-none font-bold text-lg flex justify-between items-center">
-                        ¿Es seguro? <span class="text-blue-600 group-open:rotate-180 transition-transform">↓</span>
-                    </summary>
-                    <p class="mt-4 text-slate-500">Encriptación de nivel bancario. Tus datos son privados y siempre tuyos.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="py-20 px-6">
-        <div class="max-w-6xl mx-auto bento-card bg-slate-900 p-10 md:p-20 text-white relative overflow-hidden reveal">
-            <div class="grid lg:grid-cols-2 gap-16 relative z-10">
-                <div>
-                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 italic">Hablemos.</h2>
-                    <p class="text-slate-400 text-xl">Tu primera auditoría de márgenes va por nuestra cuenta.</p>
-                </div>
-                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
-                    <input name="name" placeholder="Nombre" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500" required>
-                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500" required>
-                    <button class="w-full bg-blue-600 p-5 rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Solicitar Demo</button>
-                </form>
-            </div>
+    <!-- FAQ & CONTACTO (REDUX) -->
+    <section id="faq" class="py-32 px-6 max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-6xl font-black italic mb-20 text-center tracking-tighter reveal">Resolviendo dudas.</h2>
+        <div class="grid gap-6">
+            <details class="bento-card p-10 group cursor-pointer reveal">
+                <summary class="list-none flex justify-between items-center text-xl font-bold">
+                    ¿Es una integración lenta? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
+                </summary>
+                <p class="mt-6 text-slate-400 text-lg leading-relaxed">No. En 48 horas tenemos tus datos volcados y el sistema listo para operar.</p>
+            </details>
+            <details class="bento-card p-10 group cursor-pointer reveal">
+                <summary class="list-none flex justify-between items-center text-xl font-bold">
+                    ¿Seguridad de los datos? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
+                </summary>
+                <p class="mt-6 text-slate-400 text-lg leading-relaxed">Cifrado AES-256. Tus márgenes son tu secreto mejor guardado.</p>
+            </details>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-20 text-center">
-        <div class="flex justify-center items-center gap-3 mb-6">
-            <img src="images/logo.png" class="h-8" alt="Logo">
-            <img src="images/logo_nombre.png" class="h-4 opacity-30" alt="wilkIA">
+    <footer class="py-24 px-6 border-t border-white/5 text-center">
+        <div class="flex justify-center items-center gap-6 mb-12">
+            <img src="images/logo.png" class="h-10" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-6 opacity-40" alt="wilkIA">
         </div>
-        <p class="text-slate-300 text-[10px] font-bold tracking-[0.5em]">© 2026 WILKIA SYSTEMS</p>
+        <p class="text-slate-600 text-[10px] font-black tracking-[0.8em] uppercase">© 2026 WILKIA CLOUD — BORN TO GROW</p>
     </footer>
 
     <script>
-        // EFECTO REVEAL (JS Ligero)
-        const observer = new IntersectionObserver(entries => {
+        // REVELADO AL HACER SCROLL
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // PESTAÑAS (Funciona al toque)
-        function setTab(name, btn) {
-            const img = document.getElementById('main-img');
-            img.style.opacity = '0';
+        // CAMBIO DE PESTAÑAS (FLUIDO)
+        function updateDisplay(imgName, btn) {
+            const frame = document.getElementById('software-frame');
+            frame.style.opacity = '0';
+            frame.style.transform = 'scale(0.98)';
+            
             setTimeout(() => {
-                img.src = `images/${name}.png`;
-                img.style.opacity = '1';
-            }, 200);
+                frame.src = `images/${imgName}.png`;
+                frame.style.opacity = '1';
+                frame.style.transform = 'scale(1)';
+            }, 300);
 
             document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active', 'text-white');
+                b.classList.remove('active');
                 b.classList.add('text-slate-500');
             });
             btn.classList.add('active');
