@@ -17,11 +17,17 @@
     }
     </script>
     <style>
-        /* Corregimos un pequeño detalle de Tailwind para la perspectiva */
+        /* PUNTO 1: Bloqueo de scroll lateral */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
         .perspective-1000 { perspective: 1000px; }
     </style>
 </head>
-<body class="bg-[#0f172a] text-white overflow-x-hidden">
+<body class="bg-[#0f172a] text-white">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
         import React, { useState, useEffect } from 'react';
@@ -32,7 +38,6 @@
             const [activeIndex, setActiveIndex] = useState(2);
             const [isMobile, setIsMobile] = useState(false);
 
-            // Detectar si es móvil para ajustar el desplazamiento lateral
             useEffect(() => {
                 const checkMobile = () => setIsMobile(window.innerWidth < 768);
                 checkMobile();
@@ -42,7 +47,6 @@
 
             return (
                 <div className="min-h-screen flex flex-col items-center">
-                    {/* NAV Responsivo */}
                     <nav className="w-full flex flex-col md:flex-row items-center justify-between p-6 md:p-8 gap-4">
                         <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
                         <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-medium text-slate-300">
@@ -52,17 +56,15 @@
                         </div>
                     </nav>
 
-                    <div className="flex-grow flex flex-col items-center justify-center w-full py-6 md:py-10">
+                    <div className="flex-grow flex flex-col items-center justify-center w-full py-6">
                         <h1 className="text-3xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center px-4">Experiencia wilkIA</h1>
 
-                        {/* Contenedor del Carrusel */}
-                        <div className="relative flex items-center justify-center w-full h-[300px] md:h-[500px] perspective-1000">
+                        {/* PUNTO 2: overflow-hidden añadido aquí abajo */}
+                        <div className="relative flex items-center justify-center w-full h-[350px] md:h-[500px] perspective-1000 overflow-hidden">
                             {images.map((img, i) => {
                                 const offset = i - activeIndex;
                                 const isCenter = i === activeIndex;
-                                
-                                // Ajuste dinámico de distancia: 350px en PC, 60px en móvil
-                                const translateX = isMobile ? offset * 60 : offset * 350;
+                                const translateX = isMobile ? offset * 70 : offset * 350;
 
                                 return (
                                     <div 
@@ -71,7 +73,8 @@
                                         className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40'}`}
                                         style={{
                                             transform: `translateX(${translateX}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -25 : 25) + 'deg)'}`,
-                                            width: isMobile ? '85%' : 'auto' // En móvil ocupa casi todo el ancho
+                                            /* PUNTO 3: Ancho controlado para que no desborde */
+                                            width: isMobile ? '70%' : 'auto'
                                         }}
                                     >
                                         <img 
@@ -84,8 +87,8 @@
                             })}
                         </div>
                         
-                        <p className="mt-12 md:mt-20 text-slate-400 text-sm text-center px-6">
-                            {isMobile ? "Toca las pantallas laterales para navegar" : "Haz clic en cualquier pantalla lateral para traerla al frente"}
+                        <p className="mt-12 text-slate-400 text-sm text-center px-6 italic">
+                            {isMobile ? "Desliza o toca las pantallas laterales" : "Haz clic en las pantallas para navegar"}
                         </p>
                     </div>
                 </div>
@@ -94,5 +97,4 @@
         createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
-</html>
 </html>
