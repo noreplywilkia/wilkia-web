@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Gestión Inteligente</title>
+    <title>wilkIA | Gestión Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
     <script type="importmap">
@@ -17,142 +17,142 @@
     }
     </script>
     <style>
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap');
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #fcfcfd;
+            color: #1a1a1a;
         }
-        .perspective-1000 { perspective: 1000px; }
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .header-blur {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eee;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .feature-card:hover {
+            border-color: #3b82f6;
+            background: #f8faff;
+        }
+        .screenshot-shadow {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body class="bg-[#0f172a] text-white">
+<body>
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
-        import React, { useState, useEffect } from 'react';
+        import React, { useState } from 'react';
         import { createRoot } from 'react-dom/client';
 
-        function FAQItem({ q, a }) {
-            const [isOpen, setIsOpen] = useState(false);
-            return (
-                <div className="border-b border-white/10 py-4">
-                    <button onClick={() => setIsOpen(!isOpen)} className="w-full flex justify-between items-center text-left focus:outline-none">
-                        <span className="text-lg font-medium">{q}</span>
-                        <span className="text-blue-400 text-2xl">{isOpen ? '−' : '+'}</span>
-                    </button>
-                    {isOpen && <p className="mt-2 text-slate-400 leading-relaxed">{a}</p>}
-                </div>
-            );
-        }
-
-        function App() {
-            const images = ['articulos', 'escandallo', 'formatos', 'formatos2', 'marca'];
-            const [activeIndex, setActiveIndex] = useState(2);
-            const [isMobile, setIsMobile] = useState(false);
-
-            useEffect(() => {
-                const checkMobile = () => setIsMobile(window.innerWidth < 768);
-                checkMobile();
-                window.addEventListener('resize', checkMobile);
-                return () => window.removeEventListener('resize', checkMobile);
-            }, []);
+        const App = () => {
+            const [selectedTab, setSelectedTab] = useState(0);
+            const features = [
+                { id: 'escandallo', title: 'Escandallos', desc: 'Control total de costes por plato.' },
+                { id: 'articulos', title: 'Artículos', desc: 'Gestión centralizada de stock.' },
+                { id: 'formatos', title: 'Formatos', desc: 'Configuración flexible de venta.' },
+                { id: 'marca', title: 'Métricas', desc: 'Analítica en tiempo real.' }
+            ];
 
             return (
-                <div className="min-h-screen flex flex-col items-center">
-                    {/* NAV FLOTANTE */}
-                    <nav className="w-full flex flex-col md:flex-row items-center justify-between p-6 md:p-8 gap-4 sticky top-0 glass-nav z-50">
-                        <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
-                        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-medium text-slate-300">
-                            <a href="#" className="hover:text-blue-400 transition-all">Inicio</a>
-                            <a href="#demo" className="hover:text-blue-400 transition-all">Demo</a>
-                            <a href="#nosotros" className="hover:text-blue-400 transition-all">Quienes Somos</a>
-                            <a href="#faq" className="hover:text-blue-400 transition-all">FAQ</a>
-                            <a href="#contacto" className="hover:text-blue-400 transition-all">Contacto</a>
+                <div className="min-h-screen">
+                    {/* NAV */}
+                    <nav className="fixed w-full z-50 header-blur px-6 py-4">
+                        <div className="max-w-7xl mx-auto flex justify-between items-center">
+                            <div className="text-2xl font-extrabold text-blue-600 tracking-tight">wilkIA</div>
+                            <div className="hidden md:flex gap-10 font-semibold text-gray-500 text-sm">
+                                <a href="#solucion" className="hover:text-blue-600">Software</a>
+                                <a href="#nosotros" className="hover:text-blue-600">Nosotros</a>
+                                <a href="#faq" className="hover:text-blue-600">Ayuda</a>
+                            </div>
+                            <a href="#contacto" className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">Solicitar Demo</a>
                         </div>
                     </nav>
 
-                    {/* SECCIÓN DEMO CON CARRUSEL (El diseño original) */}
-                    <section id="demo" className="flex flex-col items-center justify-center w-full py-16">
-                        <h1 className="text-3xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center px-4 uppercase tracking-tighter italic">Experiencia <span className="text-blue-400">wilkIA</span></h1>
-                        
-                        <div className="relative flex items-center justify-center w-full h-[350px] md:h-[500px] perspective-1000 overflow-hidden">
-                            {images.map((img, i) => {
-                                const offset = i - activeIndex;
-                                const isCenter = i === activeIndex;
-                                const translateX = isMobile ? offset * 70 : offset * 350;
-
-                                return (
-                                    <div 
-                                        key={img}
-                                        onClick={() => setActiveIndex(i)}
-                                        className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40'}`}
-                                        style={{
-                                            transform: `translateX(${translateX}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -25 : 25) + 'deg)'}`,
-                                            width: isMobile ? '70%' : 'auto'
-                                        }}
-                                    >
-                                        <img 
-                                            src={`/images/${img}.png`} 
-                                            alt={img}
-                                            className="w-full max-w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <p className="mt-12 text-slate-400 text-sm text-center px-6 italic">
-                            {isMobile ? "Toca las pantallas laterales" : "Haz clic en las pantallas laterales para navegar"}
+                    {/* HERO */}
+                    <section className="pt-32 pb-20 px-6 text-center">
+                        <span className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Nueva Era en Gestión</span>
+                        <h1 className="text-5xl md:text-7xl font-extrabold mt-6 mb-8 text-gray-900 tracking-tight">
+                            La gestión de tu negocio, <br/>
+                            <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">ahora es simple.</span>
+                        </h1>
+                        <p className="text-gray-500 text-xl max-w-2xl mx-auto mb-12">
+                            Simplifica procesos, controla márgenes y toma decisiones basadas en datos reales con el software más intuitivo del mercado.
                         </p>
                     </section>
 
-                    {/* QUIENES SOMOS */}
-                    <section id="nosotros" className="w-full max-w-5xl px-6 py-20 border-t border-white/5">
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl font-bold italic text-blue-400 uppercase tracking-tight">Quiénes Somos</h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-12 items-center text-slate-300">
-                            <p className="text-lg leading-relaxed">
-                                En <span className="text-white font-bold">wilkIA</span>, desarrollamos software de gestión avanzada pensado para la eficiencia. Nuestro objetivo es que dediques menos tiempo a la administración y más a hacer crecer tu negocio.
-                            </p>
-                            <p className="text-lg leading-relaxed border-l-2 border-blue-500 pl-6 italic">
-                                "La inteligencia aplicada a la gestión diaria. Sencillo, potente y siempre en la nube."
-                            </p>
+                    {/* SHOWCASE SECTON (Reemplaza el carrusel) */}
+                    <section id="solucion" className="max-w-7xl mx-auto px-6 py-12">
+                        <div className="bg-white rounded-[2rem] border border-gray-100 shadow-xl overflow-hidden md:flex">
+                            {/* Selector lateral */}
+                            <div className="md:w-1/3 bg-gray-50/50 p-8 flex flex-col gap-4 border-r border-gray-100">
+                                {features.map((f, i) => (
+                                    <button 
+                                        key={f.id}
+                                        onClick={() => setSelectedTab(i)}
+                                        className={`text-left p-5 rounded-2xl transition-all ${selectedTab === i ? 'bg-white shadow-md border-l-4 border-blue-600' : 'hover:bg-gray-100'}`}
+                                    >
+                                        <h3 className={`font-bold ${selectedTab === i ? 'text-blue-600' : 'text-gray-700'}`}>{f.title}</h3>
+                                        <p className="text-sm text-gray-500 mt-1">{f.desc}</p>
+                                    </button>
+                                ))}
+                            </div>
+                            {/* Imagen central */}
+                            <div className="md:w-2/3 p-4 md:p-12 flex items-center justify-center bg-white">
+                                <img 
+                                    src={`/images/${features[selectedTab].id}.png`} 
+                                    className="w-full h-auto rounded-xl screenshot-shadow border border-gray-100 transition-all duration-500"
+                                    alt={features[selectedTab].title}
+                                />
+                            </div>
                         </div>
                     </section>
 
-                    {/* FAQ */}
-                    <section id="faq" className="w-full max-w-3xl px-6 py-20 border-t border-white/5">
-                        <h2 className="text-3xl font-bold mb-10 text-center uppercase italic">Preguntas Frecuentes</h2>
-                        <FAQItem q="¿Es seguro wilkIA?" a="Tus datos están protegidos en la nube de Cloudflare con encriptación de última generación." />
-                        <FAQItem q="¿Puedo usarlo en el móvil?" a="Sí, la plataforma es 100% responsive y accesible desde cualquier dispositivo." />
-                        <FAQItem q="¿Necesito instalar algo?" a="No. Es una solución Cloud, solo necesitas una conexión a internet." />
+                    {/* NOSOTROS */}
+                    <section id="nosotros" className="py-24 bg-gray-50">
+                        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Expertos en digitalización de procesos</h2>
+                                <p className="text-gray-600 text-lg leading-relaxed">
+                                    wilkIA nace para eliminar el caos administrativo. No vendemos solo software, ofrecemos claridad mental para el empresario moderno.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                                    <p className="text-3xl font-black text-blue-600">100%</p>
+                                    <p className="text-sm font-bold text-gray-400 mt-2 uppercase tracking-wide">Nube</p>
+                                </div>
+                                <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                                    <p className="text-3xl font-black text-blue-600">SaaS</p>
+                                    <p className="text-sm font-bold text-gray-400 mt-2 uppercase tracking-wide">Modelo</p>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     {/* CONTACTO */}
-                    <section id="contacto" className="w-full max-w-4xl px-6 py-20 border-t border-white/5">
-                        <div className="bg-[#1e293b] rounded-2xl p-8 md:p-12 shadow-2xl border border-white/10">
-                            <h2 className="text-3xl font-bold mb-4 text-center">Contacta con nosotros</h2>
-                            <p className="text-slate-400 text-center mb-10">Envíanos un mensaje y te responderemos a la mayor brevedad.</p>
-
-                            <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <input type="text" name="name" placeholder="Tu nombre" required className="bg-[#0f172a] border border-slate-700 rounded-lg p-3 focus:border-blue-400 outline-none" />
-                                    <input type="email" name="email" placeholder="Tu email" required className="bg-[#0f172a] border border-slate-700 rounded-lg p-3 focus:border-blue-400 outline-none" />
-                                </div>
-                                <textarea name="message" rows="4" placeholder="¿Cómo podemos ayudarte?" required className="w-full bg-[#0f172a] border border-slate-700 rounded-lg p-3 focus:border-blue-400 outline-none"></textarea>
-                                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-lg transition-all uppercase tracking-widest">Enviar Mensaje</button>
-                            </form>
+                    <section id="contacto" className="py-24 max-w-4xl mx-auto px-6">
+                        <div className="bg-white rounded-[3rem] p-12 md:p-16 border border-gray-100 shadow-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-0"></div>
+                            <div className="relative z-10">
+                                <h2 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">Cuéntanos tu proyecto</h2>
+                                <p className="text-gray-500 text-center mb-12 italic">Respondemos personalmente en menos de 24 horas.</p>
+                                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" className="space-y-4">
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <input type="text" name="name" placeholder="Tu nombre" required className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none" />
+                                        <input type="email" name="email" placeholder="Tu email" required className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none" />
+                                    </div>
+                                    <textarea name="message" placeholder="¿Cómo podemos ayudarte?" rows="4" className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                                    <button className="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-blue-700 shadow-xl shadow-blue-100 transition-all">Enviar Mensaje</button>
+                                </form>
+                            </div>
                         </div>
                     </section>
 
-                    <footer className="w-full py-10 border-t border-white/5 text-center text-slate-500 text-sm">
-                        &copy; 2026 wilkIA. Gestión Inteligente.
+                    <footer className="py-12 text-center text-gray-400 text-xs font-semibold uppercase tracking-widest border-t border-gray-100">
+                        &copy; 2026 wilkIA Cloud Solutions
                     </footer>
                 </div>
             );
