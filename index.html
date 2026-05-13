@@ -117,19 +117,87 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto glass-card p-8 md:p-16 border-blue-500/20 reveal">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <h2 class="text-5xl font-black italic mb-6">Let's talk.</h2>
-                    <p class="text-slate-400">Transforma tus datos en decisiones estratégicas.</p>
+   <!-- SECCIÓN CONTACTO PREMIUM -->
+    <section id="contacto" class="py-24 px-6 relative overflow-hidden">
+        <!-- Decoración de fondo -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/5 blur-[120px] -z-10"></div>
+        
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-card overflow-hidden border-blue-500/20 shadow-[0_0_50px_rgba(37,99,235,0.1)]">
+                <div class="flex flex-col lg:flex-row">
+                    
+                    <!-- Columna de Información -->
+                    <div class="lg:w-2/5 p-8 md:p-16 bg-gradient-to-b from-blue-600/10 to-transparent border-b lg:border-b-0 lg:border-r border-white/5">
+                        <span class="text-blue-500 font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">Ready to scale?</span>
+                        <h2 class="text-5xl md:text-6xl font-black italic tracking-tighter leading-none mb-8">
+                            Hablemos <br>de tu <br><span class="text-blue-500">margen.</span>
+                        </h2>
+                        <div class="space-y-8 mt-12">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0 text-blue-400">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Análisis de viabilidad</h4>
+                                    <p class="text-slate-400 text-sm">Evaluamos tus escandallos actuales sin compromiso.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0 text-blue-400">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Demo personalizada</h4>
+                                    <p class="text-slate-400 text-sm">Te mostramos wilkIA con datos reales de tu sector.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna de Formulario -->
+                    <div class="flex-1 p-8 md:p-16">
+                        <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Nombre -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] uppercase font-black tracking-widest text-slate-500 ml-2">Nombre y Apellido</label>
+                                <input type="text" name="nombre" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all text-white placeholder:text-slate-700" required>
+                            </div>
+                            
+                            <!-- Empresa -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] uppercase font-black tracking-widest text-slate-500 ml-2">Empresa / Grupo</label>
+                                <input type="text" name="empresa" placeholder="Wilkia Corp" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all text-white placeholder:text-slate-700">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] uppercase font-black tracking-widest text-slate-500 ml-2">Email Corporativo</label>
+                                <input type="email" name="email" placeholder="ceo@empresa.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all text-white placeholder:text-slate-700" required>
+                            </div>
+
+                            <!-- Selector de Sector -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] uppercase font-black tracking-widest text-slate-500 ml-2">Volumen de negocio</label>
+                                <select name="volumen" class="w-full bg-slate-900 border border-white/10 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all text-white appearance-none cursor-pointer">
+                                    <option value="pyme">1M€ - 5M€ anual</option>
+                                    <option value="mid">5M€ - 20M€ anual</option>
+                                    <option value="enterprise">+20M€ anual</option>
+                                </select>
+                            </div>
+
+                            <!-- Mensaje -->
+                            <div class="flex flex-col gap-2 md:col-span-2">
+                                <label class="text-[10px] uppercase font-black tracking-widest text-slate-500 ml-2">Desafío actual</label>
+                                <textarea name="mensaje" rows="4" placeholder="Cuéntanos dónde crees que se escapa tu rentabilidad..." class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all text-white placeholder:text-slate-700"></textarea>
+                            </div>
+
+                            <!-- Botón de Envío -->
+                            <div class="md:col-span-2 pt-4">
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all shadow-xl shadow-blue-600/30 active:scale-[0.98]">
+                                    Solicitar Acceso al Sistema
+                                </button>
+                                <p class="text-center text-[10px] text-slate-600 mt-4 uppercase tracking-widest">Respuesta garantizada en menos de 24 horas</p>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
-                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
-                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-white" required>
-                    <textarea name="mensaje" placeholder="¿En qué te ayudamos?" rows="4" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-white"></textarea>
-                    <button class="w-full bg-blue-600 p-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-blue-500 transition-all">Enviar</button>
-                </form>
             </div>
         </div>
     </section>
