@@ -2,184 +2,166 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>wilkIA | Management OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wilkIA | Smart Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
-        :root { --accent: #3b82f6; }
-        
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #030712; 
-            color: #f3f4f6;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Evita el desbordamiento lateral */
+            background-color: #020617; 
+            color: #f8fafc;
+            overflow-x: hidden;
         }
 
-        /* LOGO FIX: Visibilidad garantizada sin perder color */
-        .logo-container img {
-            filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.4)) brightness(1.1);
+        /* LOGO FIX: Resplandor sutil para que el negro no se pierda */
+        .brand-fix {
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)) brightness(1.2);
         }
 
-        /* ANIMACIONES */
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* TARJETAS FLUIDAS */
         .glass-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
         }
 
-        /* BOTONES MÓDULOS ESTILO APP */
-        .module-btn {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .module-btn.active {
-            background: var(--accent);
+        .tab-btn.active {
+            background: #2563eb;
             color: white;
-            border-color: var(--accent);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
 
-        /* FIX PARA IMÁGENES DENTRO DE CARDS */
-        .preview-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 1rem;
-        }
-
-        /* SCROLL PERSONALIZADO PARA BOTONES */
+        /* Menú scrollable en móvil para que no se rompa */
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-[100] bg-gray-950/80 backdrop-blur-lg border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-5 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-2 logo-container">
-                <img src="images/logo.png" class="h-8 w-auto" alt="L">
-                <img src="images/logo_nombre.png" class="h-4 w-auto hidden xs:block" alt="wilkIA">
+    <!-- NAV RECUPERADA Y CORREGIDA -->
+    <nav class="fixed w-full z-[100] py-4 px-4 md:px-8 bg-slate-950/60 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- LOGO + NOMBRE (SIEMPRE JUNTOS) -->
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-8 md:h-10 w-auto brand-fix" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-4 md:h-5 w-auto brand-fix" alt="wilkIA">
             </div>
-            <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full text-xs font-bold tracking-tight transition-all">
-                Demo Gratuita
+
+            <!-- ENLACES DE NAVEGACIÓN (Visibles en md+) -->
+            <div class="hidden lg:flex gap-8 font-bold text-[10px] uppercase tracking-[0.3em] text-slate-400">
+                <a href="#solucion" class="hover:text-white transition-colors">Software</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+
+            <!-- BOTÓN ACCIÓN -->
+            <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-4 md:px-6 py-2 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                Demo Free
             </a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="pt-32 pb-16 px-5">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h1 class="text-[40px] md:text-8xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                Tu rentabilidad <br><span class="text-blue-500 italic">bajo control.</span>
+    <!-- HERO -->
+    <section class="pt-40 md:pt-52 pb-20 px-6">
+        <div class="max-w-6xl mx-auto text-center reveal">
+            <h1 class="text-4xl md:text-[100px] font-extrabold tracking-tighter leading-none mb-8">
+                Tus márgenes <br><span class="italic text-blue-500">en tiempo real.</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 px-4">
-                El software de gestión que los profesionales eligen para maximizar sus beneficios.
+            <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-10">
+                La inteligencia operativa que tu empresa necesita para escalar con seguridad.
             </p>
         </div>
     </section>
 
-    <!-- INTERFAZ / MÓDULOS -->
-    <section id="solucion" class="px-5 py-10">
-        <div class="max-w-6xl mx-auto">
-            <!-- Selector de módulos (Scroll horizontal en móvil) -->
-            <div class="flex flex-row overflow-x-auto gap-3 mb-6 no-scrollbar pb-2">
-                <button onclick="changeModule('escandallo', this)" class="module-btn active whitespace-nowrap px-6 py-3 rounded-2xl font-bold text-sm">Escandallos</button>
-                <button onclick="changeModule('articulos', this)" class="module-btn whitespace-nowrap px-6 py-3 rounded-2xl font-bold text-sm text-gray-400">Artículos</button>
-                <button onclick="changeModule('marca', this)" class="module-btn whitespace-nowrap px-6 py-3 rounded-2xl font-bold text-sm text-gray-400">Gestión Marca</button>
-                <button onclick="changeModule('formatos', this)" class="module-btn whitespace-nowrap px-6 py-3 rounded-2xl font-bold text-sm text-gray-400">Formatos</button>
-            </div>
-
-            <!-- Previsualización -->
-            <div class="glass-card p-4 md:p-10 reveal">
-                <div class="preview-container bg-black/40 p-2 md:p-6 rounded-[1.2rem] border border-white/5">
-                    <img id="software-img" src="images/escandallo.png" alt="Pantalla Software" class="transition-opacity duration-300">
+    <!-- SOFTWARE SECTION -->
+    <section id="solucion" class="py-12 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
+            <!-- Selector Módulos -->
+            <div class="w-full lg:w-72 p-6 border-b lg:border-b-0 lg:border-r border-white/5">
+                <div class="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                    <button onclick="changeTab('escandallo', this)" class="tab-btn active whitespace-nowrap lg:w-full text-left px-6 py-4 rounded-xl font-bold text-sm transition-all">Escandallos</button>
+                    <button onclick="changeTab('articulos', this)" class="tab-btn whitespace-nowrap lg:w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Artículos</button>
+                    <button onclick="changeTab('marca', this)" class="tab-btn whitespace-nowrap lg:w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Gestión Marca</button>
+                    <button onclick="changeTab('formatos', this)" class="tab-btn whitespace-nowrap lg:w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Formatos</button>
                 </div>
+            </div>
+            <!-- Pantalla -->
+            <div class="flex-1 p-4 md:p-12 flex items-center justify-center bg-black/20">
+                <img id="main-display" src="images/escandallo.png" class="max-w-full h-auto rounded-xl shadow-2xl border border-white/10 transition-opacity duration-300">
             </div>
         </div>
     </section>
 
-    <!-- FAQ (ACORDEÓN) -->
-    <section id="faq" class="px-5 py-20">
+    <!-- FAQ RECUPERADO -->
+    <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-10 text-center">Preguntas Frecuentes</h2>
+            <h2 class="text-3xl md:text-5xl font-black mb-12 text-center italic reveal">FAQ</h2>
             <div class="space-y-4">
-                <details class="glass-card p-5 cursor-pointer group">
-                    <summary class="list-none font-bold flex justify-between items-center">
-                        ¿Cómo empiezo? <span class="text-blue-500 group-open:rotate-180 transition-transform">↓</span>
+                <details class="glass-card p-6 reveal cursor-pointer group">
+                    <summary class="list-none font-bold text-lg flex justify-between items-center">
+                        ¿Es difícil de configurar? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Solo tienes que contactar con nosotros y te guiaremos en la configuración inicial de tus productos.</p>
+                    <p class="mt-4 text-slate-400">En absoluto. Nuestro equipo te acompaña en el volcado de datos inicial para que operes desde el primer día.</p>
                 </details>
-                <details class="glass-card p-5 cursor-pointer group">
-                    <summary class="list-none font-bold flex justify-between items-center">
-                        ¿Es seguro? <span class="text-blue-500 group-open:rotate-180 transition-transform">↓</span>
+                <details class="glass-card p-6 reveal cursor-pointer group">
+                    <summary class="list-none font-bold text-lg flex justify-between items-center">
+                        ¿Hay permanencia? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm leading-relaxed">Tus datos están protegidos con encriptación SSL y copias de seguridad automáticas diarias.</p>
+                    <p class="mt-4 text-slate-400">Queremos que te quedes por resultados, no por contratos. Flexibilidad total.</p>
                 </details>
             </div>
         </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="px-5 py-20">
-        <div class="max-w-4xl mx-auto glass-card p-8 md:p-16 border-blue-900/30">
-            <h2 class="text-4xl font-bold mb-6 italic tracking-tight">Hablemos.</h2>
-            <p class="text-gray-400 mb-10">Déjanos tus datos y te llamaremos para una demo.</p>
-            
-            <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input name="nombre" placeholder="Nombre" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-sm">
-                    <input name="email" type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-sm" required>
+    <section id="contacto" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto glass-card p-8 md:p-16 border-blue-500/20 reveal">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-5xl font-black italic mb-6">Let's talk.</h2>
+                    <p class="text-slate-400">Transforma tus datos en decisiones estratégicas.</p>
                 </div>
-                <textarea name="mensaje" placeholder="Tu mensaje" rows="4" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-sm"></textarea>
-                <button class="w-full bg-blue-600 p-4 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-lg shadow-blue-600/20 active:scale-95">
-                    Enviar mensaje
-                </button>
-            </form>
+                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
+                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-white" required>
+                    <textarea name="mensaje" placeholder="¿En qué te ayudamos?" rows="4" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all text-white"></textarea>
+                    <button class="w-full bg-blue-600 p-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-blue-500 transition-all">Enviar</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-12 px-5 text-center border-t border-white/5">
-        <div class="flex justify-center items-center gap-3 mb-6 logo-container">
-            <img src="images/logo.png" class="h-6" alt="L">
-            <img src="images/logo_nombre.png" class="h-3 opacity-50" alt="wilkIA">
+    <footer class="py-20 text-center border-t border-white/5">
+        <div class="flex justify-center items-center gap-3 mb-6">
+            <img src="images/logo.png" class="h-8 brand-fix" alt="L">
+            <img src="images/logo_nombre.png" class="h-4 brand-fix opacity-50" alt="wilkIA">
         </div>
-        <p class="text-gray-600 text-[10px] uppercase tracking-[0.4em]">© 2026 WILKIA SYSTEMS — SPAIN</p>
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.5em] uppercase">© 2026 WILKIA SYSTEMS — SMART OPS</p>
     </footer>
 
     <script>
-        // REVELADO AL BAJAR
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // CAMBIO DE MÓDULO
-        function changeModule(img, btn) {
-            const mainImg = document.getElementById('software-img');
-            mainImg.style.opacity = '0';
-            
+        function changeTab(img, btn) {
+            const display = document.getElementById('main-display');
+            display.style.opacity = '0';
             setTimeout(() => {
-                mainImg.src = `images/${img}.png`;
-                mainImg.style.opacity = '1';
+                display.src = `images/${img}.png`;
+                display.style.opacity = '1';
             }, 200);
-
-            document.querySelectorAll('.module-btn').forEach(b => {
+            document.querySelectorAll('.tab-btn').forEach(b => {
                 b.classList.remove('active');
-                b.classList.add('text-gray-400');
+                b.classList.add('text-slate-500');
             });
             btn.classList.add('active');
-            btn.classList.remove('text-gray-400');
+            btn.classList.remove('text-slate-500');
         }
     </script>
 </body>
