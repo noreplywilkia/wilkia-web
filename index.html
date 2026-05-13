@@ -16,55 +16,77 @@
         }
     }
     </script>
+    <style>
+        /* Corregimos un pequeño detalle de Tailwind para la perspectiva */
+        .perspective-1000 { perspective: 1000px; }
+    </style>
 </head>
 <body class="bg-[#0f172a] text-white overflow-x-hidden">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
-        import React, { useState } from 'react';
+        import React, { useState, useEffect } from 'react';
         import { createRoot } from 'react-dom/client';
 
         function App() {
             const images = ['articulos', 'escandallo', 'formatos', 'formatos2', 'marca'];
-            const [activeIndex, setActiveIndex] = useState(2); // Empezamos en la del medio
+            const [activeIndex, setActiveIndex] = useState(2);
+            const [isMobile, setIsMobile] = useState(false);
+
+            // Detectar si es móvil para ajustar el desplazamiento lateral
+            useEffect(() => {
+                const checkMobile = () => setIsMobile(window.innerWidth < 768);
+                checkMobile();
+                window.addEventListener('resize', checkMobile);
+                return () => window.removeEventListener('resize', checkMobile);
+            }, []);
 
             return (
                 <div className="min-h-screen flex flex-col items-center">
-                    <nav className="w-full flex items-center justify-between p-8">
+                    {/* NAV Responsivo */}
+                    <nav className="w-full flex flex-col md:flex-row items-center justify-between p-6 md:p-8 gap-4">
                         <div className="text-3xl font-black text-blue-400 italic">wilkIA</div>
-                        <div className="flex gap-8 text-sm font-medium text-slate-300">
+                        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-medium text-slate-300">
                             {['Inicio', 'Demo', 'Quienes Somos', 'Contacto'].map(item => 
                                 <a href="#" key={item} className="hover:text-blue-400 transition-all">{item}</a>
                             )}
                         </div>
                     </nav>
 
-                    <div className="flex-grow flex flex-col items-center justify-center w-full py-10">
-                        <h1 className="text-5xl font-extrabold mb-16 text-center">Experiencia wilkIA</h1>
+                    <div className="flex-grow flex flex-col items-center justify-center w-full py-6 md:py-10">
+                        <h1 className="text-3xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center px-4">Experiencia wilkIA</h1>
 
-                        <div className="relative flex items-center justify-center w-full h-[500px] perspective-1000">
+                        {/* Contenedor del Carrusel */}
+                        <div className="relative flex items-center justify-center w-full h-[300px] md:h-[500px] perspective-1000">
                             {images.map((img, i) => {
                                 const offset = i - activeIndex;
                                 const isCenter = i === activeIndex;
+                                
+                                // Ajuste dinámico de distancia: 350px en PC, 60px en móvil
+                                const translateX = isMobile ? offset * 60 : offset * 350;
 
                                 return (
                                     <div 
                                         key={img}
                                         onClick={() => setActiveIndex(i)}
-                                        className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40 hover:opacity-70'}`}
+                                        className={`absolute transition-all duration-700 ease-in-out cursor-pointer ${isCenter ? 'z-20 scale-100 opacity-100' : 'z-10 scale-75 opacity-40'}`}
                                         style={{
-                                            transform: `translateX(${offset * 350}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -20 : 20) + 'deg)'}`
+                                            transform: `translateX(${translateX}px) ${isCenter ? '' : 'rotateY(' + (offset > 0 ? -25 : 25) + 'deg)'}`,
+                                            width: isMobile ? '85%' : 'auto' // En móvil ocupa casi todo el ancho
                                         }}
                                     >
                                         <img 
                                             src={`/images/${img}.png`} 
                                             alt={img}
-                                            className="w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
+                                            className="w-full max-w-[800px] h-auto rounded-xl shadow-2xl border border-white/10 bg-[#1e293b]"
                                         />
                                     </div>
                                 );
                             })}
                         </div>
-                        <p className="mt-20 text-slate-400">Haz clic en cualquier pantalla lateral para traerla al frente</p>
+                        
+                        <p className="mt-12 md:mt-20 text-slate-400 text-sm text-center px-6">
+                            {isMobile ? "Toca las pantallas laterales para navegar" : "Haz clic en cualquier pantalla lateral para traerla al frente"}
+                        </p>
                     </div>
                 </div>
             );
@@ -72,4 +94,5 @@
         createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
+</html>
 </html>
