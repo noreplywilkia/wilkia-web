@@ -10,170 +10,157 @@
         
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #020617; /* Fondo negro azulado profundo */
+            background-color: #020617; 
             color: #f8fafc;
             overflow-x: hidden;
         }
 
-        /* ORBES DE LUZ DINÁMICOS */
-        .orb {
-            position: absolute; width: 600px; height: 600px; border-radius: 50%;
-            filter: blur(120px); z-index: -1; opacity: 0.3; pointer-events: none;
+        /* FILTRO PARA LOGOS OSCUROS EN FONDO OSCURO */
+        .logo-bright {
+            filter: brightness(0) invert(1); /* Convierte el logo oscuro en blanco puro */
+            opacity: 0.9;
         }
 
-        /* ANIMACIONES DE APARICIÓN */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .orb {
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
+            filter: blur(120px); z-index: -1; opacity: 0.2; pointer-events: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* BENTO CARDS CON EFECTO CRISTAL */
         .bento-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
-            border-radius: 3rem;
-            transition: all 0.5s ease;
-        }
-        .bento-card:hover {
-            border-color: #3b82f6;
-            background: rgba(255, 255, 255, 0.05);
-            transform: scale(1.01);
-        }
-
-        /* BOTONES SHINY */
-        .btn-blue {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.5);
+            border-radius: 2.5rem;
         }
 
         .tab-btn.active {
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            border-color: rgba(59, 130, 246, 0.5);
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
 
-        /* MÓVIL OPTIMIZADO */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+
         @media (max-width: 768px) {
-            .hero-title { font-size: 3.5rem !important; line-height: 0.9 !important; }
-            .bento-card { border-radius: 2rem; }
+            .hero-title { font-size: 3.2rem !important; line-height: 1 !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ORBES -->
     <div class="orb bg-blue-600 -top-40 -right-40"></div>
     <div class="orb bg-indigo-800 top-[40%] -left-60"></div>
 
-    <!-- NAVBAR PREMIUM -->
-    <nav class="fixed w-full z-[100] py-6 px-8 bg-slate-950/20 backdrop-blur-md border-b border-white/5">
+    <!-- NAV -->
+    <nav class="fixed w-full z-[100] py-5 px-6 bg-slate-950/40 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <img src="images/logo.png" class="h-10 w-auto" alt="Logo">
-                <img src="images/logo_nombre.png" class="h-6 w-auto hidden md:block" alt="wilkIA">
+            <div class="flex items-center gap-3">
+                <img src="images/logo.png" class="h-9 w-auto logo-bright" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 w-auto hidden sm:block logo-bright" alt="wilkIA">
             </div>
-            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
-                <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
-                <a href="#nosotros" class="hover:text-blue-400 transition-all">Visión</a>
-                <a href="#faq" class="hover:text-blue-400 transition-all">Dudas</a>
+            <div class="hidden md:flex gap-8 font-bold text-[10px] uppercase tracking-[0.3em] text-slate-400">
+                <a href="#solucion" class="hover:text-white transition-colors">Software</a>
+                <a href="#faq" class="hover:text-white transition-colors">Dudas</a>
+                <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
             </div>
-            <a href="#contacto" class="btn-blue px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
-                Empezar
+            <a href="#contacto" class="bg-white text-black px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all">
+                Demo Free
             </a>
         </div>
     </nav>
 
-    <!-- HERO SECTION (PUNCH VISUAL) -->
-    <section class="relative pt-56 pb-32 px-6 overflow-hidden">
+    <!-- HERO -->
+    <section class="pt-52 pb-24 px-6">
         <div class="max-w-6xl mx-auto text-center reveal">
-            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full mb-10">
-                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
-                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Management Intelligence 2026</span>
-            </div>
-            <h1 class="hero-title text-6xl md:text-[130px] font-[800] tracking-tighter leading-[0.85] mb-12">
-                Domina tus <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">márgenes.</span>
+            <h1 class="hero-title text-6xl md:text-[110px] font-extrabold tracking-tighter leading-[0.9] mb-10">
+                Datos que <br><span class="italic text-blue-500">impulsan</span> tu negocio.
             </h1>
-            <p class="text-slate-400 text-xl md:text-3xl max-w-3xl mx-auto mb-16 font-medium leading-tight">
-                El OS definitivo para empresas que no se conforman con estimaciones.
+            <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12">
+                La plataforma de gestión inteligente que elimina la incertidumbre de tus márgenes de beneficio.
             </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="#contacto" class="btn-blue w-full md:w-auto px-12 py-6 rounded-3xl font-black text-lg shadow-2xl transition-all hover:brightness-110">Agendar Demo</a>
-                <a href="#solucion" class="w-full md:w-auto px-12 py-6 rounded-3xl font-bold text-lg border border-white/10 hover:bg-white/5 transition-all">Ver Módulos</a>
+        </div>
+    </section>
+
+    <!-- SOFTWARE BENTO -->
+    <section id="solucion" class="py-16 px-6">
+        <div class="max-w-7xl mx-auto reveal bento-card overflow-hidden flex flex-col lg:flex-row h-full lg:h-[650px]">
+            <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/5 bg-white/[0.01]">
+                <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-8">Navegación</p>
+                <div class="flex lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0">
+                    <button onclick="tab('escandallo', this)" class="tab-btn active w-full text-left px-6 py-4 rounded-2xl font-bold text-sm whitespace-nowrap">Escandallos</button>
+                    <button onclick="tab('articulos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm text-slate-500 whitespace-nowrap">Artículos</button>
+                    <button onclick="tab('marca', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm text-slate-500 whitespace-nowrap">Gestión Marca</button>
+                    <button onclick="tab('formatos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm text-slate-500 whitespace-nowrap">Formatos</button>
+                </div>
+            </div>
+            <div class="flex-1 p-6 lg:p-12 flex items-center justify-center bg-black/20">
+                <img id="main-view" src="images/escandallo.png" class="max-w-full max-h-full rounded-2xl shadow-2xl transition-all duration-500 border border-white/10">
             </div>
         </div>
     </section>
 
-    <!-- BENTO SOFTWARE (FUNCIONAL) -->
-    <section id="solucion" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto reveal">
-            <div class="bento-card overflow-hidden flex flex-col lg:flex-row h-full lg:h-[700px]">
-                <!-- Sidebar -->
-                <div class="w-full lg:w-96 p-10 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col">
-                    <p class="text-[11px] font-black text-blue-500 uppercase tracking-widest mb-10">Módulos Core</p>
-                    <div class="flex flex-row lg:flex-col gap-3 overflow-x-auto no-scrollbar pb-4 lg:pb-0">
-                        <button onclick="updateDisplay('escandallo', this)" class="tab-btn active w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 transition-all whitespace-nowrap">Escandallos</button>
-                        <button onclick="updateDisplay('articulos', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Artículos</button>
-                        <button onclick="updateDisplay('marca', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Marca</button>
-                        <button onclick="updateDisplay('formatos', this)" class="tab-btn w-full text-left px-8 py-5 rounded-2xl font-bold text-sm border border-white/5 text-slate-500 transition-all whitespace-nowrap">Formatos</button>
+    <!-- FORMULARIO DE CONTACTO RECUPERADO -->
+    <section id="contacto" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="bento-card p-8 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-[100px]"></div>
+                <div class="grid md:grid-cols-2 gap-16 relative z-10">
+                    <div>
+                        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter italic mb-6">¿Empezamos <br>hoy mismo?</h2>
+                        <p class="text-slate-400 text-lg">Solicita una demostración personalizada y descubre dónde se escapa tu rentabilidad.</p>
+                        <div class="mt-10 space-y-4">
+                            <div class="flex items-center gap-4 text-blue-400 font-bold">
+                                <span class="w-8 h-[1px] bg-blue-400"></span> info@wilkia.com
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Visual -->
-                <div class="flex-1 bg-black/40 p-6 lg:p-16 flex items-center justify-center relative">
-                    <div class="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full"></div>
-                    <img id="software-frame" src="images/escandallo.png" class="relative z-10 max-w-full max-h-full rounded-[1.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.5)] transition-all duration-500 border border-white/10">
+                    <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input name="nombre" placeholder="Nombre" class="p-5 rounded-2xl outline-none focus:border-blue-500 transition-all" required>
+                            <input name="empresa" placeholder="Empresa" class="p-5 rounded-2xl outline-none focus:border-blue-500 transition-all">
+                        </div>
+                        <input name="email" type="email" placeholder="Email corporativo" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all" required>
+                        <textarea name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" class="w-full p-5 rounded-2xl outline-none focus:border-blue-500 transition-all"></textarea>
+                        <button class="w-full bg-blue-600 hover:bg-blue-500 text-white p-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-blue-600/20">
+                            Enviar Solicitud
+                        </button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- FAQ & CONTACTO (REDUX) -->
-    <section id="faq" class="py-32 px-6 max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-6xl font-black italic mb-20 text-center tracking-tighter reveal">Resolviendo dudas.</h2>
-        <div class="grid gap-6">
-            <details class="bento-card p-10 group cursor-pointer reveal">
-                <summary class="list-none flex justify-between items-center text-xl font-bold">
-                    ¿Es una integración lenta? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
-                </summary>
-                <p class="mt-6 text-slate-400 text-lg leading-relaxed">No. En 48 horas tenemos tus datos volcados y el sistema listo para operar.</p>
-            </details>
-            <details class="bento-card p-10 group cursor-pointer reveal">
-                <summary class="list-none flex justify-between items-center text-xl font-bold">
-                    ¿Seguridad de los datos? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
-                </summary>
-                <p class="mt-6 text-slate-400 text-lg leading-relaxed">Cifrado AES-256. Tus márgenes son tu secreto mejor guardado.</p>
-            </details>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-24 px-6 border-t border-white/5 text-center">
-        <div class="flex justify-center items-center gap-6 mb-12">
-            <img src="images/logo.png" class="h-10" alt="Logo">
-            <img src="images/logo_nombre.png" class="h-6 opacity-40" alt="wilkIA">
+    <footer class="py-20 text-center">
+        <div class="flex justify-center items-center gap-4 mb-8">
+            <img src="images/logo.png" class="h-8 logo-bright" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-4 logo-bright opacity-40" alt="wilkIA">
         </div>
-        <p class="text-slate-600 text-[10px] font-black tracking-[0.8em] uppercase">© 2026 WILKIA CLOUD — BORN TO GROW</p>
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.6em] uppercase">© 2026 WILKIA — ALL RIGHTS RESERVED</p>
     </footer>
 
     <script>
-        // REVELADO AL HACER SCROLL
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // REVELADO
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
-        // CAMBIO DE PESTAÑAS (FLUIDO)
-        function updateDisplay(imgName, btn) {
-            const frame = document.getElementById('software-frame');
-            frame.style.opacity = '0';
-            frame.style.transform = 'scale(0.98)';
-            
+        // TABS
+        function tab(name, btn) {
+            const img = document.getElementById('main-view');
+            img.style.opacity = '0';
             setTimeout(() => {
-                frame.src = `images/${imgName}.png`;
-                frame.style.opacity = '1';
-                frame.style.transform = 'scale(1)';
-            }, 300);
-
+                img.src = `images/${name}.png`;
+                img.style.opacity = '1';
+            }, 250);
             document.querySelectorAll('.tab-btn').forEach(b => {
                 b.classList.remove('active');
                 b.classList.add('text-slate-500');
