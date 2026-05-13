@@ -3,179 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Management OS</title>
+    <title>wilkIA | Management Excellence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* ORBES DE FONDO */
-        .orb { position: absolute; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4; }
+        /* EFECTO REVEAL AL BAJAR */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.15, 0.45, 0.35, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ORBES */
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.4; pointer-events: none; }
         
         /* BENTO CARDS */
         .bento-card { 
-            background: white; border-radius: 2.5rem; border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.03); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: white; border-radius: 2rem; border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02); transition: all 0.4s ease;
         }
-        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08); }
 
-        /* BOTÓN SHINY */
-        .btn-shiny {
-            position: relative; overflow: hidden; transition: all 0.3s ease;
+        /* DISEÑO MÓVIL ESPECÍFICO */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem !important; line-height: 0.9 !important; }
+            .bento-card { border-radius: 1.5rem; }
+            .software-container { height: auto !important; }
         }
-        .btn-shiny::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg); transition: 0.6s;
-        }
-        .btn-shiny:hover::after { left: 100%; }
 
-        /* NAVEGACIÓN PESTAÑAS */
-        .tab-active { background: white !important; color: #2563eb !important; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1); transform: scale(1.05); }
+        .tab-active { background: white !important; color: #2563eb !important; shadow: 0 4px 12px rgba(0,0,0,0.05); transform: scale(1.02); }
         
         /* FAQ ACCORDION */
-        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-in-out; opacity: 0; }
+        .faq-item.active .faq-content { max-height: 300px; opacity: 1; margin-top: 1rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
     </style>
 </head>
 <body>
 
-    <div class="orb w-96 h-96 bg-blue-200 -top-20 -right-20"></div>
-    <div class="orb w-[500px] h-[500px] bg-indigo-100 top-[20%] -left-40"></div>
+    <!-- ORBES DE FONDO -->
+    <div class="orb w-72 h-72 bg-blue-200 top-0 -right-20"></div>
+    <div class="orb w-96 h-96 bg-indigo-100 top-1/4 -left-40"></div>
 
-    <!-- NAVBAR -->
-    <nav class="fixed w-full z-[100] bg-white/70 backdrop-blur-xl border-b border-slate-100 py-4 px-6">
+    <!-- NAV -->
+    <nav class="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Imagen con ID para depuración y ruta absoluta -->
-                <img src="logo.png" class="h-10 w-auto" alt="Logo">
-                <img src="logo_nombre.png" class="h-6 w-auto" alt="wilkIA">
+                <img src="logo.png" class="h-8 md:h-10 w-auto block" alt="Logo" style="min-width: 30px;">
+                <img src="logo_nombre.png" class="h-5 md:h-6 w-auto block" alt="wilkIA">
             </div>
-            <div class="hidden md:flex items-center gap-10 font-bold text-[10px] uppercase tracking-[0.3em] text-slate-400">
-                <a href="#nosotros" class="hover:text-blue-600">Nosotros</a>
-                <a href="#solucion" class="hover:text-blue-600">Software</a>
-                <a href="#faq" class="hover:text-blue-600">Dudas</a>
-                <a href="#contacto" class="btn-shiny bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg shadow-blue-100">Contacto</a>
+            <a href="#contacto" class="bg-blue-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest md:hidden">Demo</a>
+            <div class="hidden md:flex items-center gap-8 font-bold text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                <a href="#nosotros" class="hover:text-blue-600 transition-colors">Nosotros</a>
+                <a href="#solucion" class="hover:text-blue-600 transition-colors">Software</a>
+                <a href="#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
+                <a href="#contacto" class="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg shadow-blue-100 hover:scale-105 transition-all text-white">Probar Demo</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="pt-56 pb-24 px-6 text-center">
-        <div class="max-w-5xl mx-auto">
-            <span class="bg-blue-50 text-blue-600 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-10 inline-block italic">Next-Gen Management OS</span>
-            <h1 class="text-6xl md:text-[110px] font-black tracking-tighter leading-[0.8] mb-12">
-                Domina tus <br><span class="text-blue-600 italic">márgenes.</span>
+    <section class="pt-40 md:pt-56 pb-20 px-6 text-center">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 inline-block">Management Intelligence</span>
+            <h1 class="hero-title text-5xl md:text-[100px] font-black tracking-tighter leading-tight mb-8">
+                Datos que <br><span class="text-blue-600 italic">deciden por ti.</span>
             </h1>
-            <p class="text-slate-500 text-xl md:text-2xl max-w-2xl mx-auto font-medium mb-12">
-                wilkIA convierte el caos operativo en datos cristalinos para tu toma de decisiones.
+            <p class="text-slate-500 text-lg md:text-2xl max-w-2xl mx-auto font-medium mb-10 leading-snug">
+                El sistema operativo para empresas que buscan rentabilidad real sin complicaciones.
             </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#contacto" class="btn-shiny bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-lg shadow-2xl">Empezar Ahora</a>
-                <a href="#solucion" class="px-12 py-5 rounded-2xl font-bold text-lg border-2 border-slate-200 hover:bg-slate-50 transition-all">Ver Software</a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contacto" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-105 transition-all">Agendar Demo</a>
+                <a href="#solucion" class="bg-white text-slate-600 border border-slate-200 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all">Ver Módulos</a>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN SOFTWARE (BENTO + PESTAÑAS FUNCIONALES) -->
-    <section id="solucion" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto bento-card flex flex-col md:flex-row h-[650px] overflow-hidden">
-            <div class="w-full md:w-80 bg-slate-50/50 border-r border-slate-100 p-8 flex flex-col gap-3">
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Módulos</p>
-                <button onclick="changeTab('escandallo', this)" class="tab-btn tab-active w-full text-left px-6 py-4 rounded-2xl font-black text-sm transition-all text-slate-400">Escandallo</button>
-                <button onclick="changeTab('articulos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-black text-sm transition-all text-slate-400">Artículos</button>
-                <button onclick="changeTab('marca', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-black text-sm transition-all text-slate-400">Marca</button>
-                <button onclick="changeTab('formatos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-black text-sm transition-all text-slate-400">Formatos</button>
+    <!-- SOFTWARE (BENTO DINÁMICO) -->
+    <section id="solucion" class="py-20 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto bento-card flex flex-col md:flex-row software-container h-[600px] overflow-hidden reveal">
+            <div class="w-full md:w-72 bg-slate-50/50 border-b md:border-b-0 md:border-r border-slate-100 p-6 flex flex-row md:flex-col gap-2 overflow-x-auto no-scrollbar">
+                <button onclick="changeTab('escandallo', this)" class="tab-btn tab-active whitespace-nowrap px-6 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all">Escandallo</button>
+                <button onclick="changeTab('articulos', this)" class="tab-btn whitespace-nowrap px-6 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all text-slate-400">Artículos</button>
+                <button onclick="changeTab('marca', this)" class="tab-btn whitespace-nowrap px-6 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all text-slate-400">Marca</button>
+                <button onclick="changeTab('formatos', this)" class="tab-btn whitespace-nowrap px-6 py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all text-slate-400">Formatos</button>
             </div>
-            <div class="flex-1 bg-white p-8 flex items-center justify-center">
-                <img id="software-img" src="images/escandallo.png" class="max-w-full max-h-full rounded-2xl shadow-2xl transition-all duration-500" alt="Software Preview">
+            <div class="flex-1 bg-white p-6 md:p-12 flex items-center justify-center">
+                <img id="software-img" src="images/escandallo.png" class="max-w-full max-h-full rounded-xl shadow-2xl transition-all duration-500" alt="Vista Software">
             </div>
         </div>
     </section>
 
-    <!-- QUIÉNES SOMOS -->
-    <section id="nosotros" class="py-32 px-6 max-w-5xl mx-auto text-center">
-        <h2 class="text-5xl font-black italic tracking-tighter mb-8">No somos solo código.</h2>
-        <p class="text-slate-500 text-xl font-medium leading-relaxed">
-            wilkIA nace para dotar a las empresas de una visión de 360 grados. Somos expertos en procesos que han creado la herramienta definitiva para proteger tu beneficio.
-        </p>
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-32 px-6 bg-white reveal">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 italic">No somos solo software, somos visibilidad.</h2>
+            <p class="text-slate-500 text-lg md:text-xl font-medium leading-relaxed">
+                En wilkIA nacimos para eliminar las conjeturas. Combinamos ingeniería de datos con una interfaz intuitiva para que siempre sepas dónde está tu dinero.
+            </p>
+        </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="py-32 px-6 bg-slate-50/50">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-black mb-12 text-center italic">Preguntas Frecuentes</h2>
+            <h2 class="text-3xl md:text-5xl font-black mb-16 text-center italic tracking-tight reveal">Preguntas Frecuentes</h2>
             <div class="space-y-4">
-                <div class="faq-item bento-card p-8 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="faq-item bento-card p-6 md:p-8 cursor-pointer reveal" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center font-bold text-lg">
-                        <span>¿Es difícil de configurar?</span>
-                        <span class="faq-icon transition-transform">↓</span>
+                        <span>¿Es compatible con mi negocio?</span>
+                        <svg class="faq-icon w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
-                    <div class="faq-content text-slate-500 mt-4">
-                        Nuestro equipo te acompaña en el volcado inicial de datos. En menos de una semana estarás operando al 100%.
+                    <div class="faq-content text-slate-500 font-medium leading-relaxed">
+                        wilkIA se adapta a cualquier estructura de costes, desde hostelería hasta industria pesada, gracias a su motor de escandallos inteligente.
                     </div>
                 </div>
-                <div class="faq-item bento-card p-8 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="faq-item bento-card p-6 md:p-8 cursor-pointer reveal" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center font-bold text-lg">
-                        <span>¿Dónde están mis datos?</span>
-                        <span class="faq-icon transition-transform">↓</span>
+                        <span>¿Tengo soporte técnico?</span>
+                        <svg class="faq-icon w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
-                    <div class="faq-content text-slate-500 mt-4">
-                        En servidores seguros con cifrado de nivel bancario. Tu información es privada y está protegida.
+                    <div class="faq-content text-slate-500 font-medium leading-relaxed">
+                        Sí, dispones de un equipo de éxito al cliente que te ayuda con el despliegue y cualquier duda operativa en menos de 24h.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FORMULARIO ORIGINAL RECUPERADO -->
-    <section id="contacto" class="py-40 px-6">
-        <div class="max-w-7xl mx-auto bg-slate-900 rounded-[4rem] p-12 md:p-24 relative overflow-hidden text-white">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[150px] opacity-20"></div>
-            <div class="grid lg:grid-cols-2 gap-20 relative z-10">
+    <!-- CONTACTO (RECUPERADO FORM ORIGINAL) -->
+    <section id="contacto" class="py-20 md:py-40 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto bg-slate-900 rounded-[2.5rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden text-white reveal">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[120px] opacity-20"></div>
+            <div class="grid lg:grid-cols-2 gap-16 relative z-10">
                 <div>
-                    <h2 class="text-6xl md:text-7xl font-black leading-none tracking-tighter mb-10 italic">
-                        Despega <br><span class="text-blue-500">ahora.</span>
-                    </h2>
-                    <p class="text-slate-400 text-xl font-medium mb-12">Mejora tu rentabilidad con un diagnóstico gratuito.</p>
+                    <h2 class="text-5xl md:text-7xl font-black leading-none tracking-tighter mb-8 italic">Impulsa <br><span class="text-blue-500">tu margen.</span></h2>
+                    <p class="text-slate-400 text-lg md:text-xl font-medium">Déjanos tus datos y te mostraremos cómo wilkIA puede transformar tu rentabilidad en una demo de 15 min.</p>
                 </div>
                 <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
-                    <input name="name" placeholder="Tu nombre" class="w-full bg-white/5 border border-white/10 p-6 rounded-3xl outline-none focus:border-blue-500" required>
-                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-white/5 border border-white/10 p-6 rounded-3xl outline-none focus:border-blue-500" required>
-                    <textarea name="message" rows="4" placeholder="¿En qué te podemos ayudar?" class="w-full bg-white/5 border border-white/10 p-6 rounded-3xl outline-none focus:border-blue-500"></textarea>
-                    <button class="btn-shiny w-full bg-blue-600 text-white p-6 rounded-3xl font-black uppercase tracking-widest text-sm shadow-2xl">Solicitar Demo</button>
+                    <input name="name" placeholder="Nombre" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500 text-white" required>
+                    <input name="email" type="email" placeholder="Email Empresa" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500 text-white" required>
+                    <textarea name="message" rows="3" placeholder="Cuéntanos un poco de tu empresa" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500 text-white"></textarea>
+                    <button class="w-full bg-blue-600 text-white p-6 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Solicitar Información</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-20 px-6 text-center">
-        <div class="flex justify-center items-center gap-4 mb-10">
-            <img src="logo.png" class="h-10" alt="Logo">
-            <img src="logo_nombre.png" class="h-6 opacity-40" alt="wilkIA">
+    <footer class="py-16 px-6 text-center">
+        <div class="flex justify-center items-center gap-4 mb-8">
+            <img src="logo.png" class="h-8" alt="Logo">
+            <img src="logo_nombre.png" class="h-5 opacity-40" alt="wilkIA">
         </div>
-        <p class="text-slate-300 text-[10px] font-black tracking-[0.4em]">© 2026 WILKIA CLOUD SYSTEMS S.L.</p>
+        <p class="text-slate-300 text-[10px] font-bold tracking-[0.4em]">© 2026 WILKIA SYSTEMS — DIGITAL EVOLUTION</p>
     </footer>
 
     <script>
-        // Lógica de pestañas
+        // EFECTO REVEAL (Aparecer al bajar)
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // CAMBIO DE PESTAÑAS SOFTWARE
         function changeTab(imageName, btn) {
-            document.getElementById('software-img').style.opacity = '0';
+            const img = document.getElementById('software-img');
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.95)';
+            
             setTimeout(() => {
-                document.getElementById('software-img').src = 'images/' + imageName + '.png';
-                document.getElementById('software-img').style.opacity = '1';
-            }, 200);
+                img.src = 'images/' + imageName + '.png';
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            }, 300);
 
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
             btn.classList.add('tab-active');
         }
 
-        // Lógica FAQ
+        // ACCORDEON FAQ
         function toggleFaq(element) {
-            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) element.classList.add('active');
         }
     </script>
 </body>
