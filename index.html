@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Gestión Profesional</title>
+    <title>wilkIA | Gestión Inteligente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
     <script type="importmap">
@@ -17,142 +17,176 @@
     }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #fcfcfd;
-            color: #1a1a1a;
+            background: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
         }
-        .header-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #eee;
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #e0e7ff 0%, #f8fafc 50%),
+                        radial-gradient(circle at bottom left, #f0f9ff 0%, #f8fafc 50%);
         }
-        .feature-card {
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
         }
-        .feature-card:hover {
-            border-color: #3b82f6;
-            background: #f8faff;
+        .active-tab {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+            transform: translateY(-2px);
         }
-        .screenshot-shadow {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
-<body>
+<body class="hero-gradient">
     <div id="root"></div>
     <script type="text/babel" data-type="module" data-presets="react">
         import React, { useState } from 'react';
         import { createRoot } from 'react-dom/client';
 
+        const FAQItem = ({ q, a }) => {
+            const [open, setOpen] = useState(false);
+            return (
+                <div className="mb-4 transition-all duration-300">
+                    <button onClick={() => setOpen(!open)} className={`w-full flex justify-between items-center p-6 rounded-2xl text-left glass-card transition-all ${open ? 'ring-2 ring-blue-500' : ''}`}>
+                        <span className="font-bold text-slate-800">{q}</span>
+                        <span className={`text-blue-600 font-bold transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>+</span>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="p-6 text-slate-600 leading-relaxed">{a}</div>
+                    </div>
+                </div>
+            );
+        };
+
         const App = () => {
-            const [selectedTab, setSelectedTab] = useState(0);
-            const features = [
-                { id: 'escandallo', title: 'Escandallos', desc: 'Control total de costes por plato.' },
-                { id: 'articulos', title: 'Artículos', desc: 'Gestión centralizada de stock.' },
-                { id: 'formatos', title: 'Formatos', desc: 'Configuración flexible de venta.' },
-                { id: 'marca', title: 'Métricas', desc: 'Analítica en tiempo real.' }
+            const [activeTab, setActiveTab] = useState(0);
+            const screens = [
+                { id: 'escandallo', label: 'Escandallos', title: 'Margen bajo control' },
+                { id: 'articulos', label: 'Inventario', title: 'Stock inteligente' },
+                { id: 'formatos', label: 'Ventas', title: 'Formatos flexibles' },
+                { id: 'marca', label: 'Dashboard', title: 'Análisis real' }
             ];
 
             return (
                 <div className="min-h-screen">
                     {/* NAV */}
-                    <nav className="fixed w-full z-50 header-blur px-6 py-4">
-                        <div className="max-w-7xl mx-auto flex justify-between items-center">
-                            <div className="text-2xl font-extrabold text-blue-600 tracking-tight">wilkIA</div>
-                            <div className="hidden md:flex gap-10 font-semibold text-gray-500 text-sm">
-                                <a href="#solucion" className="hover:text-blue-600">Software</a>
-                                <a href="#nosotros" className="hover:text-blue-600">Nosotros</a>
-                                <a href="#faq" className="hover:text-blue-600">Ayuda</a>
+                    <nav className="fixed w-full z-50 px-6 py-4">
+                        <div className="max-w-6xl mx-auto flex justify-between items-center glass-card px-8 py-3 rounded-full border-white/50">
+                            <div className="text-2xl font-black text-blue-600 tracking-tighter">wilkIA</div>
+                            <div className="hidden md:flex gap-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+                                <a href="#funciona" className="hover:text-blue-600 transition-colors">Demo</a>
+                                <a href="#nosotros" className="hover:text-blue-600 transition-colors">Nosotros</a>
+                                <a href="#faq" className="hover:text-blue-600 transition-colors">FAQ</a>
                             </div>
-                            <a href="#contacto" className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">Solicitar Demo</a>
+                            <a href="#contacto" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg shadow-blue-200 transition-all">Empieza ya</a>
                         </div>
                     </nav>
 
                     {/* HERO */}
-                    <section className="pt-32 pb-20 px-6 text-center">
-                        <span className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Nueva Era en Gestión</span>
-                        <h1 className="text-5xl md:text-7xl font-extrabold mt-6 mb-8 text-gray-900 tracking-tight">
-                            La gestión de tu negocio, <br/>
-                            <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">ahora es simple.</span>
+                    <section className="pt-40 pb-20 px-6 text-center">
+                        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-[0.2em] float-animation">
+                            Impulsado por IA
+                        </div>
+                        <h1 className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-8">
+                            Gestiona con <br/><span className="text-blue-600 italic">brillantez.</span>
                         </h1>
-                        <p className="text-gray-500 text-xl max-w-2xl mx-auto mb-12">
-                            Simplifica procesos, controla márgenes y toma decisiones basadas en datos reales con el software más intuitivo del mercado.
+                        <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-medium">
+                            Olvídate de las hojas de cálculo infinitas. wilkIA te da el control total de tu negocio con una interfaz que amarás usar.
                         </p>
                     </section>
 
-                    {/* SHOWCASE SECTON (Reemplaza el carrusel) */}
-                    <section id="solucion" className="max-w-7xl mx-auto px-6 py-12">
-                        <div className="bg-white rounded-[2rem] border border-gray-100 shadow-xl overflow-hidden md:flex">
-                            {/* Selector lateral */}
-                            <div className="md:w-1/3 bg-gray-50/50 p-8 flex flex-col gap-4 border-r border-gray-100">
-                                {features.map((f, i) => (
-                                    <button 
-                                        key={f.id}
-                                        onClick={() => setSelectedTab(i)}
-                                        className={`text-left p-5 rounded-2xl transition-all ${selectedTab === i ? 'bg-white shadow-md border-l-4 border-blue-600' : 'hover:bg-gray-100'}`}
-                                    >
-                                        <h3 className={`font-bold ${selectedTab === i ? 'text-blue-600' : 'text-gray-700'}`}>{f.title}</h3>
-                                        <p className="text-sm text-gray-500 mt-1">{f.desc}</p>
-                                    </button>
-                                ))}
+                    {/* INTERACTIVE SHOWCASE (LA CHISPA) */}
+                    <section id="funciona" className="max-w-6xl mx-auto px-6 mb-32">
+                        <div className="flex flex-wrap justify-center gap-3 mb-12">
+                            {screens.map((s, i) => (
+                                <button 
+                                    key={s.id}
+                                    onClick={() => setActiveTab(i)}
+                                    className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${activeTab === i ? 'active-tab' : 'bg-white text-slate-400 hover:text-slate-600 shadow-sm'}`}
+                                >
+                                    {s.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="relative glass-card p-4 rounded-[2.5rem] shadow-2xl transition-all duration-500">
+                            <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-400/20 blur-3xl rounded-full -z-10"></div>
+                            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-indigo-400/20 blur-3xl rounded-full -z-10"></div>
+                            <img 
+                                src={`/images/${screens[activeTab].id}.png`} 
+                                className="w-full h-auto rounded-[1.8rem] shadow-inner transition-opacity duration-300"
+                                alt={screens[activeTab].title}
+                            />
+                        </div>
+                    </section>
+
+                    {/* NOSOTROS - ESTILO MODERNO */}
+                    <section id="nosotros" className="py-24 max-w-6xl mx-auto px-6">
+                        <div className="grid md:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="absolute -left-4 -top-4 w-24 h-24 bg-blue-600/5 rounded-full blur-2xl"></div>
+                                <h2 className="text-4xl font-black text-slate-900 mb-6 uppercase italic tracking-tighter leading-tight">
+                                    No somos solo <br/>otro software.
+                                </h2>
+                                <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                                    Nacimos para transformar la fricción en fluidez. wilkIA es el resultado de años de experiencia en gestión operativa condensados en una herramienta potente y elegante.
+                                </p>
+                                <div className="flex gap-4">
+                                    <div className="p-4 glass-card rounded-2xl flex-1 text-center">
+                                        <span className="block text-2xl font-black text-blue-600">100%</span>
+                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Seguro</span>
+                                    </div>
+                                    <div className="p-4 glass-card rounded-2xl flex-1 text-center">
+                                        <span className="block text-2xl font-black text-blue-600">Real-Time</span>
+                                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Datos</span>
+                                    </div>
+                                </div>
                             </div>
-                            {/* Imagen central */}
-                            <div className="md:w-2/3 p-4 md:p-12 flex items-center justify-center bg-white">
-                                <img 
-                                    src={`/images/${features[selectedTab].id}.png`} 
-                                    className="w-full h-auto rounded-xl screenshot-shadow border border-gray-100 transition-all duration-500"
-                                    alt={features[selectedTab].title}
-                                />
+                            <div className="bg-blue-600 p-12 rounded-[3rem] text-white shadow-2xl shadow-blue-200">
+                                <h3 className="text-2xl font-bold mb-4">Misión wilkIA</h3>
+                                <p className="text-blue-100 italic leading-relaxed text-lg">
+                                    "Democratizar la analítica avanzada para que cualquier negocio, sin importar su tamaño, pueda competir al más alto nivel."
+                                </p>
                             </div>
                         </div>
                     </section>
 
-                    {/* NOSOTROS */}
-                    <section id="nosotros" className="py-24 bg-gray-50">
-                        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                            <div>
-                                <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Expertos en digitalización de procesos</h2>
-                                <p className="text-gray-600 text-lg leading-relaxed">
-                                    wilkIA nace para eliminar el caos administrativo. No vendemos solo software, ofrecemos claridad mental para el empresario moderno.
-                                </p>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                                    <p className="text-3xl font-black text-blue-600">100%</p>
-                                    <p className="text-sm font-bold text-gray-400 mt-2 uppercase tracking-wide">Nube</p>
-                                </div>
-                                <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                                    <p className="text-3xl font-black text-blue-600">SaaS</p>
-                                    <p className="text-sm font-bold text-gray-400 mt-2 uppercase tracking-wide">Modelo</p>
-                                </div>
-                            </div>
-                        </div>
+                    {/* FAQ RECUPERADO */}
+                    <section id="faq" className="py-24 max-w-3xl mx-auto px-6">
+                        <h2 className="text-3xl font-black text-center text-slate-900 mb-12 uppercase italic tracking-tighter">Preguntas Frecuentes</h2>
+                        <FAQItem q="¿Es difícil migrar mis datos actuales?" a="Para nada. Nuestro equipo te ayuda con la importación masiva para que en menos de 24h estés funcionando al 100%." />
+                        <FAQItem q="¿Puedo usarlo desde mi tablet?" a="Sí, wilkIA es nativo para web y se adapta perfectamente a tablets y smartphones sin perder ninguna funcionalidad." />
+                        <FAQItem q="¿Hay algún tipo de permanencia?" a="No. Ofrecemos planes mensuales flexibles porque confiamos en que te quedarás por el valor que aportamos, no por un contrato." />
                     </section>
 
                     {/* CONTACTO */}
-                    <section id="contacto" className="py-24 max-w-4xl mx-auto px-6">
-                        <div className="bg-white rounded-[3rem] p-12 md:p-16 border border-gray-100 shadow-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-0"></div>
-                            <div className="relative z-10">
-                                <h2 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">Cuéntanos tu proyecto</h2>
-                                <p className="text-gray-500 text-center mb-12 italic">Respondemos personalmente en menos de 24 horas.</p>
-                                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" className="space-y-4">
-                                    <div className="grid md:grid-cols-2 gap-4">
-                                        <input type="text" name="name" placeholder="Tu nombre" required className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none" />
-                                        <input type="email" name="email" placeholder="Tu email" required className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none" />
-                                    </div>
-                                    <textarea name="message" placeholder="¿Cómo podemos ayudarte?" rows="4" className="w-full bg-gray-50 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
-                                    <button className="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-blue-700 shadow-xl shadow-blue-100 transition-all">Enviar Mensaje</button>
-                                </form>
-                            </div>
+                    <section id="contacto" className="py-32 px-6">
+                        <div className="max-w-4xl mx-auto glass-card rounded-[3.5rem] p-8 md:p-16 border-white">
+                            <h2 className="text-4xl md:text-5xl font-black text-center mb-4 tracking-tighter italic">Hablemos.</h2>
+                            <p className="text-slate-500 text-center mb-12 font-medium">Estás a un mensaje de optimizar tu negocio para siempre.</p>
+                            <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" className="space-y-4">
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <input name="name" placeholder="Tu nombre" required className="w-full bg-white/50 border-2 border-slate-100 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all" />
+                                    <input name="email" type="email" placeholder="Tu email" required className="w-full bg-white/50 border-2 border-slate-100 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all" />
+                                </div>
+                                <textarea name="message" placeholder="¿En qué podemos ayudarte?" rows="4" className="w-full bg-white/50 border-2 border-slate-100 p-4 rounded-2xl focus:border-blue-500 outline-none transition-all"></textarea>
+                                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-200 transition-all active:scale-[0.98]">Enviar a wilkIA</button>
+                            </form>
                         </div>
                     </section>
 
-                    <footer className="py-12 text-center text-gray-400 text-xs font-semibold uppercase tracking-widest border-t border-gray-100">
-                        &copy; 2026 wilkIA Cloud Solutions
+                    <footer className="py-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.4em]">
+                        &copy; 2026 wilkIA Cloud / El Futuro de la Gestión
                     </footer>
                 </div>
             );
