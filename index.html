@@ -3,194 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Smart Management</title>
+    <title>wilkIA | Gestión Inteligente</title>
+    <!-- Tailwind solo -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script>
-    <script type="importmap">
-    {
-        "imports": {
-            "react": "https://esm.sh/react@18.3.1",
-            "react/": "https://esm.sh/react@18.3.1/",
-            "react-dom": "https://esm.sh/react-dom@18.3.1",
-            "react-dom/client": "https://esm.sh/react-dom@18.3.1/client"
-        }
-    }
-    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; scroll-behavior: smooth; overflow-x: hidden; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-        /* GRADIENT ORBS */
-        .orb { position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.35; animation: float 15s infinite alternate; }
-        @keyframes float { from { transform: translate(0,0); } to { transform: translate(60px, 40px); } }
-
-        /* REVEAL EFFECT */
-        .reveal { opacity: 0; filter: blur(15px); transform: translateY(40px); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
-        .reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
-
-        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
         
-        .bento-card { 
-            background: white; border-radius: 2.5rem; border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.02); transition: all 0.4s ease;
+        /* Animación suave de entrada sin JS pesado */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08); }
 
-        .btn-shiny {
-            position: relative; overflow: hidden;
-        }
-        .btn-shiny::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg); transition: 0.6s;
-        }
-        .btn-shiny:hover::after { left: 100%; }
+        /* Ajuste para móviles: evitar que las imágenes se corten */
+        .img-container { aspect-ratio: 16/9; overflow: hidden; border-radius: 1.5rem; }
+        
+        /* FAQ simple sin scripts */
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary span { transform: rotate(180deg); }
     </style>
 </head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel" data-type="module" data-presets="react">
-        import React, { useState, useEffect, useRef } from 'react';
-        import { createRoot } from 'react-dom/client';
+<body class="antialiased">
 
-        const ScrollReveal = ({ children, className = "", delay = 0 }) => {
-            const domRef = useRef();
-            const [isVisible, setVisible] = useState(false);
-            useEffect(() => {
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => { if (entry.isIntersecting) setTimeout(() => setVisible(true), delay); });
-                }, { threshold: 0.1 });
-                observer.observe(domRef.current);
-                return () => observer.unobserve(domRef.current);
-            }, [delay]);
-            return <div ref={domRef} className={`reveal ${className} ${isVisible ? 'visible' : ''}`}>{children}</div>;
-        };
-
-        const App = () => {
-            const [activeTab, setActiveTab] = useState('escandallo');
-
-            return (
-                <div className="relative">
-                    {/* FONDO AMBIENT */}
-                    <div className="orb w-[500px] h-[500px] bg-blue-200 top-[-100px] right-[-50px]"></div>
-                    <div className="orb w-[400px] h-[400px] bg-indigo-100 bottom-[10%] left-[-100px]"></div>
-
-                    {/* NAV REHECHO */}
-                    <nav className="fixed w-full z-[100] glass-nav py-5 px-8">
-                        <div className="max-w-7xl mx-auto flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                                {/* He forzado las rutas relativas raiz ./ para GitHub */}
-                                <img src="./logo.png" className="h-10 w-auto" alt="Logo" onError={(e) => e.target.src='https://via.placeholder.com/40?text=W'} />
-                                <img src="./logo_nombre.png" className="h-6 w-auto" alt="wilkIA" onError={(e) => e.target.src='https://via.placeholder.com/100x20?text=wilkIA'} />
-                            </div>
-                            <div className="hidden md:flex items-center gap-10 font-bold text-[10px] uppercase tracking-[0.3em] text-slate-400">
-                                <a href="#nosotros" className="hover:text-blue-600 transition-all">Nosotros</a>
-                                <a href="#solucion" className="hover:text-blue-600 transition-all">Software</a>
-                                <a href="#faq" className="hover:text-blue-600 transition-all">FAQ</a>
-                                <a href="#contacto" className="btn-shiny bg-blue-600 text-white px-8 py-3 rounded-full shadow-xl shadow-blue-200">Acceso</a>
-                            </div>
-                        </div>
-                    </nav>
-
-                    {/* HERO (DISEÑO VITAMÍNICO) */}
-                    <section className="pt-64 pb-32 px-6">
-                        <ScrollReveal className="text-center max-w-5xl mx-auto">
-                            <span className="text-blue-600 font-black uppercase tracking-[0.5em] text-[10px] mb-8 block italic">Management Intelligence</span>
-                            <h1 className="text-7xl md:text-[110px] font-black tracking-tighter leading-[0.8] mb-12 text-slate-900">
-                                Rentabilidad <br/>sin <span className="text-blue-600 italic text-shadow-xl">puntos ciegos.</span>
-                            </h1>
-                            <p className="text-slate-500 text-xl md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed mb-12">
-                                La herramienta que traduce tu operativa en márgenes de beneficio reales.
-                            </p>
-                        </ScrollReveal>
-
-                        {/* MOCKUP DINÁMICO */}
-                        <ScrollReveal delay={200} id="solucion" className="max-w-6xl mx-auto mt-24 bento-card flex flex-col md:flex-row h-[700px] overflow-hidden">
-                            <div className="w-full md:w-80 bg-slate-50/50 border-r border-slate-100 p-10 flex flex-col gap-3">
-                                {['Escandallo', 'Articulos', 'Marca', 'Formatos'].map((m) => (
-                                    <button 
-                                        key={m} 
-                                        onClick={() => setActiveTab(m.toLowerCase())}
-                                        className={`w-full text-left px-8 py-5 rounded-2xl font-black text-sm transition-all ${activeTab === m.toLowerCase() ? 'bg-white text-blue-600 shadow-xl scale-105' : 'text-slate-400 hover:text-slate-600'}`}
-                                    >
-                                        {m}
-                                    </button>
-                                ))}
-                            </div>
-                            <div className="flex-1 bg-white p-12 flex items-center justify-center">
-                                <img src={`./images/${activeTab}.png`} className="max-w-full max-h-full rounded-2xl shadow-2xl transition-all duration-700" alt="Preview App" />
-                            </div>
-                        </ScrollReveal>
-                    </section>
-
-                    {/* QUIÉNES SOMOS */}
-                    <section id="nosotros" className="py-40 px-6 max-w-5xl mx-auto">
-                        <ScrollReveal className="grid lg:grid-cols-2 gap-20 items-center">
-                            <h2 className="text-6xl font-black italic tracking-tighter leading-none">Más que <br/><span className="text-blue-600">algoritmos.</span></h2>
-                            <div className="space-y-6">
-                                <p className="text-slate-500 text-xl font-medium leading-relaxed">
-                                    En wilkIA somos consultores que programan. Entendemos el dolor de los márgenes ajustados porque venimos de ahí.
-                                </p>
-                                <p className="text-slate-400 text-lg leading-relaxed">
-                                    Nuestra misión es que cada decisión que tomes en tu negocio esté respaldada por datos precisos, no por intuiciones.
-                                </p>
-                            </div>
-                        </ScrollReveal>
-                    </section>
-
-                    {/* FAQ */}
-                    <section id="faq" className="py-40 px-6 bg-slate-50/30">
-                        <div className="max-w-4xl mx-auto">
-                            <h2 className="text-5xl font-black mb-20 text-center tracking-tight italic text-slate-900">FAQ</h2>
-                            <div className="space-y-4">
-                                {[
-                                    {q: "¿Es compatible con mis sistemas?", a: "wilkIA está diseñado para convivir con cualquier ERP o software de ventas mediante importaciones inteligentes."},
-                                    {q: "¿Qué tiempo de aprendizaje requiere?", a: "Nuestra interfaz es 'zero-learning'. Si sabes usar una hoja de cálculo, sabes usar wilkIA."},
-                                    {q: "¿Los datos están en la nube?", a: "Sí, con servidores de máxima seguridad en Europa, cumpliendo con toda la normativa RGPD."}
-                                ].map((item, i) => (
-                                    <ScrollReveal key={i} delay={i*100} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                                        <h4 className="text-xl font-black mb-4 text-slate-800">{item.q}</h4>
-                                        <p className="text-slate-500 text-lg font-medium">{item.a}</p>
-                                    </ScrollReveal>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* CONTACTO (DARK MODE IMPACT) */}
-                    <section id="contacto" className="py-40 px-6">
-                        <div className="max-w-7xl mx-auto bg-slate-900 rounded-[4rem] p-12 md:p-24 relative overflow-hidden">
-                            <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600 blur-[150px] opacity-30"></div>
-                            <ScrollReveal className="grid lg:grid-cols-2 gap-20 relative z-10">
-                                <div>
-                                    <h2 className="text-7xl font-black text-white leading-none tracking-tighter mb-10 italic">
-                                        Escala tu <br/><span className="text-blue-500">visión.</span>
-                                    </h2>
-                                    <p className="text-slate-400 text-xl font-medium">Estamos listos para auditar tu rentabilidad. Déjanos tus datos y nos vemos en el dashboard.</p>
-                                </div>
-                                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" className="space-y-6">
-                                    <input name="name" placeholder="Nombre" className="w-full bg-white/5 border border-white/10 p-6 rounded-3xl text-white outline-none focus:border-blue-500 transition-all" required />
-                                    <input name="email" type="email" placeholder="Email corporativo" className="w-full bg-white/5 border border-white/10 p-6 rounded-3xl text-white outline-none focus:border-blue-500 transition-all" required />
-                                    <textarea name="message" rows="3" placeholder="¿Cómo podemos ayudarte?" className="w-full bg-white/5 border border-white/10 p-6 rounded-3xl text-white outline-none focus:border-blue-500 transition-all"></textarea>
-                                    <button className="btn-shiny w-full bg-blue-600 text-white p-7 rounded-3xl font-black uppercase tracking-widest shadow-2xl shadow-blue-600/30">Agendar Demo</button>
-                                </form>
-                            </ScrollReveal>
-                        </div>
-                    </section>
-
-                    {/* FOOTER */}
-                    <footer className="py-20 px-8 text-center bg-white border-t border-slate-50">
-                        <div className="flex justify-center items-center gap-4 mb-12">
-                            <img src="./logo.png" className="h-10 w-auto" alt="Logo" />
-                            <img src="./logo_nombre.png" className="h-6 w-auto opacity-40" alt="wilkIA" />
-                        </div>
-                        <p className="text-slate-200 text-[10px] font-black uppercase tracking-[0.5em]">© 2026 WILKIA SYSTEMS — FUTURE-PROOF MANAGEMENT</p>
-                    </footer>
+    <!-- NAV OPTIMIZADA PARA MÓVIL -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <!-- Forzamos visualización de logos con rutas directas -->
+                    <img src="logo.png" alt="L" class="h-8 w-auto min-w-[32px] object-contain">
+                    <img src="logo_nombre.png" alt="wilkIA" class="h-5 w-auto object-contain">
                 </div>
-            );
-        }
-        createRoot(document.getElementById('root')).render(<App />);
-    </script>
+                <a href="#contacto" class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Mobile Friendly) -->
+    <section class="pt-32 pb-16 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <span class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-extrabold uppercase tracking-widest mb-6">Software de Gestión IA</span>
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+                Tu rentabilidad, <br><span class="text-blue-600 italic">bajo control.</span>
+            </h1>
+            <p class="text-slate-500 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Automatiza escandallos y visualiza tus márgenes en tiempo real con inteligencia artificial.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center px-4">
+                <a href="#contacto" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-center">Probar Gratis</a>
+                <a href="#nosotros" class="bg-white border border-slate-200 px-8 py-4 rounded-2xl font-bold text-center text-slate-600">Quiénes somos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFTWARE PREVIEW (Nuevo diseño Mobile-First) -->
+    <section id="software" class="py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
+                <div class="p-4 bg-slate-50 flex gap-2 overflow-x-auto no-scrollbar border-b border-slate-100">
+                    <button class="whitespace-nowrap px-6 py-2 bg-white rounded-xl shadow-sm text-sm font-bold text-blue-600">Escandallos</button>
+                    <button class="whitespace-nowrap px-6 py-2 text-sm font-bold text-slate-400">Artículos</button>
+                    <button class="whitespace-nowrap px-6 py-2 text-sm font-bold text-slate-400">Formatos</button>
+                </div>
+                <div class="p-6 md:p-12">
+                    <!-- Imagen adaptativa -->
+                    <div class="bg-slate-100 rounded-2xl aspect-video flex items-center justify-center overflow-hidden">
+                        <img src="images/escandallo.png" alt="Vista Software" class="max-w-full h-auto shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="nosotros" class="py-20 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 italic tracking-tight">Más que código.</h2>
+            <p class="text-slate-500 text-lg leading-relaxed">
+                Somos un equipo apasionado por la eficiencia operativa. Creamos wilkIA para que los negocios dejen de perder dinero por falta de datos claros. 
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ (Sin JS, funciona siempre) -->
+    <section id="faq" class="py-20 px-4 bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-12 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                <details class="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-800">
+                        ¿Cómo empiezo?
+                        <span class="transition-transform duration-300 text-blue-600 font-bold">↓</span>
+                    </summary>
+                    <p class="mt-4 text-slate-500 leading-relaxed">Solo necesitamos tus datos actuales y nosotros nos encargamos de la integración total en menos de 48h.</p>
+                </details>
+                <details class="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-800">
+                        ¿Es seguro wilkIA?
+                        <span class="transition-transform duration-300 text-blue-600 font-bold">↓</span>
+                    </summary>
+                    <p class="mt-4 text-slate-500 leading-relaxed">Tus datos están encriptados y protegidos bajo los estándares más altos de seguridad en la nube.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO (Rediseñado para pulgar) -->
+    <section id="contacto" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-8 md:p-16 text-center text-white overflow-hidden relative">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-extrabold mb-6 italic">Hablemos.</h2>
+                <p class="text-slate-400 mb-10">Mejora tus márgenes hoy mismo.</p>
+                <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4 max-w-md mx-auto">
+                    <input type="text" name="name" placeholder="Tu nombre" class="w-full bg-white/10 border border-white/20 p-5 rounded-2xl outline-none focus:border-blue-500" required>
+                    <input type="email" name="email" placeholder="Email" class="w-full bg-white/10 border border-white/20 p-5 rounded-2xl outline-none focus:border-blue-500" required>
+                    <button class="w-full bg-blue-600 p-5 rounded-2xl font-extrabold uppercase tracking-widest text-sm shadow-xl shadow-blue-600/20">Solicitar Información</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 text-center">
+        <div class="flex justify-center items-center gap-3 mb-6">
+            <img src="logo.png" alt="L" class="h-8">
+            <img src="logo_nombre.png" alt="wilkIA" class="h-4 opacity-50">
+        </div>
+        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">© 2026 WILKIA SYSTEMS</p>
+    </footer>
+
 </body>
 </html>
