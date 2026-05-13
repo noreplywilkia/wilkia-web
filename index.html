@@ -53,13 +53,14 @@
                         <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-medium text-slate-300">
                             <a href="#" className="hover:text-blue-400 transition-all">Inicio</a>
                             <a href="#demo" className="hover:text-blue-400 transition-all">Demo</a>
+                            <a href="#nosotros" className="hover:text-blue-400 transition-all">Quiénes Somos</a>
                             <a href="#contacto" className="hover:text-blue-400 transition-all">Contacto</a>
                         </div>
                     </nav>
 
                     {/* Sección Demo / Carousel */}
                     <section id="demo" className="flex flex-col items-center justify-center w-full py-16">
-                        <h1 className="text-3xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center px-4">Experiencia wilkIA</h1>
+                        <h1 className="text-3xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center px-4 uppercase tracking-tighter">Experiencia <span className="text-blue-400">wilkIA</span></h1>
                         
                         <div className="relative flex items-center justify-center w-full h-[350px] md:h-[500px] perspective-1000 overflow-hidden">
                             {images.map((img, i) => {
@@ -92,12 +93,35 @@
                         </p>
                     </section>
 
+                    {/* SECCIÓN QUIÉNES SOMOS */}
+                    <section id="nosotros" className="w-full max-w-5xl px-6 py-20 border-t border-white/5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-4xl font-bold mb-6 italic text-blue-400">Quiénes Somos</h2>
+                                <p className="text-slate-300 leading-relaxed mb-4 text-lg">
+                                    En <span className="font-bold text-white">wilkIA</span>, transformamos la complejidad de la gestión empresarial en una experiencia intuitiva y potente. 
+                                </p>
+                                <p className="text-slate-400 leading-relaxed">
+                                    Nuestra plataforma nace con el objetivo de dotar a las empresas de herramientas de software avanzadas, integrando inteligencia aplicada para optimizar cada proceso, desde el control de stock hasta el análisis de escandallos. Creemos en la eficiencia sin fricciones.
+                                </p>
+                            </div>
+                            <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-8 rounded-2xl border border-blue-500/30">
+                                <h3 className="text-xl font-bold mb-4 text-white">Nuestra Visión</h3>
+                                <p className="text-slate-300 text-sm italic">
+                                    "Ser el aliado tecnológico que permita a los gestores centrarse en lo que realmente importa: hacer crecer su negocio, dejando la gestión técnica en manos de nuestra inteligencia."
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Sección de Contacto */}
-                    <section id="contacto" className="w-full max-w-4xl px-6 py-20">
-                        <div className="bg-[#1e293b] rounded-2xl p-8 md:p-12 shadow-2xl border border-white/5">
+                    <section id="contacto" className="w-full max-w-4xl px-6 py-20 border-t border-white/5">
+                        <div className="bg-[#1e293b] rounded-2xl p-8 md:p-12 shadow-2xl border border-white/5 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full -mr-16 -mt-16"></div>
+                            
                             <div className="text-center mb-10">
-                                <h2 className="text-3xl font-bold mb-4 text-blue-400">Contacta con nosotros</h2>
-                                <p className="text-slate-400">¿Interesado en wilkIA? Envíanos un mensaje.</p>
+                                <h2 className="text-3xl font-bold mb-4">Contacta con nosotros</h2>
+                                <p className="text-slate-400">¿Deseas una demo personalizada o tienes alguna duda? Envíanos un mensaje.</p>
                             </div>
 
                             <form 
@@ -134,7 +158,7 @@
                                         rows="4" 
                                         required 
                                         className="bg-[#0f172a] border border-slate-700 rounded-lg p-3 focus:outline-none focus:border-blue-400 transition-colors text-white"
-                                        placeholder="¿En qué podemos ayudarte?"
+                                        placeholder="Escribe aquí tu consulta..."
                                     ></textarea>
                                 </div>
                                 <button 
@@ -148,7 +172,7 @@
                     </section>
 
                     <footer className="w-full py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-                        &copy; 2026 wilkIA. Todos los derechos reservados.
+                        &copy; 2026 wilkIA. Soluciones de gestión avanzada.
                     </footer>
                 </div>
             );
