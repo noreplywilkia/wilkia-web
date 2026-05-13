@@ -3,201 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilkIA | Ultimate Management</title>
+    <title>wilkIA | Smart Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
         
-        :root { --primary: #2563eb; }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #040707; /* Fondo ultra oscuro para que resalte todo */
-            color: #ffffff;
-            overflow-x: hidden;
+            background: #f8fafc; 
+            color: #0f172a;
+            scroll-behavior: smooth;
         }
 
-        /* ANIMACIÓN DE REVELADO */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        /* EFECTO APARECER AL BAJAR */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* GRADIENTES DINÁMICOS */
-        .bg-gradient-main {
-            background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, #040707 60%);
+        /* NAV GLASSMORFISM */
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
         }
 
-        /* BENTO BOX PREMIUM */
+        /* BENTO CARDS */
         .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
             border-radius: 2rem;
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
         }
-        .bento-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--primary);
-            transform: scale(1.01);
-        }
+        .bento-card:hover { transform: translateY(-5px); }
 
-        /* LOGOS - FORZAR VISIBILIDAD */
-        .logo-box img {
-            display: inline-block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        /* PESTAÑAS */
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
-        }
-
-        /* MÓVIL FIX */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3rem !important; line-height: 1; }
-            .mobile-menu-scroll { display: flex; overflow-x: auto; padding-bottom: 10px; gap: 10px; }
-            .mobile-menu-scroll::-webkit-scrollbar { display: none; }
-        }
+        .tab-btn.active { background: #2563eb; color: white; }
+        
+        /* FIX MÓVIL PESTAÑAS */
+        .mobile-tabs { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 10px; }
+        .mobile-tabs::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-gradient-main">
+<body>
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-[100] border-b border-white/5 bg-black/50 backdrop-blur-xl py-4">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="logo-box flex items-center gap-3">
-                <!-- Rutas forzadas a raiz -->
-                <img src="./logo.png" class="h-10 w-auto" alt="Logo" onerror="this.src='https://via.placeholder.com/40/2563eb/ffffff?text=W'">
-                <img src="./logo_nombre.png" class="h-6 w-auto hidden md:block" alt="wilkIA">
+    <!-- MENÚ SUPERIOR RECUPERADO -->
+    <nav class="fixed w-full z-[100] glass-nav py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- RUTA CORREGIDA: images/logo.png -->
+                <img src="images/logo.png" class="h-9 w-auto" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 w-auto hidden sm:block" alt="wilkIA">
             </div>
-            <div class="flex items-center gap-6">
-                <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-blue-600/20">
-                    Probar Demo
+            <div class="flex items-center gap-4 md:gap-10">
+                <div class="hidden md:flex gap-8 font-bold text-[10px] uppercase tracking-widest text-slate-400">
+                    <a href="#nosotros" class="hover:text-blue-600 transition-colors">Nosotros</a>
+                    <a href="#solucion" class="hover:text-blue-600 transition-colors">Software</a>
+                    <a href="#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
+                </div>
+                <a href="#contacto" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
+                    Contacto
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-48 pb-20 px-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto text-center reveal">
-            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8">
-                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">Plataforma Inteligente 2026</span>
-            </div>
-            <h1 class="hero-title text-6xl md:text-[120px] font-extrabold tracking-tighter leading-[0.9] mb-8">
-                Rentabilidad <br><span class="text-blue-600 italic">sin excusas.</span>
+    <!-- HERO -->
+    <section class="pt-48 pb-20 px-6 text-center">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-blue-600 font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block">Management OS</span>
+            <h1 class="text-5xl md:text-[90px] font-extrabold tracking-tighter leading-none mb-8 text-slate-900">
+                Control total, <br><span class="italic text-blue-600">sin puntos ciegos.</span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed">
-                El software que entiende tus márgenes mejor que tú. Control total, visual y automático.
+            <p class="text-slate-500 text-lg md:text-2xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Visualiza la rentabilidad de tu negocio en tiempo real con nuestra IA de gestión avanzada.
             </p>
         </div>
     </section>
 
-    <!-- BENTO SOFTWARE SECTION -->
-    <section id="solucion" class="py-20 px-6">
-        <div class="max-w-6xl mx-auto reveal">
-            <div class="bento-card overflow-hidden flex flex-col md:flex-row h-full md:h-[650px]">
-                <!-- Sidebar de navegación -->
-                <div class="w-full md:w-80 p-8 border-b md:border-b-0 md:border-r border-white/10 space-y-4">
-                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-6">Módulos del Sistema</p>
-                    <div class="mobile-menu-scroll flex md:flex-col gap-2">
-                        <button onclick="changeTab('escandallo', this)" class="tab-btn active w-full text-left px-6 py-4 rounded-2xl font-bold text-sm transition-all whitespace-nowrap">Escandallos</button>
-                        <button onclick="changeTab('articulos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm transition-all text-slate-500 whitespace-nowrap">Artículos</button>
-                        <button onclick="changeTab('marca', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm transition-all text-slate-500 whitespace-nowrap">Gestión Marca</button>
-                        <button onclick="changeTab('formatos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-bold text-sm transition-all text-slate-500 whitespace-nowrap">Formatos</button>
-                    </div>
-                </div>
-                <!-- Visualizador -->
-                <div class="flex-1 bg-black/40 p-6 md:p-12 flex items-center justify-center relative">
-                    <div class="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full"></div>
-                    <img id="display-img" src="./images/escandallo.png" class="relative z-10 max-w-full max-h-full rounded-xl shadow-2xl transition-all duration-500" alt="App Preview">
+    <!-- SOFTWARE SECTION (BENTO) -->
+    <section id="solucion" class="py-10 px-6">
+        <div class="max-w-6xl mx-auto bento-card overflow-hidden flex flex-col md:flex-row h-full md:h-[600px] reveal">
+            <!-- Selector de pantallas -->
+            <div class="w-full md:w-72 bg-slate-50 p-6 border-r border-slate-100">
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Módulos</p>
+                <div class="mobile-tabs md:flex-col">
+                    <button onclick="setTab('escandallo', this)" class="tab-btn active whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm transition-all">Escandallos</button>
+                    <button onclick="setTab('articulos', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Artículos</button>
+                    <button onclick="setTab('marca', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Marca</button>
+                    <button onclick="setTab('formatos', this)" class="tab-btn whitespace-nowrap w-full text-left px-5 py-4 rounded-xl font-bold text-sm text-slate-500 transition-all">Formatos</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- INFO SECTIONS -->
-    <section id="nosotros" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-4xl md:text-6xl font-extrabold italic tracking-tighter mb-10">Obsesionados con <br>tus resultados.</h2>
-            <p class="text-slate-400 text-xl leading-relaxed font-medium">
-                wilkIA no es una base de datos. Es un consultor financiero que vive en tu navegador, diseñado para detectar fugas de dinero y optimizar cada euro invertido.
-            </p>
+            <!-- Imagen dinámica -->
+            <div class="flex-1 p-6 md:p-12 flex items-center justify-center bg-white">
+                <img id="main-img" src="images/escandallo.png" class="max-w-full max-h-full rounded-xl shadow-2xl transition-opacity duration-300" alt="Preview">
+            </div>
         </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="py-32 px-6">
-        <div class="max-w-3xl mx-auto space-y-6">
-            <h2 class="text-3xl font-extrabold mb-12 text-center reveal">Preguntas</h2>
-            <div class="bento-card p-8 reveal" onclick="this.classList.toggle('active-faq')">
-                <h4 class="font-bold text-xl flex justify-between items-center cursor-pointer">
-                    ¿Es fácil de usar? <span class="text-blue-500">→</span>
-                </h4>
-                <p class="text-slate-400 mt-4">Interfaz intuitiva diseñada para que no pierdas ni un segundo en manuales.</p>
-            </div>
-            <div class="bento-card p-8 reveal">
-                <h4 class="font-bold text-xl flex justify-between items-center cursor-pointer">
-                    ¿Seguridad de datos? <span class="text-blue-500">→</span>
-                </h4>
-                <p class="text-slate-400 mt-4">Cifrado de extremo a extremo para que tu información sea solo tuya.</p>
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 text-center reveal italic">Preguntas</h2>
+            <div class="space-y-4">
+                <details class="bento-card p-6 reveal group cursor-pointer">
+                    <summary class="list-none font-bold text-lg flex justify-between items-center">
+                        ¿Cómo se integra? <span class="text-blue-600 group-open:rotate-180 transition-transform">↓</span>
+                    </summary>
+                    <p class="mt-4 text-slate-500">Importamos tus datos actuales de forma masiva para que empieces en 24 horas.</p>
+                </details>
+                <details class="bento-card p-6 reveal group cursor-pointer">
+                    <summary class="list-none font-bold text-lg flex justify-between items-center">
+                        ¿Es seguro? <span class="text-blue-600 group-open:rotate-180 transition-transform">↓</span>
+                    </summary>
+                    <p class="mt-4 text-slate-500">Encriptación de nivel bancario. Tus datos son privados y siempre tuyos.</p>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto bento-card p-10 md:p-20 bg-blue-600 reveal relative overflow-hidden">
-            <div class="absolute -right-20 -top-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+    <section id="contacto" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto bento-card bg-slate-900 p-10 md:p-20 text-white relative overflow-hidden reveal">
             <div class="grid lg:grid-cols-2 gap-16 relative z-10">
                 <div>
-                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-none mb-8 italic">¿Hablamos?</h2>
-                    <p class="text-blue-100 text-xl font-medium">Empieza a controlar tu negocio como un profesional.</p>
+                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 italic">Hablemos.</h2>
+                    <p class="text-slate-400 text-xl">Tu primera auditoría de márgenes va por nuestra cuenta.</p>
                 </div>
                 <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="space-y-4">
-                    <input name="name" placeholder="Tu nombre" class="w-full bg-black/20 border border-white/10 p-5 rounded-2xl outline-none focus:bg-black/40 transition-all placeholder:text-blue-200" required>
-                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-black/20 border border-white/10 p-5 rounded-2xl outline-none focus:bg-black/40 transition-all placeholder:text-blue-200" required>
-                    <button class="w-full bg-white text-blue-600 p-5 rounded-2xl font-extrabold uppercase tracking-widest text-sm hover:scale-[1.02] transition-all shadow-xl">Agendar Demo Gratuita</button>
+                    <input name="name" placeholder="Nombre" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500" required>
+                    <input name="email" type="email" placeholder="Email corporativo" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500" required>
+                    <button class="w-full bg-blue-600 p-5 rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Solicitar Demo</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-20 px-6 border-t border-white/5 text-center">
-        <div class="flex justify-center items-center gap-4 mb-10 logo-box">
-            <img src="./logo.png" class="h-8 w-auto" alt="Logo">
-            <img src="./logo_nombre.png" class="h-4 opacity-30" alt="wilkIA">
+    <footer class="py-20 text-center">
+        <div class="flex justify-center items-center gap-3 mb-6">
+            <img src="images/logo.png" class="h-8" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-4 opacity-30" alt="wilkIA">
         </div>
-        <p class="text-slate-600 text-[10px] font-bold uppercase tracking-[0.5em]">© 2026 WILKIA SYSTEMS — THE FUTURE OF MANAGEMENT</p>
+        <p class="text-slate-300 text-[10px] font-bold tracking-[0.5em]">© 2026 WILKIA SYSTEMS</p>
     </footer>
 
     <script>
-        // SCRIPT PARA REVELADO AL BAJAR (RECOVERED)
-        const observer = new IntersectionObserver((entries) => {
+        // EFECTO REVEAL (JS Ligero)
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // SCRIPT PARA CAMBIAR PESTAÑAS (FUNCTIONAL)
-        function changeTab(module, btn) {
-            const img = document.getElementById('display-img');
+        // PESTAÑAS (Funciona al toque)
+        function setTab(name, btn) {
+            const img = document.getElementById('main-img');
             img.style.opacity = '0';
-            img.style.transform = 'translateY(10px)';
-            
             setTimeout(() => {
-                img.src = `./images/${module}.png`;
+                img.src = `images/${name}.png`;
                 img.style.opacity = '1';
-                img.style.transform = 'translateY(0)';
-            }, 300);
+            }, 200);
 
             document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
+                b.classList.remove('active', 'text-white');
                 b.classList.add('text-slate-500');
             });
             btn.classList.add('active');
