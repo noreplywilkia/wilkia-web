@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | wilkIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            border-radius: 2.5rem;
+        }
+        .logo-ribete { filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px -1px 0px white) drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
+        .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR SIMPLIFICADA -->
+    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-9 w-auto brand-fix">
+                <img src="images/logo_nombre.png" class="h-5 w-auto logo-ribete">
+            </a>
+            <a href="index.html" class="text-white font-bold text-[10px] uppercase tracking-widest border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">
+                Volver al Inicio
+            </a>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO QUIÉNES SOMOS -->
+    <main class="pt-40 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-6 block">El equipo detrás del algoritmo</span>
+            <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter leading-none mb-12">Impulsando la <br><span class="text-blue-500 underline decoration-blue-500/30">eficiencia real.</span></h1>
+            
+            <div class="glass-card p-10 md:p-16 border-blue-500/20 mb-12">
+                <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                    En **wilkIA**, no solo creamos software; diseñamos sistemas operativos de gestión para empresas que han superado las hojas de cálculo tradicionales. 
+                </p>
+                <p class="text-slate-400 leading-relaxed">
+                    Nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. Nuestro equipo combina expertos en análisis de datos, ingenieros de procesos y especialistas en UI/UX para asegurar que cada margen, cada gramo y cada céntimo esté bajo tu control absoluto.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-8 border-white/5">
+                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-4">Nuestra Visión</h3>
+                    <p class="text-sm text-slate-400">Democratizar la inteligencia de gestión que antes solo estaba al alcance de las grandes corporaciones.</p>
+                </div>
+                <div class="glass-card p-8 border-white/5">
+                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-4">Compromiso</h3>
+                    <p class="text-sm text-slate-400">Garantizar que la tecnología trabaje para el humano, y no al revés, simplificando decisiones críticas.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="py-20 text-center border-t border-white/10 mt-20">
+        <div class="flex justify-center items-center gap-4 mb-6">
+            <img src="images/logo.png" class="h-8 brand-fix">
+            <img src="images/logo_nombre.png" class="h-4 logo-ribete">
+        </div>
+        <p class="text-slate-600 text-[9px] font-black tracking-[0.5em] uppercase">© 2026 WILKIA SYSTEMS</p>
+    </footer>
+
+</body>
+</html>
