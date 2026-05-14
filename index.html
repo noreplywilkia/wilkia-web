@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>wilkIA | Management OS</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-        
-        :root { --accent: #2563eb; }
-        
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #020617; 
+
+        :root {
+            --accent: #2563eb;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
             color: #f8fafc;
             margin: 0;
             overflow-x: hidden;
         }
 
-        /* LOGO VISIBILITY */
         .brand-fix {
             filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2);
         }
 
-        /* ANIMACIONES */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        /* TARJETAS GLASSMORPHISM PREMIUM */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .glass-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            background: linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 100%
+            );
+
             border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
@@ -46,316 +60,356 @@
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
         }
 
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        details summary::-webkit-details-marker { display:none; }
-        details[open] summary span { transform: rotate(180deg); }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
 
-        input, textarea {
+        details summary::-webkit-details-marker {
+            display:none;
+        }
+
+        details[open] summary span {
+            transform: rotate(180deg);
+        }
+
+        input,
+        textarea {
             background: rgba(255, 255, 255, 0.05) !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             color: white !important;
             outline: none;
         }
-        input:focus { border-color: var(--accent) !important; }
+
+        input:focus {
+            border-color: var(--accent) !important;
+        }
+
+        /* =========================
+           COOKIES RGPD
+        ========================= */
+
+        #cookie-banner {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            background: rgba(2, 6, 23, 0.96) !important;
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 22px !important;
+            z-index: 999999 !important;
+            box-sizing: border-box;
+        }
+
+        #cookie-banner .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #cookie-banner h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+        }
+
+        #cookie-banner p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        #cookie-banner .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        #cookie-banner button {
+            border: none;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            transition: all .2s ease;
+        }
+
+        #accept-cookies {
+            background: #2563eb;
+            color: white;
+        }
+
+        #accept-cookies:hover {
+            background: #3b82f6;
+        }
+
+        #reject-cookies {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        #reject-cookies:hover {
+            background: rgba(255,255,255,0.14);
+        }
+
+        #config-cookies {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: white;
+        }
+
+        #config-cookies:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        #cookie-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.72);
+            z-index: 1000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cookie-modal-content {
+            width: 100%;
+            max-width: 580px;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+            padding: 35px;
+            box-sizing: border-box;
+        }
+
+        .cookie-modal-content h2 {
+            margin-top: 0;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .cookie-option {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.04);
+            margin-bottom: 18px;
+        }
+
+        .cookie-option label {
+            font-weight: 700;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .cookie-option p {
+            color: rgba(255,255,255,0.65);
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
-    <!-- COOKIE BANNER -->
-<div id="cookie-banner" class="cookie-banner">
-  <div class="cookie-content">
-    <h3>Cookies</h3>
-    <p>
-      Utilizamos cookies propias y de terceros para mejorar la experiencia,
-      analizar el tráfico y personalizar contenido.
-    </p>
 
-    <div class="cookie-buttons">
-      <button id="accept-cookies">Aceptar todas</button>
-      <button id="reject-cookies">Rechazar</button>
-      <button id="config-cookies">Configurar</button>
-    </div>
-  </div>
-</div>
-
-<!-- COOKIE SETTINGS -->
-<div id="cookie-modal" class="cookie-modal hidden">
-  <div class="cookie-modal-content">
-    <h2>Configuración de Cookies</h2>
-
-    <div class="cookie-option">
-      <label>
-        <input type="checkbox" checked disabled />
-        Cookies necesarias
-      </label>
-      <p>Necesarias para el funcionamiento de la web.</p>
-    </div>
-
-    <div class="cookie-option">
-      <label>
-        <input type="checkbox" id="analytics-cookies" />
-        Cookies analíticas
-      </label>
-      <p>Nos ayudan a entender cómo se usa la web.</p>
-    </div>
-
-    <div class="cookie-option">
-      <label>
-        <input type="checkbox" id="marketing-cookies" />
-        Cookies de marketing
-      </label>
-      <p>Usadas para contenido y publicidad personalizada.</p>
-    </div>
-
-    <div class="cookie-buttons">
-      <button id="save-preferences">Guardar preferencias</button>
-      <button id="close-modal">Cerrar</button>
-    </div>
-  </div>
-</div>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 md:gap-3">
-                <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
-                <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto brand-fix" alt="wilkIA">
-            </div>
-            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
-                <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
-                <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
-                <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
-                <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
-            </div>
-            <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
-                Demo Gratuita
-            </a>
-        </div>
-    </nav>
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+    <div class="cookie-content">
 
-    <!-- HERO SECTION -->
-    <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
-        <div class="max-w-5xl mx-auto reveal">
-            <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-12">
-                Control de <br><span class="italic text-blue-500">márgenes.</span>
-            </h1>
-            <p class="text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto mb-14 leading-tight font-medium opacity-80">
-                La plataforma inteligente que transforma tus costes en beneficios estratégicos reales.
+        <h3>Configuración de Cookies</h3>
+
+        <p>
+            Utilizamos cookies propias y de terceros para analizar el tráfico,
+            mejorar tu experiencia y personalizar contenido.
+            Puedes aceptar todas las cookies o configurarlas.
+        </p>
+
+        <div class="cookie-buttons">
+            <button id="accept-cookies">Aceptar</button>
+            <button id="reject-cookies">Rechazar</button>
+            <button id="config-cookies">Configurar</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL COOKIES -->
+<div id="cookie-modal" class="hidden">
+
+    <div class="cookie-modal-content">
+
+        <h2>Preferencias de Cookies</h2>
+
+        <div class="cookie-option">
+            <label>
+                <input type="checkbox" checked disabled>
+                Cookies necesarias
+            </label>
+
+            <p>
+                Necesarias para el funcionamiento técnico de la web.
             </p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#contacto" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-all shadow-xl shadow-white/5">Prueba Gratis</a>
-                <a href="#solucion" class="border border-white/20 bg-white/5 px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all">Explorar Sistema</a>
-            </div>
         </div>
-    </section>
 
-    <!-- MÉTRICAS DE IMPACTO -->
-    <section class="py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-            <div class="glass-card p-12 text-center border-blue-500/30">
-                <div class="text-7xl font-black text-blue-500 mb-4 glow-text">+15%</div>
-                <div class="text-white uppercase tracking-[0.4em] text-[11px] font-black opacity-90">Mejora de Margen</div>
-            </div>
-            <div class="glass-card p-12 text-center border-blue-500/30">
-                <div class="text-7xl font-black text-blue-500 mb-4 glow-text">-40h</div>
-                <div class="text-white uppercase tracking-[0.4em] text-[11px] font-black opacity-90">Ahorro Mensual</div>
-            </div>
-            <div class="glass-card p-12 text-center border-blue-500/30">
-                <div class="text-7xl font-black text-blue-500 mb-4 glow-text">100%</div>
-                <div class="text-white uppercase tracking-[0.4em] text-[11px] font-black opacity-90">Control de Datos</div>
-            </div>
+        <div class="cookie-option">
+            <label>
+                <input type="checkbox" id="analytics-cookies">
+                Cookies analíticas
+            </label>
+
+            <p>
+                Nos ayudan a entender el uso de la plataforma.
+            </p>
         </div>
-    </section>
 
-    <!-- INTERFAZ SOFTWARE (TABS) -->
-    <section id="solucion" class="py-12 px-4">
-        <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
-            <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
-                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-10">Módulos wilkIA</p>
-                <div class="flex lg:flex-col gap-3 overflow-x-auto no-scrollbar pb-4 lg:pb-0">
-                    <button onclick="tab('escandallo', this)" class="tab-btn active w-full text-left px-6 py-4 rounded-xl font-bold text-sm whitespace-nowrap transition-all">Escandallos</button>
-                    <button onclick="tab('articulos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-400 whitespace-nowrap transition-all">Artículos</button>
-                    <button onclick="tab('marca', this)" class="tab-btn w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-400 whitespace-nowrap transition-all">Gestión Marca</button>
-                    <button onclick="tab('formatos', this)" class="tab-btn w-full text-left px-6 py-4 rounded-xl font-bold text-sm text-slate-400 whitespace-nowrap transition-all">Formatos</button>
-                </div>
-            </div>
-            <div class="flex-1 p-6 md:p-14 flex items-center justify-center bg-black/40 min-h-[400px] md:min-h-[650px]">
-                <img id="view" src="images/escandallo.png" class="max-w-full h-auto rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 transition-opacity duration-300">
-            </div>
+        <div class="cookie-option">
+            <label>
+                <input type="checkbox" id="marketing-cookies">
+                Cookies de marketing
+            </label>
+
+            <p>
+                Permiten mostrar contenido personalizado y campañas.
+            </p>
         </div>
-    </section>
 
-    <!-- MÉTODO / CÓMO FUNCIONA -->
-    <section id="proceso" class="py-28 px-6 bg-slate-950/40">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-24 reveal">
-                <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter leading-tight">Método <br><span class="text-blue-500">wilkIA.</span></h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="glass-card p-10 relative reveal overflow-hidden border-white/10">
-                    <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">01</div>
-                    <h3 class="text-2xl font-bold mb-5 text-blue-500">Auditoría</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Analizamos tus bases de datos actuales para detectar fugas de rentabilidad y procesos ineficientes.</p>
-                </div>
-                <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.1s">
-                    <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">02</div>
-                    <h3 class="text-2xl font-bold mb-5 text-blue-500">Ajuste</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Configuramos el sistema según tus formatos de producción real y necesidades de reporting.</p>
-                </div>
-                <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.2s">
-                    <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">03</div>
-                    <h3 class="text-2xl font-bold mb-5 text-blue-500">Control</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Toma decisiones estratégicas en tiempo real basadas en márgenes actualizados 24/7.</p>
-                </div>
-            </div>
+        <div class="cookie-buttons">
+            <button id="save-preferences">Guardar preferencias</button>
+            <button id="close-modal">Cerrar</button>
         </div>
-    </section>
 
-    <!-- SECCIÓN MULTIDISPOSITIVO (MOCKUPS REALISTAS) -->
-    <section class="py-24 px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 relative border-blue-500/20">
-            <div class="flex flex-col lg:flex-row items-center gap-20">
-                
-                <div class="lg:w-1/2 reveal">
-                    <span class="bg-blue-600 text-[11px] font-black px-5 py-2 rounded-full mb-8 inline-block uppercase tracking-[0.2em]">Hardware Agnostic</span>
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-10 italic leading-none text-white">Tu oficina <br>don de estés.</h2>
-                    <p class="text-slate-200 text-lg mb-10 leading-relaxed opacity-90">
-                        Diseñado para la precisión en tablet y la agilidad en movilidad. wilkIA se adapta al dispositivo del operario y del directivo de forma nativa.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Tablet Interface</div>
-                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Mobile Ready</div>
-                    </div>
-                </div>
+    </div>
 
-                <div class="lg:w-1/2 relative flex items-center justify-center reveal py-12">
-                    <div class="absolute inset-0 bg-blue-600/15 blur-[120px] rounded-full"></div>
+</div>
 
-                    <!-- TABLET MOCKUP -->
-                    <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-[0_50px_100px_rgba(0,0,0,0.8)] transform -rotate-3 overflow-hidden">
-                        <div class="absolute top-1/2 left-2 -translate-y-1/2 w-1.5 h-1.5 bg-white/10 rounded-full"></div>
-                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
-                            <img src="images/articulos.png" alt="Tablet View" class="w-full h-full object-cover">
-                        </div>
-                    </div>
+<!-- TU WEB -->
+<!-- PEGA AQUÍ TODO EL CONTENIDO DE TU WEB -->
+<!-- desde el NAVBAR hasta el FOOTER -->
 
-                    <!-- MÓVIL MOCKUP -->
-                    <div class="absolute z-30 bottom-[-20px] right-[-10px] md:right-[-20px] w-[180px] md:w-[220px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform rotate-6 overflow-hidden flex flex-col">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#334155] rounded-b-2xl z-40 flex justify-center items-center">
-                            <div class="w-8 h-1 bg-black/40 rounded-full mb-1"></div>
-                        </div>
-                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
-                            <img src="images/formatos2.png" alt="Mobile View" class="w-full h-full object-cover pt-4">
-                        </div>
-                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/20 rounded-full"></div>
-                    </div>
-                    
-                    <div class="absolute bottom-0 w-[80%] h-4 bg-black/40 blur-xl rounded-full translate-y-10"></div>
-                </div>
+<script>
+    // Animación Reveal al Scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if(e.isIntersecting)
+                e.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
 
-            </div>
-        </div>
-    </section>
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    <!-- FAQ -->
-    <section id="faq" class="py-24 px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal tracking-tight">Preguntas Frecuentes</h2>
-            <div class="space-y-5">
-                <details class="glass-card p-8 reveal cursor-pointer group border-white/10">
-                    <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
-                        ¿Cómo integro mis datos? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
-                    </summary>
-                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">Realizamos la carga masiva inicial por ti. Solo necesitamos tus listados y en 48h estarás operando con wilkIA.</p>
-                </details>
-                <details class="glass-card p-8 reveal cursor-pointer group border-white/10">
-                    <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
-                        ¿Es compatible con mi ERP? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
-                    </summary>
-                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">wilkIA es el complemento perfecto para el control de costes analítico que un ERP genérico no suele ofrecer.</p>
-                </details>
-            </div>
-        </div>
-    </section>
+    // Navegación de Pestañas
+    function tab(name, btn) {
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="py-28 px-4 relative">
-        <div class="max-w-6xl mx-auto reveal">
-            <div class="glass-card overflow-hidden shadow-[0_0_80px_rgba(37,99,235,0.15)] border-blue-500/30">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-12 md:p-20 bg-gradient-to-b from-blue-600/15 to-transparent border-b lg:border-b-0 lg:border-r border-white/10">
-                        <h2 class="text-6xl md:text-7xl font-black italic tracking-tighter leading-[0.8] mb-10 text-white">Empieza <br>hoy <br><span class="text-blue-500">mismo.</span></h2>
-                        <div class="space-y-8 mt-16">
-                            <div class="flex gap-5">
-                                <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
-                                <p class="text-white font-medium text-sm opacity-90">Demo personalizada en 24h.</p>
-                            </div>
-                            <div class="flex gap-5">
-                                <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
-                                <p class="text-white font-medium text-sm opacity-90">Soporte directo ilimitado.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="flex-1 p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="flex flex-col gap-3">
-                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Nombre</label>
-                            <input type="text" name="nombre" class="w-full p-5 rounded-2xl transition-all" required>
-                        </div>
-                        <div class="flex flex-col gap-3">
-                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Empresa</label>
-                            <input type="text" name="empresa" class="w-full p-5 rounded-2xl transition-all">
-                        </div>
-                        <div class="flex flex-col gap-3">
-                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Email Profesional</label>
-                            <input type="email" name="email" class="w-full p-5 rounded-2xl transition-all" required>
-                        </div>
-                        <div class="flex flex-col gap-3">
-                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Teléfono</label>
-                            <input type="tel" name="telefono" class="w-full p-5 rounded-2xl transition-all" required>
-                        </div>
-                        <div class="flex flex-col gap-3 md:col-span-2">
-                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Mensaje</label>
-                            <textarea name="mensaje" rows="4" class="w-full p-5 rounded-2xl transition-all"></textarea>
-                        </div>
-                        <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm transition-all shadow-2xl shadow-blue-600/40 active:scale-95">Solicitar Acceso</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+        const img = document.getElementById('view');
 
-    <!-- FOOTER -->
-    <footer class="py-24 text-center border-t border-white/10">
-        <div class="flex justify-center items-center gap-4 mb-10">
-            <img src="images/logo.png" class="h-10 brand-fix" alt="L">
-            <img src="images/logo_nombre.png" class="h-5 brand-fix opacity-60" alt="wilkIA">
-        </div>
-        <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
-    </footer>
+        img.style.opacity = '0';
 
-    <script>
-        // Animación Reveal al Scroll
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        setTimeout(() => {
+            img.src = `images/${name}.png`;
+            img.style.opacity = '1';
+        }, 200);
 
-        // Navegación de Pestañas (Software)
-        function tab(name, btn) {
-            const img = document.getElementById('view');
-            img.style.opacity = '0';
-            setTimeout(() => {
-                img.src = `images/${name}.png`;
-                img.style.opacity = '1';
-            }, 200);
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
-                b.classList.add('text-slate-400');
-            });
-            btn.classList.add('active');
-            btn.classList.remove('text-slate-400');
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.classList.add('text-slate-400');
+        });
+
+        btn.classList.add('active');
+        btn.classList.remove('text-slate-400');
+    }
+
+    // =========================
+    // COOKIES
+    // =========================
+
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieModal = document.getElementById('cookie-modal');
+
+    const savedConsent = localStorage.getItem('wilkia_cookie_consent');
+
+    if (savedConsent) {
+        cookieBanner.style.display = 'none';
+    }
+
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+
+        const consent = {
+            necessary: true,
+            analytics: true,
+            marketing: true
+        };
+
+        localStorage.setItem(
+            'wilkia_cookie_consent',
+            JSON.stringify(consent)
+        );
+
+        cookieBanner.style.display = 'none';
+
+        enableAnalytics();
+    });
+
+    document.getElementById('reject-cookies').addEventListener('click', () => {
+
+        const consent = {
+            necessary: true,
+            analytics: false,
+            marketing: false
+        };
+
+        localStorage.setItem(
+            'wilkia_cookie_consent',
+            JSON.stringify(consent)
+        );
+
+        cookieBanner.style.display = 'none';
+    });
+
+    document.getElementById('config-cookies').addEventListener('click', () => {
+        cookieModal.classList.remove('hidden');
+    });
+
+    document.getElementById('close-modal').addEventListener('click', () => {
+        cookieModal.classList.add('hidden');
+    });
+
+    document.getElementById('save-preferences').addEventListener('click', () => {
+
+        const consent = {
+            necessary: true,
+            analytics: document.getElementById('analytics-cookies').checked,
+            marketing: document.getElementById('marketing-cookies').checked
+        };
+
+        localStorage.setItem(
+            'wilkia_cookie_consent',
+            JSON.stringify(consent)
+        );
+
+        cookieBanner.style.display = 'none';
+        cookieModal.classList.add('hidden');
+
+        if (consent.analytics) {
+            enableAnalytics();
         }
-    </script>
+    });
+
+    function enableAnalytics() {
+        console.log('Cookies analíticas aceptadas');
+    }
+</script>
+
 </body>
 </html>
