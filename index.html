@@ -143,27 +143,15 @@
             color: white;
         }
 
-        #accept-cookies:hover {
-            background: #3b82f6;
-        }
-
         #reject-cookies {
             background: rgba(255,255,255,0.08);
             color: white;
-        }
-
-        #reject-cookies:hover {
-            background: rgba(255,255,255,0.14);
         }
 
         #config-cookies {
             background: transparent;
             border: 1px solid rgba(255,255,255,0.1) !important;
             color: white;
-        }
-
-        #config-cookies:hover {
-            background: rgba(255,255,255,0.05);
         }
 
         #cookie-modal {
@@ -187,33 +175,11 @@
             box-sizing: border-box;
         }
 
-        .cookie-modal-content h2 {
-            margin-top: 0;
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 30px;
-        }
-
         .cookie-option {
             padding: 20px;
             border-radius: 18px;
             background: rgba(255,255,255,0.04);
             margin-bottom: 18px;
-        }
-
-        .cookie-option label {
-            font-weight: 700;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .cookie-option p {
-            color: rgba(255,255,255,0.65);
-            font-size: 14px;
-            line-height: 1.5;
-            margin: 0;
         }
 
         .hidden {
@@ -233,7 +199,6 @@
         <p>
             Utilizamos cookies propias y de terceros para analizar el tráfico,
             mejorar tu experiencia y personalizar contenido.
-            Puedes aceptar todas las cookies o configurarlas.
         </p>
 
         <div class="cookie-buttons">
@@ -245,7 +210,7 @@
     </div>
 </div>
 
-<!-- MODAL COOKIES -->
+<!-- MODAL -->
 <div id="cookie-modal" class="hidden">
 
     <div class="cookie-modal-content">
@@ -259,7 +224,7 @@
             </label>
 
             <p>
-                Necesarias para el funcionamiento técnico de la web.
+                Necesarias para el funcionamiento técnico.
             </p>
         </div>
 
@@ -270,7 +235,7 @@
             </label>
 
             <p>
-                Nos ayudan a entender el uso de la plataforma.
+                Nos ayudan a mejorar la plataforma.
             </p>
         </div>
 
@@ -281,7 +246,7 @@
             </label>
 
             <p>
-                Permiten mostrar contenido personalizado y campañas.
+                Permiten campañas y contenido personalizado.
             </p>
         </div>
 
@@ -294,12 +259,88 @@
 
 </div>
 
-<!-- TU WEB -->
-<!-- PEGA AQUÍ TODO EL CONTENIDO DE TU WEB -->
-<!-- desde el NAVBAR hasta el FOOTER -->
+<!-- NAVBAR -->
+<nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+        <div class="flex items-center gap-2 md:gap-3">
+            <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto brand-fix" alt="wilkIA">
+        </div>
+
+        <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+            <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
+            <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
+            <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
+            <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
+        </div>
+
+        <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+            Demo Gratuita
+        </a>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
+
+    <div class="max-w-5xl mx-auto reveal">
+
+        <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-12">
+            Control de <br>
+            <span class="italic text-blue-500">márgenes.</span>
+        </h1>
+
+        <p class="text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto mb-14 leading-tight font-medium opacity-80">
+            La plataforma inteligente que transforma tus costes en beneficios estratégicos reales.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+
+            <a href="#contacto"
+               class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-600 hover:text-white transition-all shadow-xl shadow-white/5">
+                Prueba Gratis
+            </a>
+
+            <a href="#solucion"
+               class="border border-white/20 bg-white/5 px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all">
+                Explorar Sistema
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="py-24 text-center border-t border-white/10">
+
+    <div class="flex justify-center items-center gap-4 mb-10">
+        <img src="images/logo.png" class="h-10 brand-fix" alt="L">
+        <img src="images/logo_nombre.png" class="h-5 brand-fix opacity-60" alt="wilkIA">
+    </div>
+
+    <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">
+        © 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS
+    </p>
+
+    <div class="mt-6">
+        <a href="/politica-cookies.html"
+           class="text-slate-500 hover:text-blue-400 text-xs transition-all">
+            Política de Cookies
+        </a>
+    </div>
+
+</footer>
 
 <script>
-    // Animación Reveal al Scroll
+
+    // Reveal Animation
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if(e.isIntersecting)
@@ -309,7 +350,8 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Navegación de Pestañas
+    // Tabs
+
     function tab(name, btn) {
 
         const img = document.getElementById('view');
@@ -357,8 +399,6 @@
         );
 
         cookieBanner.style.display = 'none';
-
-        enableAnalytics();
     });
 
     document.getElementById('reject-cookies').addEventListener('click', () => {
@@ -400,15 +440,8 @@
 
         cookieBanner.style.display = 'none';
         cookieModal.classList.add('hidden');
-
-        if (consent.analytics) {
-            enableAnalytics();
-        }
     });
 
-    function enableAnalytics() {
-        console.log('Cookies analíticas aceptadas');
-    }
 </script>
 
 </body>
