@@ -38,16 +38,26 @@
         .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
         .glass-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
         }
+        
         .glow-text { text-shadow: 0 0 25px rgba(37, 99, 235, 0.6); }
         .tab-btn.active { background: var(--accent); color: white; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        input, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; color: white !important; outline: none; }
+        
+        input, textarea { 
+            background: rgba(255, 255, 255, 0.05) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+            color: white !important; 
+            outline: none; 
+        }
+        input:focus, textarea:focus { border-color: var(--accent) !important; }
+        
         .hidden { display: none !important; }
     </style>
 </head>
@@ -65,8 +75,8 @@
         </div>
     </div>
 
-    <!-- NAVBAR -->
-    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+    <!-- NAVBAR (MENÚ) -->
+    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 top-0">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
                 <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
@@ -85,7 +95,7 @@
     </nav>
 
     <!-- HERO -->
-    <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
+    <section class="pt-64 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
             <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-12">
@@ -163,7 +173,7 @@
         </div>
     </section>
 
-    <!-- MOCKUPS (TABLET Y MÓVIL) -->
+    <!-- MOCKUPS -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card p-10 md:p-20 relative border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -198,7 +208,7 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO (CORREGIDO CON TELÉFONO Y MENSAJE) -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -207,9 +217,11 @@
                         <h2 class="text-6xl font-black italic tracking-tighter leading-[0.8] mb-10">Empieza <br>hoy <br><span class="text-blue-500">mismo.</span></h2>
                     </div>
                     <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="flex-1 p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <input type="text" name="nombre" placeholder="Nombre" class="p-5 rounded-2xl" required>
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="p-5 rounded-2xl" required>
                         <input type="text" name="empresa" placeholder="Empresa" class="p-5 rounded-2xl">
-                        <input type="email" name="email" placeholder="Email" class="p-5 rounded-2xl md:col-span-2" required>
+                        <input type="email" name="email" placeholder="Email corporativo" class="p-5 rounded-2xl" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono" class="p-5 rounded-2xl" required>
+                        <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="4" class="p-5 rounded-2xl md:col-span-2"></textarea>
                         <button type="submit" class="md:col-span-2 bg-blue-600 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/40">Solicitar Acceso</button>
                     </form>
                 </div>
