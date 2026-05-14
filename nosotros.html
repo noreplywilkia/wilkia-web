@@ -27,11 +27,26 @@
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
         }
+
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .img-container img {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR IDENTICA -->
+    <!-- NAVBAR -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -42,45 +57,79 @@
                 <a href="index.html" class="hover:text-blue-400 transition-all">Inicio</a>
                 <a href="index.html#solucion" class="hover:text-blue-400 transition-all">Software</a>
                 <a href="index.html#proceso" class="hover:text-blue-400 transition-all">Método</a>
-                <a href="nosotros.html" class="text-white transition-all">Nosotros</a>
+                <a href="nosotros.html" class="text-white transition-all underline decoration-blue-500 underline-offset-8">Nosotros</a>
                 <a href="index.html#faq" class="hover:text-blue-400 transition-all">FAQ</a>
             </div>
-            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all">
                 Demo Gratuita
             </a>
         </div>
     </nav>
 
     <main class="pt-56 pb-24 px-6">
-        <div class="max-w-5xl mx-auto reveal">
-            <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-8 block">El equipo detrás del sistema</span>
-            <h1 class="text-6xl md:text-[100px] font-extrabold tracking-tighter leading-[0.85] mb-16">
-                Ingeniería para <br><span class="italic text-blue-500">tu rentabilidad.</span>
-            </h1>
-            
-            <div class="glass-card p-12 md:p-20 border-blue-500/20 mb-16">
-                <p class="text-xl md:text-3xl text-slate-200 leading-tight mb-10 font-medium">
-                    En **wilkIA**, no solo creamos software; diseñamos el sistema operativo de gestión para empresas que han superado las hojas de cálculo tradicionales. 
-                </p>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-3xl">
-                    Nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. Nuestro equipo combina expertos en análisis de datos, ingenieros de procesos y especialistas en UI/UX para asegurar que cada margen esté bajo tu control absoluto.
-                </p>
+        <div class="max-w-6xl mx-auto">
+            <!-- CABECERA -->
+            <div class="reveal mb-20">
+                <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-8 block">El equipo detrás del sistema</span>
+                <h1 class="text-6xl md:text-[100px] font-extrabold tracking-tighter leading-[0.85] mb-12">
+                    Ingeniería para <br><span class="italic text-blue-500">tu rentabilidad.</span>
+                </h1>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-10 border-white/5">
-                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-6">Nuestra Visión</h3>
-                    <p class="text-slate-300 leading-relaxed">Democratizar la inteligencia de gestión que antes solo estaba al alcance de las grandes corporaciones, mediante herramientas intuitivas y potentes.</p>
+            <!-- GRID DE IMÁGENES Y TEXTO -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
+                <!-- Imagen Principal -->
+                <div class="md:col-span-8 img-container h-[400px] reveal">
+                    <img src="images/equipo-1.jpg" class="w-full h-full object-cover" alt="Equipo wilkIA trabajando">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+                    <p class="absolute bottom-8 left-8 text-white font-bold tracking-widest text-xs uppercase">Ecosistema de Innovación</p>
                 </div>
-                <div class="glass-card p-10 border-white/5">
-                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-6">Compromiso</h3>
-                    <p class="text-slate-300 leading-relaxed">Garantizar que la tecnología trabaje para el humano, y no al revés, simplificando la toma de decisiones críticas en tiempo real.</p>
+
+                <!-- Tarjeta de Texto lateral -->
+                <div class="md:col-span-4 glass-card p-10 flex flex-col justify-center border-blue-500/20 reveal" style="transition-delay: 0.1s">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-500 italic">Código Limpio</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Nuestros desarrolladores no solo escriben código; construyen arquitecturas escalables que procesan miles de datos en milisegundos para darte respuestas inmediatas.
+                    </p>
+                </div>
+
+                <!-- Tarjeta de Texto inferior -->
+                <div class="md:col-span-4 glass-card p-10 border-white/5 reveal" style="transition-delay: 0.2s">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Cultura Dev</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Metodologías Agile y revisiones constantes de seguridad para que tu información empresarial esté siempre protegida y disponible.
+                    </p>
+                </div>
+
+                <!-- Imagen Secundaria -->
+                <div class="md:col-span-8 img-container h-[400px] reveal" style="transition-delay: 0.3s">
+                    <img src="images/programacion.jpg" class="w-full h-full object-cover" alt="Programación de wilkIA">
+                </div>
+            </div>
+
+            <!-- SECCIÓN MANIFIESTO -->
+            <div class="glass-card p-12 md:p-20 border-white/10 mb-24 reveal">
+                <div class="max-w-3xl">
+                    <h2 class="text-3xl md:text-5xl font-black italic mb-10 tracking-tight">Donde los datos se vuelven <span class="text-blue-500">estrategia.</span></h2>
+                    <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                        En **wilkIA**, nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. 
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-12 mt-12">
+                        <div>
+                            <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Análisis Predictivo</h4>
+                            <p class="text-slate-400 text-sm">No nos conformamos con decirte qué pasó ayer. Nuestro sistema te ayuda a entender qué pasará mañana con tus costes.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Diseño UX</h4>
+                            <p class="text-slate-400 text-sm">Hacemos lo complejo, sencillo. Una interfaz diseñada para que el control de márgenes sea tan fluido como usar tu red social favorita.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER IDENTICO -->
+    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
