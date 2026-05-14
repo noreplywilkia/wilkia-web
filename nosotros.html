@@ -2,73 +2,98 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nosotros | wilkIA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        
+        :root { --accent: #2563eb; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
+
+        .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
+        .logo-ribete { 
+            filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px -1px 0px white) 
+                    drop-shadow(1px -1px 0px white) drop-shadow(-1px 1px 0px white)
+                    drop-shadow(0 0 8px rgba(255,255,255,0.5)); 
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         .glass-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
         }
-        .logo-ribete { filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px -1px 0px white) drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
-        .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR SIMPLIFICADA -->
+    <!-- NAVBAR IDENTICA -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 md:gap-3">
-                <img src="images/logo.png" class="h-9 w-auto brand-fix">
-                <img src="images/logo_nombre.png" class="h-5 w-auto logo-ribete">
-            </a>
-            <a href="index.html" class="text-white font-bold text-[10px] uppercase tracking-widest border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">
-                Volver al Inicio
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto logo-ribete" alt="wilkIA">
+            </div>
+            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-blue-400 transition-all">Inicio</a>
+                <a href="index.html#solucion" class="hover:text-blue-400 transition-all">Software</a>
+                <a href="index.html#proceso" class="hover:text-blue-400 transition-all">Método</a>
+                <a href="nosotros.html" class="text-white transition-all">Nosotros</a>
+                <a href="index.html#faq" class="hover:text-blue-400 transition-all">FAQ</a>
+            </div>
+            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                Demo Gratuita
             </a>
         </div>
     </nav>
 
-    <!-- CONTENIDO QUIÉNES SOMOS -->
-    <main class="pt-40 pb-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-6 block">El equipo detrás del algoritmo</span>
-            <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter leading-none mb-12">Impulsando la <br><span class="text-blue-500 underline decoration-blue-500/30">eficiencia real.</span></h1>
+    <main class="pt-56 pb-24 px-6">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-8 block">El equipo detrás del sistema</span>
+            <h1 class="text-6xl md:text-[100px] font-extrabold tracking-tighter leading-[0.85] mb-16">
+                Ingeniería para <br><span class="italic text-blue-500">tu rentabilidad.</span>
+            </h1>
             
-            <div class="glass-card p-10 md:p-16 border-blue-500/20 mb-12">
-                <p class="text-xl text-slate-300 leading-relaxed mb-8">
-                    En **wilkIA**, no solo creamos software; diseñamos sistemas operativos de gestión para empresas que han superado las hojas de cálculo tradicionales. 
+            <div class="glass-card p-12 md:p-20 border-blue-500/20 mb-16">
+                <p class="text-xl md:text-3xl text-slate-200 leading-tight mb-10 font-medium">
+                    En **wilkIA**, no solo creamos software; diseñamos el sistema operativo de gestión para empresas que han superado las hojas de cálculo tradicionales. 
                 </p>
-                <p class="text-slate-400 leading-relaxed">
-                    Nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. Nuestro equipo combina expertos en análisis de datos, ingenieros de procesos y especialistas en UI/UX para asegurar que cada margen, cada gramo y cada céntimo esté bajo tu control absoluto.
+                <p class="text-slate-400 text-lg leading-relaxed max-w-3xl">
+                    Nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. Nuestro equipo combina expertos en análisis de datos, ingenieros de procesos y especialistas en UI/UX para asegurar que cada margen esté bajo tu control absoluto.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-8 border-white/5">
-                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-4">Nuestra Visión</h3>
-                    <p class="text-sm text-slate-400">Democratizar la inteligencia de gestión que antes solo estaba al alcance de las grandes corporaciones.</p>
+                <div class="glass-card p-10 border-white/5">
+                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-6">Nuestra Visión</h3>
+                    <p class="text-slate-300 leading-relaxed">Democratizar la inteligencia de gestión que antes solo estaba al alcance de las grandes corporaciones, mediante herramientas intuitivas y potentes.</p>
                 </div>
-                <div class="glass-card p-8 border-white/5">
-                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-4">Compromiso</h3>
-                    <p class="text-sm text-slate-400">Garantizar que la tecnología trabaje para el humano, y no al revés, simplificando decisiones críticas.</p>
+                <div class="glass-card p-10 border-white/5">
+                    <h3 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-6">Compromiso</h3>
+                    <p class="text-slate-300 leading-relaxed">Garantizar que la tecnología trabaje para el humano, y no al revés, simplificando la toma de decisiones críticas en tiempo real.</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER SIMPLE -->
-    <footer class="py-20 text-center border-t border-white/10 mt-20">
-        <div class="flex justify-center items-center gap-4 mb-6">
-            <img src="images/logo.png" class="h-8 brand-fix">
-            <img src="images/logo_nombre.png" class="h-4 logo-ribete">
+    <!-- FOOTER IDENTICO -->
+    <footer class="py-24 text-center border-t border-white/10">
+        <div class="flex justify-center items-center gap-4 mb-10">
+            <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-5 logo-ribete" alt="wilkIA">
         </div>
-        <p class="text-slate-600 text-[9px] font-black tracking-[0.5em] uppercase">© 2026 WILKIA SYSTEMS</p>
+        <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
