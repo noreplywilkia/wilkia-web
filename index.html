@@ -18,7 +18,7 @@
             overflow-x: hidden;
         }
 
-        /* LOGO VISIBILITY */
+        /* LOGO VISIBILITY & GLOW */
         .brand-fix {
             filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2);
         }
@@ -28,7 +28,8 @@
                 drop-shadow(1px 1px 0px white) 
                 drop-shadow(-1px -1px 0px white) 
                 drop-shadow(1px -1px 0px white) 
-                drop-shadow(-1px 1px 0px white);
+                drop-shadow(-1px 1px 0px white)
+                drop-shadow(0 0 8px rgba(255,255,255,0.5)); /* Brillo extra unificado */
         }
 
         /* ANIMACIONES */
@@ -206,7 +207,7 @@
         </div>
     </section>
 
-    <!-- CONTACTO CORREGIDO CON TELÉFONO -->
+    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -240,11 +241,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (CORREGIDO) -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
-            <img src="images/logo.png" class="h-10 brand-fix" alt="L">
-            <img src="images/logo_nombre.png" class="h-5 logo-ribete opacity-60" alt="wilkIA">
+            <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-5 logo-ribete" alt="wilkIA">
         </div>
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
