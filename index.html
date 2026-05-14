@@ -60,6 +60,58 @@
         input:focus { border-color: var(--accent) !important; }
     </style>
 </head>
+    <!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h3>Cookies</h3>
+    <p>
+      Utilizamos cookies propias y de terceros para mejorar la experiencia,
+      analizar el tráfico y personalizar contenido.
+    </p>
+
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Aceptar todas</button>
+      <button id="reject-cookies">Rechazar</button>
+      <button id="config-cookies">Configurar</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE SETTINGS -->
+<div id="cookie-modal" class="cookie-modal hidden">
+  <div class="cookie-modal-content">
+    <h2>Configuración de Cookies</h2>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" checked disabled />
+        Cookies necesarias
+      </label>
+      <p>Necesarias para el funcionamiento de la web.</p>
+    </div>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" id="analytics-cookies" />
+        Cookies analíticas
+      </label>
+      <p>Nos ayudan a entender cómo se usa la web.</p>
+    </div>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" id="marketing-cookies" />
+        Cookies de marketing
+      </label>
+      <p>Usadas para contenido y publicidad personalizada.</p>
+    </div>
+
+    <div class="cookie-buttons">
+      <button id="save-preferences">Guardar preferencias</button>
+      <button id="close-modal">Cerrar</button>
+    </div>
+  </div>
+</div>
 <body>
 
     <!-- NAVBAR -->
