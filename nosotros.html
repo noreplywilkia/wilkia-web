@@ -11,6 +11,7 @@
         :root { --accent: #2563eb; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
 
+        /* Estética de marca */
         .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
         .logo-ribete { 
             filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px -1px 0px white) 
@@ -18,12 +19,14 @@
                     drop-shadow(0 0 8px rgba(255,255,255,0.5)); 
         }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* Animaciones de entrada */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* Tarjetas y Contenedores */
         .glass-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
         }
@@ -33,6 +36,7 @@
             overflow: hidden;
             border-radius: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #0f172a;
         }
         
         .img-container img {
@@ -46,7 +50,7 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (IDÉNTICA A INDEX.HTML) -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -60,162 +64,94 @@
                 <a href="nosotros.html" class="text-white transition-all underline decoration-blue-500 underline-offset-8">Nosotros</a>
                 <a href="index.html#faq" class="hover:text-blue-400 transition-all">FAQ</a>
             </div>
-            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all">
+            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
                 Demo Gratuita
             </a>
         </div>
     </nav>
 
-    <main class="pt-56 pb-24 px-6">
-        <div class="max-w-6xl mx-auto">
+    <main>
+        <!-- SECCIÓN HERO (CENTRADA Y ELEVADA) -->
+        <section class="pt-32 pb-16 px-6 text-center relative overflow-hidden">
+            <!-- Aura de fondo -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-600/10 blur-[130px] -z-10"></div>
             
-           <!-- CABECERA ESTILO HERO PRINCIPAL -->
-    <section class="pt-48 pb-12 px-6 text-center relative overflow-hidden">
-        <!-- Resplandor de fondo -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-600/10 blur-[130px] -z-10"></div>
-        
-        <div class="max-w-5xl mx-auto reveal">
-            <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[11px] mb-8 block">
-                El equipo detrás del sistema
-            </span>
-            <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-10">
-                Ingeniería para <br><span class="italic text-blue-500">tu rentabilidad.</span>
-            </h1>
-            <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-tight font-medium opacity-80">
-                Arquitectura de datos y diseño estratégico pensado para la próxima generación de empresas.
-            </p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE CONTENIDO (SIN ESPACIOS EXCESIVOS) -->
-    <section class="pb-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            
-            <!-- GRID DE IMÁGENES Y TEXTO -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
-                <!-- Imagen Principal -->
-                <div class="md:col-span-8 img-container h-[400px] reveal">
-                    <img src="images/equipo-1.jpg" class="w-full h-full object-cover" alt="Equipo wilkIA">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
-                    <p class="absolute bottom-8 left-8 text-white font-bold tracking-widest text-xs uppercase">Ecosistema de Innovación</p>
-                </div>
-
-                <!-- Tarjeta de Texto lateral -->
-                <div class="md:col-span-4 glass-card p-10 flex flex-col justify-center border-blue-500/20 reveal">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-500 italic">Código Limpio</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Construimos arquitecturas escalables que procesan datos en milisegundos para darte respuestas inmediatas.
-                    </p>
-                </div>
-
-                <!-- Tarjeta de Texto inferior -->
-                <div class="md:col-span-4 glass-card p-10 border-white/5 reveal">
-                    <h3 class="text-2xl font-bold mb-4 text-white">Cultura Dev</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Metodologías Agile y seguridad de grado empresarial para que tu información esté siempre protegida.
-                    </p>
-                </div>
-
-                <!-- Imagen Secundaria -->
-                <div class="md:col-span-8 img-container h-[400px] reveal">
-                    <img src="images/programacion.jpg" class="w-full h-full object-cover" alt="Programación">
-                </div>
+            <div class="max-w-5xl mx-auto reveal active">
+                <span class="text-blue-500 font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">
+                    El equipo detrás del sistema
+                </span>
+                <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-10">
+                    Ingeniería para <br><span class="italic text-blue-500">tu rentabilidad.</span>
+                </h1>
+                <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-2 leading-tight font-medium opacity-80">
+                    Arquitectura de datos y diseño estratégico pensado para la próxima generación de empresas.
+                </p>
             </div>
+        </section>
 
-            <!-- SECCIÓN MANIFIESTO + WORKSHOP -->
-            <div class="glass-card overflow-hidden border-white/10 reveal">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 p-12 md:p-16">
-                        <h2 class="text-3xl md:text-5xl font-black italic mb-8 tracking-tight">Datos que se vuelven <span class="text-blue-500">estrategia.</span></h2>
-                        <div class="grid sm:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-3">Análisis Predictivo</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Entiende qué pasará mañana con tus costes y márgenes hoy mismo.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-3">Diseño UX</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Interfaz diseñada para que el control de gestión sea intuitivo y rápido.</p>
-                            </div>
-                        </div>
+        <!-- SECCIÓN GALERÍA Y TEXTO -->
+        <section class="pb-24 px-6">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- GRID PRINCIPAL -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+                    <!-- Foto Equipo 1 -->
+                    <div class="md:col-span-8 img-container h-[450px] reveal">
+                        <img src="images/equipo-1.jpg" class="w-full h-full object-cover" alt="Equipo trabajando">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+                        <p class="absolute bottom-8 left-8 text-white font-bold tracking-widest text-[10px] uppercase">Ecosistema de Innovación</p>
                     </div>
-                    <div class="lg:w-1/2 img-container min-h-[350px]">
-                        <img src="images/workshop.jpg" class="w-full h-full object-cover" alt="Workshop">
-                        <div class="absolute inset-0 bg-blue-600/10 mix-blend-overlay"></div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </main>
-
-    <!-- EL RESTO DEL CONTENIDO (GRID DE IMÁGENES) CONTINÚA AQUÍ -->
-    <section class="pb-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <!-- GRID DE IMÁGENES Y TEXTO (Aquí el código que ya teníamos) -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
-                ...
-            </div>
-        </div>
-    </section>
-
-            <!-- GRID DE IMÁGENES Y TEXTO -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
-                <!-- Imagen Principal -->
-                <div class="md:col-span-8 img-container h-[400px] reveal">
-                    <img src="images/equipo-1.jpg" class="w-full h-full object-cover" alt="Equipo wilkIA trabajando">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
-                    <p class="absolute bottom-8 left-8 text-white font-bold tracking-widest text-xs uppercase">Ecosistema de Innovación</p>
-                </div>
-
-                <!-- Tarjeta de Texto lateral -->
-                <div class="md:col-span-4 glass-card p-10 flex flex-col justify-center border-blue-500/20 reveal" style="transition-delay: 0.1s">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-500 italic">Código Limpio</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Nuestros desarrolladores no solo escriben código; construyen arquitecturas escalables que procesan miles de datos en milisegundos para darte respuestas inmediatas.
-                    </p>
-                </div>
-
-                <!-- Tarjeta de Texto inferior -->
-                <div class="md:col-span-4 glass-card p-10 border-white/5 reveal" style="transition-delay: 0.2s">
-                    <h3 class="text-2xl font-bold mb-4 text-white">Cultura Dev</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Metodologías Agile y revisiones constantes de seguridad para que tu información empresarial esté siempre protegida y disponible.
-                    </p>
-                </div>
-
-                <!-- Imagen Secundaria -->
-                <div class="md:col-span-8 img-container h-[400px] reveal" style="transition-delay: 0.3s">
-                    <img src="images/programacion.jpg" class="w-full h-full object-cover" alt="Programación de wilkIA">
-                </div>
-            </div>
-
-            <!-- SECCIÓN MANIFIESTO + WORKSHOP -->
-            <div class="glass-card overflow-hidden border-white/10 mb-24 reveal">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 p-12 md:p-20">
-                        <h2 class="text-3xl md:text-5xl font-black italic mb-10 tracking-tight">Donde los datos se vuelven <span class="text-blue-500">estrategia.</span></h2>
-                        <p class="text-xl text-slate-300 leading-relaxed mb-8">
-                            En wilkIA, nacimos de la necesidad de aportar claridad técnica a procesos de producción complejos. 
+                    <!-- Tarjeta Lateral -->
+                    <div class="md:col-span-4 glass-card p-10 flex flex-col justify-center border-blue-500/20 reveal">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-500 italic leading-none">Código Limpio</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Construimos arquitecturas escalables que procesan miles de datos en milisegundos para darte respuestas en tiempo real.
                         </p>
-                        <div class="grid sm:grid-cols-2 gap-8 mt-12">
-                            <div>
-                                <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Análisis Predictivo</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">No nos conformamos con decirte qué pasó ayer. Nuestro sistema ayuda a entender qué pasará mañana.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Diseño UX</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Una interfaz diseñada para que el control de márgenes sea fluido e intuitivo.</p>
-                            </div>
-                        </div>
                     </div>
-                    <!-- AQUÍ LA IMAGEN DE WORKSHOP -->
-                    <div class="lg:w-1/2 img-container min-h-[400px]">
-                        <img src="images/workshop.jpg" class="w-full h-full object-cover" alt="Sesión de diseño wilkIA">
-                        <div class="absolute inset-0 bg-blue-600/10 mix-blend-overlay"></div>
+
+                    <!-- Tarjeta Inferior -->
+                    <div class="md:col-span-4 glass-card p-10 border-white/5 reveal">
+                        <h3 class="text-2xl font-bold mb-4 text-white leading-none">Cultura Dev</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Metodologías Agile y revisiones constantes de seguridad para que tu información empresarial esté siempre blindada.
+                        </p>
+                    </div>
+
+                    <!-- Foto Programación -->
+                    <div class="md:col-span-8 img-container h-[400px] reveal">
+                        <img src="images/programacion.jpg" class="w-full h-full object-cover" alt="Desarrollo de software">
+                        <div class="absolute inset-0 bg-blue-600/5"></div>
                     </div>
                 </div>
+
+                <!-- SECCIÓN MANIFIESTO + WORKSHOP -->
+                <div class="glass-card overflow-hidden border-white/10 reveal">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2 p-12 md:p-16 flex flex-col justify-center">
+                            <h2 class="text-3xl md:text-5xl font-black italic mb-8 tracking-tight leading-none">
+                                Datos que se vuelven <span class="text-blue-500">estrategia.</span>
+                            </h2>
+                            <div class="grid sm:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-3">Análisis Predictivo</h4>
+                                    <p class="text-slate-400 text-xs leading-relaxed">No solo analizamos el pasado; proyectamos el futuro de tus márgenes operativos.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-3">Diseño UX</h4>
+                                    <p class="text-slate-400 text-xs leading-relaxed">Hacemos lo complejo sencillo. Una interfaz pensada para la toma de decisiones rápida.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 img-container min-h-[400px]">
+                            <img src="images/workshop.jpg" class="w-full h-full object-cover" alt="Sesión de trabajo">
+                            <div class="absolute inset-0 bg-blue-600/10 mix-blend-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
     </main>
 
     <!-- FOOTER -->
@@ -228,10 +164,15 @@
     </footer>
 
     <script>
+        // Observador para animaciones al hacer scroll
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+            entries.forEach(e => { 
+                if(e.isIntersecting) e.target.classList.add('active'); 
+            });
         }, { threshold: 0.1 });
+
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>
