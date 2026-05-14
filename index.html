@@ -18,89 +18,123 @@
             overflow-x: hidden;
         }
 
-        /* COOKIE BANNER FIX */
-        .cookie-banner {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 1.5rem;
-            z-index: 9999;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        /* LOGO VISIBILITY */
+        .brand-fix {
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2);
         }
 
-        .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
+        /* ANIMACIONES */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
+
+        /* TARJETAS GLASSMORPHISM PREMIUM */
         .glass-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
             border-radius: 2.5rem;
+            box-shadow: 0 20px 50px -15px rgba(0,0,0,0.6);
         }
-        
-        .glow-text { text-shadow: 0 0 25px rgba(37, 99, 235, 0.6); }
-        .tab-btn.active { background: var(--accent); color: white; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); }
+
+        .glow-text {
+            text-shadow: 0 0 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .tab-btn.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        input, textarea { 
-            background: rgba(255, 255, 255, 0.05) !important; 
-            border: 1px solid rgba(255, 255, 255, 0.15) !important; 
-            color: white !important; 
-            outline: none; 
+        details summary::-webkit-details-marker { display:none; }
+        details[open] summary span { transform: rotate(180deg); }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: white !important;
+            outline: none;
         }
-        input:focus, textarea:focus { border-color: var(--accent) !important; }
-        
-        .hidden { display: none !important; }
+        input:focus { border-color: var(--accent) !important; }
     </style>
 </head>
+    <!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h3>Cookies</h3>
+    <p>
+      Utilizamos cookies propias y de terceros para mejorar la experiencia,
+      analizar el tráfico y personalizar contenido.
+    </p>
+
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Aceptar todas</button>
+      <button id="reject-cookies">Rechazar</button>
+      <button id="config-cookies">Configurar</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE SETTINGS -->
+<div id="cookie-modal" class="cookie-modal hidden">
+  <div class="cookie-modal-content">
+    <h2>Configuración de Cookies</h2>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" checked disabled />
+        Cookies necesarias
+      </label>
+      <p>Necesarias para el funcionamiento de la web.</p>
+    </div>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" id="analytics-cookies" />
+        Cookies analíticas
+      </label>
+      <p>Nos ayudan a entender cómo se usa la web.</p>
+    </div>
+
+    <div class="cookie-option">
+      <label>
+        <input type="checkbox" id="marketing-cookies" />
+        Cookies de marketing
+      </label>
+      <p>Usadas para contenido y publicidad personalizada.</p>
+    </div>
+
+    <div class="cookie-buttons">
+      <button id="save-preferences">Guardar preferencias</button>
+      <button id="close-modal">Cerrar</button>
+    </div>
+  </div>
+</div>
 <body>
 
-    <!-- COOKIE BANNER -->
-    <div id="cookie-banner" class="cookie-banner">
-        <div class="cookie-content">
-            <h3 class="font-bold text-lg mb-1">Cookies</h3>
-            <p class="text-xs text-slate-400 mb-4">Mejoramos tu experiencia analizando el tráfico de forma segura.</p>
-            <div class="flex gap-3">
-                <button id="accept-cookies" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Aceptar</button>
-                <button id="reject-cookies" class="bg-white/5 text-slate-300 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Rechazar</button>
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto brand-fix" alt="wilkIA">
             </div>
+            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+                <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
+                <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
+                <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
+                <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
+            </div>
+            <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                Demo Gratuita
+            </a>
         </div>
-    </div>
+    </nav>
 
-    <!-- NAVBAR (MENÚ CORREGIDO) -->
-<nav style="background-color: #020617 !important; visibility: visible !important; opacity: 1 !important;" class="fixed w-full z-[99999] py-4 px-6 border-b border-white/10 top-0 left-0">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Logos -->
-        <div class="flex items-center gap-2 md:gap-3">
-            <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
-            <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto brand-fix" alt="wilkIA">
-        </div>
-        
-        <!-- Enlaces (Escritorio) -->
-        <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-200">
-            <a href="#solucion" class="hover:text-blue-400 transition-all cursor-pointer">Software</a>
-            <a href="#proceso" class="hover:text-blue-400 transition-all cursor-pointer">Método</a>
-            <a href="#contacto" class="hover:text-blue-400 transition-all cursor-pointer">Contacto</a>
-            <a href="#faq" class="hover:text-blue-400 transition-all cursor-pointer">FAQ</a>
-        </div>
-        
-        <!-- Botón -->
-        <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
-            Demo Gratuita
-        </a>
-    </div>
-</nav>
-
-    <!-- HERO -->
-    <section class="pt-64 pb-24 px-6 text-center relative overflow-hidden">
+    <!-- HERO SECTION -->
+    <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
             <h1 class="text-6xl md:text-[115px] font-extrabold tracking-tighter leading-[0.85] mb-12">
@@ -116,7 +150,7 @@
         </div>
     </section>
 
-    <!-- MÉTRICAS -->
+    <!-- MÉTRICAS DE IMPACTO -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -134,7 +168,7 @@
         </div>
     </section>
 
-    <!-- TABS SOFTWARE -->
+    <!-- INTERFAZ SOFTWARE (TABS) -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -152,7 +186,7 @@
         </div>
     </section>
 
-    <!-- MÉTODO -->
+    <!-- MÉTODO / CÓMO FUNCIONA -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -162,38 +196,64 @@
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">01</div>
                     <h3 class="text-2xl font-bold mb-5 text-blue-500">Auditoría</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Analizamos tus bases de datos actuales para detectar fugas de rentabilidad.</p>
+                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Analizamos tus bases de datos actuales para detectar fugas de rentabilidad y procesos ineficientes.</p>
                 </div>
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.1s">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">02</div>
                     <h3 class="text-2xl font-bold mb-5 text-blue-500">Ajuste</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Configuramos el sistema según tus formatos de producción real.</p>
+                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Configuramos el sistema según tus formatos de producción real y necesidades de reporting.</p>
                 </div>
                 <div class="glass-card p-10 relative reveal overflow-hidden border-white/10" style="transition-delay: 0.2s">
                     <div class="text-[120px] font-black text-white/[0.03] absolute -top-10 -right-4 pointer-events-none">03</div>
                     <h3 class="text-2xl font-bold mb-5 text-blue-500">Control</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Toma decisiones estratégicas en tiempo real 24/7.</p>
+                    <p class="text-slate-300 leading-relaxed text-sm opacity-80">Toma decisiones estratégicas en tiempo real basadas en márgenes actualizados 24/7.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MOCKUPS -->
+    <!-- SECCIÓN MULTIDISPOSITIVO (MOCKUPS REALISTAS) -->
     <section class="py-24 px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto glass-card p-10 md:p-20 relative border-blue-500/20">
+        <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 relative border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
+                
                 <div class="lg:w-1/2 reveal">
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-10 italic leading-none text-white">Tu oficina <br>donde estés.</h2>
-                    <p class="text-slate-200 text-lg mb-10 leading-relaxed opacity-90">Diseñado para la precisión en tablet y la agilidad en movilidad.</p>
+                    <span class="bg-blue-600 text-[11px] font-black px-5 py-2 rounded-full mb-8 inline-block uppercase tracking-[0.2em]">Hardware Agnostic</span>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-10 italic leading-none text-white">Tu oficina <br>don de estés.</h2>
+                    <p class="text-slate-200 text-lg mb-10 leading-relaxed opacity-90">
+                        Diseñado para la precisión en tablet y la agilidad en movilidad. wilkIA se adapta al dispositivo del operario y del directivo de forma nativa.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Tablet Interface</div>
+                        <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[11px] font-bold text-white uppercase tracking-widest">Mobile Ready</div>
+                    </div>
                 </div>
+
                 <div class="lg:w-1/2 relative flex items-center justify-center reveal py-12">
-                    <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-2xl overflow-hidden transform -rotate-3">
-                        <img src="images/articulos.png" alt="Tablet" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-blue-600/15 blur-[120px] rounded-full"></div>
+
+                    <!-- TABLET MOCKUP -->
+                    <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-[0_50px_100px_rgba(0,0,0,0.8)] transform -rotate-3 overflow-hidden">
+                        <div class="absolute top-1/2 left-2 -translate-y-1/2 w-1.5 h-1.5 bg-white/10 rounded-full"></div>
+                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
+                            <img src="images/articulos.png" alt="Tablet View" class="w-full h-full object-cover">
+                        </div>
                     </div>
-                    <div class="absolute z-30 bottom-[-20px] right-[-10px] w-[180px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-2xl transform rotate-6 overflow-hidden">
-                        <img src="images/formatos2.png" alt="Móvil" class="w-full h-full object-cover pt-4">
+
+                    <!-- MÓVIL MOCKUP -->
+                    <div class="absolute z-30 bottom-[-20px] right-[-10px] md:right-[-20px] w-[180px] md:w-[220px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform rotate-6 overflow-hidden flex flex-col">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#334155] rounded-b-2xl z-40 flex justify-center items-center">
+                            <div class="w-8 h-1 bg-black/40 rounded-full mb-1"></div>
+                        </div>
+                        <div class="w-full h-full bg-slate-900 overflow-hidden border border-white/5">
+                            <img src="images/formatos2.png" alt="Mobile View" class="w-full h-full object-cover pt-4">
+                        </div>
+                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/20 rounded-full"></div>
                     </div>
+                    
+                    <div class="absolute bottom-0 w-[80%] h-4 bg-black/40 blur-xl rounded-full translate-y-10"></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -201,39 +261,71 @@
     <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">FAQ</h2>
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal tracking-tight">Preguntas Frecuentes</h2>
             <div class="space-y-5">
-                <details class="glass-card p-8 reveal cursor-pointer group">
+                <details class="glass-card p-8 reveal cursor-pointer group border-white/10">
                     <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
-                        ¿Cómo integro mis datos? <span class="text-blue-500">↓</span>
+                        ¿Cómo integro mis datos? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
                     </summary>
-                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">Realizamos la carga masiva inicial por ti. En 48h estarás operando.</p>
+                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">Realizamos la carga masiva inicial por ti. Solo necesitamos tus listados y en 48h estarás operando con wilkIA.</p>
+                </details>
+                <details class="glass-card p-8 reveal cursor-pointer group border-white/10">
+                    <summary class="list-none font-bold text-lg flex justify-between items-center text-white">
+                        ¿Es compatible con mi ERP? <span class="text-blue-500 transition-transform group-open:rotate-180">↓</span>
+                    </summary>
+                    <p class="mt-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-6">wilkIA es el complemento perfecto para el control de costes analítico que un ERP genérico no suele ofrecer.</p>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO (CORREGIDO CON TELÉFONO Y MENSAJE) -->
+    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
-            <div class="glass-card overflow-hidden border-blue-500/30">
+            <div class="glass-card overflow-hidden shadow-[0_0_80px_rgba(37,99,235,0.15)] border-blue-500/30">
                 <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-12 bg-gradient-to-b from-blue-600/15 to-transparent">
-                        <h2 class="text-6xl font-black italic tracking-tighter leading-[0.8] mb-10">Empieza <br>hoy <br><span class="text-blue-500">mismo.</span></h2>
+                    <div class="lg:w-2/5 p-12 md:p-20 bg-gradient-to-b from-blue-600/15 to-transparent border-b lg:border-b-0 lg:border-r border-white/10">
+                        <h2 class="text-6xl md:text-7xl font-black italic tracking-tighter leading-[0.8] mb-10 text-white">Empieza <br>hoy <br><span class="text-blue-500">mismo.</span></h2>
+                        <div class="space-y-8 mt-16">
+                            <div class="flex gap-5">
+                                <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
+                                <p class="text-white font-medium text-sm opacity-90">Demo personalizada en 24h.</p>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-[11px] font-black">✓</div>
+                                <p class="text-white font-medium text-sm opacity-90">Soporte directo ilimitado.</p>
+                            </div>
+                        </div>
                     </div>
                     <form action="https://formspree.io/f/noreply.wilkia@gmail.com" method="POST" class="flex-1 p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <input type="text" name="nombre" placeholder="Nombre completo" class="p-5 rounded-2xl" required>
-                        <input type="text" name="empresa" placeholder="Empresa" class="p-5 rounded-2xl">
-                        <input type="email" name="email" placeholder="Email corporativo" class="p-5 rounded-2xl" required>
-                        <input type="tel" name="telefono" placeholder="Teléfono" class="p-5 rounded-2xl" required>
-                        <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="4" class="p-5 rounded-2xl md:col-span-2"></textarea>
-                        <button type="submit" class="md:col-span-2 bg-blue-600 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/40">Solicitar Acceso</button>
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Nombre</label>
+                            <input type="text" name="nombre" class="w-full p-5 rounded-2xl transition-all" required>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Empresa</label>
+                            <input type="text" name="empresa" class="w-full p-5 rounded-2xl transition-all">
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Email Profesional</label>
+                            <input type="email" name="email" class="w-full p-5 rounded-2xl transition-all" required>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Teléfono</label>
+                            <input type="tel" name="telefono" class="w-full p-5 rounded-2xl transition-all" required>
+                        </div>
+                        <div class="flex flex-col gap-3 md:col-span-2">
+                            <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400 ml-1">Mensaje</label>
+                            <textarea name="mensaje" rows="4" class="w-full p-5 rounded-2xl transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm transition-all shadow-2xl shadow-blue-600/40 active:scale-95">Solicitar Acceso</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="L">
@@ -243,17 +335,13 @@
     </footer>
 
     <script>
-        // Cookies
-        document.getElementById('accept-cookies').onclick = () => document.getElementById('cookie-banner').classList.add('hidden');
-        document.getElementById('reject-cookies').onclick = () => document.getElementById('cookie-banner').classList.add('hidden');
-
-        // Observer
+        // Animación Reveal al Scroll
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Tabs
+        // Navegación de Pestañas (Software)
         function tab(name, btn) {
             const img = document.getElementById('view');
             img.style.opacity = '0';
@@ -261,8 +349,12 @@
                 img.src = `images/${name}.png`;
                 img.style.opacity = '1';
             }, 200);
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('text-slate-400');
+            });
             btn.classList.add('active');
+            btn.classList.remove('text-slate-400');
         }
     </script>
 </body>
