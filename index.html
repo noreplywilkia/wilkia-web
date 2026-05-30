@@ -25,10 +25,10 @@
 
         .logo-ribete {
             filter: 
-                drop-shadow(1px 1px 0px white) 
-                drop-shadow(-1px -1px 0px white) 
-                drop-shadow(1px -1px 0px white) 
-                drop-shadow(-1px 1px 0px white)
+                drop-shadow(1px 1px 0px white) \
+                drop-shadow(-1px -1px 0px white) \
+                drop-shadow(1px -1px 0px white) \
+                drop-shadow(-1px 1px 0px white) \
                 drop-shadow(0 0 8px rgba(255,255,255,0.5)); /* Brillo extra unificado */
         }
 
@@ -72,28 +72,26 @@
 </head>
 <body class="relative">
 
-    <!-- NAVBAR ACTUALIZADA EN INDEX.HTML -->
-<nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="flex items-center gap-2 md:gap-3">
-            <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
-            <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto logo-ribete" alt="wilkIA">
+    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto logo-ribete" alt="wilkIA">
+            </div>
+            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+                <a href="#" class="text-white transition-all">Inicio</a>
+                <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
+                <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
+                <a href="nosotros.html" class="hover:text-blue-400 transition-all">Nosotros</a>
+                <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
+                <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
+            </div>
+            <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                Demo Gratuita
+            </a>
         </div>
-        <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
-            <a href="#" class="text-white transition-all">Inicio</a>
-            <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
-            <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
-            <a href="nosotros.html" class="hover:text-blue-400 transition-all">Nosotros</a>
-            <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
-            <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
-        </div>
-        <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
-            Demo Gratuita
-        </a>
-    </div>
-</nav>
+    </nav>
 
-    <!-- HERO -->
     <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
@@ -110,7 +108,6 @@
         </div>
     </section>
 
-    <!-- METRICAS -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -128,7 +125,6 @@
         </div>
     </section>
 
-    <!-- SOFTWARE TABS -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -146,7 +142,6 @@
         </div>
     </section>
 
-    <!-- METODO -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -172,7 +167,6 @@
         </div>
     </section>
 
-    <!-- MULTIDISPOSITIVO -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -184,17 +178,16 @@
                 <div class="lg:w-1/2 relative flex items-center justify-center reveal py-12">
                     <div class="absolute inset-0 bg-blue-600/15 blur-[120px] rounded-full"></div>
                     <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-[0_50px_100px_rgba(0,0,0,0.8)] transform -rotate-3 overflow-hidden">
-                        <img src="images/articulos.png" class="w-full h-full object-cover">
+                        <img src="images/articulos.png" class="w-full h-full object-cover" alt="Artículos">
                     </div>
                     <div class="absolute z-30 bottom-[-20px] right-[-10px] w-[180px] md:w-[220px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform rotate-6 overflow-hidden">
-                        <img src="images/formatos2.png" class="w-full h-full object-cover pt-4">
+                        <img src="images/formatos2.png" class="w-full h-full object-cover pt-4" alt="Formatos">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">Preguntas Frecuentes</h2>
@@ -209,7 +202,6 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -243,7 +235,6 @@
         </div>
     </section>
 
-    <!-- FOOTER (CORREGIDO) -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
@@ -252,7 +243,6 @@
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
-    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 z-[200] max-w-4xl mx-auto">
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
@@ -266,7 +256,6 @@
         </div>
     </div>
 
-    <!-- CONFIG COOKIES MODAL -->
     <div id="cookie-config" class="hidden fixed inset-0 z-[210] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6">
         <div class="glass-card max-w-md w-full p-10 border-white/10">
             <h3 class="text-2xl font-bold mb-6 text-white italic">Ajustes de Cookies</h3>
@@ -278,53 +267,6 @@
         </div>
     </div>
 
-    // ... aquí termina tu función tab() original (línea 280) ...
-            btn.classList.add('active');
-            btn.classList.remove('text-slate-400');
-        }
-
-        // CONTROL DEL ENVÍO POR AJAX (Pégalo aquí, en la línea 282)
-        const form = document.getElementById("contacto-form");
-
-        form.addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
-            const button = form.querySelector("button[type='submit']");
-            const originalText = button.innerText;
-            button.innerText = "ENVIANDO...";
-            button.disabled = true;
-
-            const data = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    form.innerHTML = `
-                        <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
-                            <div class="text-6xl mb-6">✉️</div>
-                            <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
-                            <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
-                        </div>
-                    `;
-                } else {
-                    alert("Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.");
-                    button.innerText = originalText;
-                    button.disabled = false;
-                }
-            } catch (error) {
-                alert("Error de conexión. Revisa tu red e inténtalo más tarde.");
-                button.innerText = originalText;
-                button.disabled = false;
-            }
-        });
-    </script>
-</body>
-</html>
     <script>
         // Reveal animation
         const observer = new IntersectionObserver(entries => {
@@ -361,6 +303,48 @@
             localStorage.setItem('cookiesAccepted', 'true');
             document.getElementById('cookie-banner').classList.remove('show');
             document.getElementById('cookie-config').classList.add('hidden');
+        }
+
+        // Intercepción de Formspree por AJAX (Evita redirecciones)
+        const form = document.getElementById("contacto-form");
+        if (form) {
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault(); // Detiene radicalmente el salto de página
+                
+                const button = form.querySelector("button[type='submit']");
+                const originalText = button.innerText;
+                button.innerText = "ENVIANDO...";
+                button.disabled = true;
+
+                const data = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        // Reemplaza el diseño interno del formulario por la tarjeta de éxito
+                        form.innerHTML = `
+                            <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
+                                <div class="text-6xl mb-6">✉️</div>
+                                <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
+                                <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
+                            </div>
+                        `;
+                    } else {
+                        alert("Hubo un problema al enviar el formulario a Formspree. Por favor, verifica la ID de tu cuenta.");
+                        button.innerText = originalText;
+                        button.disabled = false;
+                    }
+                } catch (error) {
+                    alert("Error de conexión. Revisa tu red de internet e inténtalo más tarde.");
+                    button.innerText = originalText;
+                    button.disabled = false;
+                }
+            });
         }
     </script>
 </body>
