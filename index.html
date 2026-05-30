@@ -29,7 +29,7 @@
                 drop-shadow(-1px -1px 0px white) \
                 drop-shadow(1px -1px 0px white) \
                 drop-shadow(-1px 1px 0px white) \
-                drop-shadow(0 0 8px rgba(255,255,255,0.5)); /* Brillo extra unificado */
+                drop-shadow(0 0 8px rgba(255,255,255,0.5));
         }
 
         /* ANIMACIONES */
@@ -72,6 +72,7 @@
 </head>
 <body class="relative">
 
+    <!-- NAVBAR -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -92,6 +93,7 @@
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
@@ -108,6 +110,7 @@
         </div>
     </section>
 
+    <!-- METRICAS -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -125,6 +128,7 @@
         </div>
     </section>
 
+    <!-- SOFTWARE TABS -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -142,6 +146,7 @@
         </div>
     </section>
 
+    <!-- METODO -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -167,6 +172,7 @@
         </div>
     </section>
 
+    <!-- MULTIDISPOSITIVO -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -188,6 +194,7 @@
         </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">Preguntas Frecuentes</h2>
@@ -202,6 +209,7 @@
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -235,6 +243,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
@@ -243,6 +252,7 @@
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
+    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 z-[200] max-w-4xl mx-auto">
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
@@ -256,6 +266,7 @@
         </div>
     </div>
 
+    <!-- CONFIG COOKIES MODAL -->
     <div id="cookie-config" class="hidden fixed inset-0 z-[210] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6">
         <div class="glass-card max-w-md w-full p-10 border-white/10">
             <h3 class="text-2xl font-bold mb-6 text-white italic">Ajustes de Cookies</h3>
@@ -267,14 +278,15 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE CONTROL PARA COMPORTAMIENTO AJAX INTELLIGENT -->
     <script>
-        // Reveal animation
+        // Animación Reveal original
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Tabs logic
+        // Lógica de pestañas (Tabs) original
         function tab(name, btn) {
             const img = document.getElementById('view');
             img.style.opacity = '0';
@@ -290,7 +302,7 @@
             btn.classList.remove('text-slate-400');
         }
 
-        // Cookie logic
+        // Lógica de Cookies original
         window.onload = function() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
@@ -305,11 +317,12 @@
             document.getElementById('cookie-config').classList.add('hidden');
         }
 
-        // Intercepción de Formspree por AJAX (Evita redirecciones)
+        // Captura e intercepción del formulario con soporte reCAPTCHA de Formspree sin claves
         const form = document.getElementById("contacto-form");
+        
         if (form) {
             form.addEventListener("submit", async function(event) {
-                event.preventDefault(); // Detiene radicalmente el salto de página
+                event.preventDefault(); // Bloquea por completo la redirección molesta
                 
                 const button = form.querySelector("button[type='submit']");
                 const originalText = button.innerText;
@@ -325,26 +338,40 @@
                         headers: { 'Accept': 'application/json' }
                     });
 
+                    // Caso 1: Envío procesado con éxito directo
                     if (response.ok) {
-                        // Reemplaza el diseño interno del formulario por la tarjeta de éxito
-                        form.innerHTML = `
-                            <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
-                                <div class="text-6xl mb-6">✉️</div>
-                                <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
-                                <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
-                            </div>
-                        `;
-                    } else {
-                        alert("Hubo un problema al enviar el formulario a Formspree. Por favor, verifica la ID de tu cuenta.");
+                        mostrarExito();
+                    } 
+                    // Caso 2: Formspree sospecha de SPAM o exige reCAPTCHA (Código HTTP 402)
+                    else if (response.status === 402) {
+                        button.innerText = originalText;
+                        button.disabled = false;
+                        
+                        // Redirige únicamente al flujo seguro de reCAPTCHA de Formspree
+                        window.location.href = form.action + "/recaptcha";
+                    } 
+                    else {
+                        alert("Hubo un problema al procesar los datos. Por favor, inténtalo de nuevo.");
                         button.innerText = originalText;
                         button.disabled = false;
                     }
                 } catch (error) {
-                    alert("Error de conexión. Revisa tu red de internet e inténtalo más tarde.");
+                    alert("Error de conexión. Revisa tu red de internet.");
                     button.innerText = originalText;
                     button.disabled = false;
                 }
             });
+        }
+
+        // Renderizado del mensaje de éxito dinámico en pantalla
+        function mostrarExito() {
+            form.innerHTML = `
+                <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
+                    <div class="text-6xl mb-6">✉️</div>
+                    <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
+                </div>
+            `;
         }
     </script>
 </body>
