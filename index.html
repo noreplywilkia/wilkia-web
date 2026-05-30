@@ -278,7 +278,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE CONTROL PARA COMPORTAMIENTO AJAX INTELLIGENT -->
+    <!-- SCRIPTS -->
     <script>
         // Animación Reveal original
         const observer = new IntersectionObserver(entries => {
@@ -317,49 +317,61 @@
             document.getElementById('cookie-config').classList.add('hidden');
         }
 
-        // Captura e intercepción del formulario con soporte reCAPTCHA de Formspree sin claves
+        // Intercepción del formulario con serialización JSON nativa para soporte reCAPTCHA
         const form = document.getElementById("contacto-form");
         
         if (form) {
-            form.addEventListener("submit", async function(event) {
-                event.preventDefault(); // Bloquea por completo la redirección molesta
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Evita recarga o redirecciones inesperadas
                 
                 const button = form.querySelector("button[type='submit']");
                 const originalText = button.innerText;
                 button.innerText = "ENVIANDO...";
                 button.disabled = true;
 
-                const data = new FormData(form);
+                // Mapeo manual de campos a formato JSON para compatibilidad total con Formspree Spam Engine
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => { data[key] = value; });
                 
-                try {
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    // Caso 1: Envío procesado con éxito directo
+                fetch(form.action, {
+                    method: form.method,
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(async (response) => {
+                    // Caso 1: Envío procesado de forma limpia
                     if (response.ok) {
                         mostrarExito();
                     } 
-                    // Caso 2: Formspree sospecha de SPAM o exige reCAPTCHA (Código HTTP 402)
+                    // Caso 2: Formspree requiere verificación reCAPTCHA (Devuelve código HTTP 402)
                     else if (response.status === 402) {
                         button.innerText = originalText;
                         button.disabled = false;
                         
-                        // Redirige únicamente al flujo seguro de reCAPTCHA de Formspree
+                        // Redirección segura para que completen el captcha de Formspree sin salir de tu entorno
                         window.location.href = form.action + "/recaptcha";
                     } 
+                    // Caso 3: Error de validación interna de campos de tu cuenta Formspree
                     else {
-                        alert("Hubo un problema al procesar los datos. Por favor, inténtalo de nuevo.");
+                        const errorData = await response.json();
+                        if (errorData.errors) {
+                            alert("Ajuste requerido: " + errorData.errors.map(e => e.message).join(", "));
+                        } else {
+                            alert("Hubo un problema de procesamiento con Formspree.");
+                        }
                         button.innerText = originalText;
                         button.disabled = false;
                     }
-                } catch (error) {
+                })
+                .catch((error) => {
                     alert("Error de conexión. Revisa tu red de internet.");
                     button.innerText = originalText;
                     button.disabled = false;
-                }
+                });
             });
         }
 
