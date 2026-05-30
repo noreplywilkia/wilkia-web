@@ -217,7 +217,7 @@
                     <div class="lg:w-2/5 p-12 md:p-20 bg-gradient-to-b from-blue-600/15 to-transparent border-b lg:border-b-0 lg:border-r border-white/10">
                         <h2 class="text-6xl md:text-7xl font-black italic tracking-tighter leading-[0.8] mb-10 text-white">Empieza <br>hoy <br><span class="text-blue-500">mismo.</span></h2>
                     </div>
-                    <form action="https://formspree.io/f/mlgvkeop" method="POST" class="flex-1 p-10 md:p-20">
+                    <form id="contacto-form" action="https://formspree.io/f/TU_CÓDIGO_AQUÍ" method="POST" class="flex-1 p-10 md:p-20">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                             <div class="flex flex-col gap-3">
                                 <label class="text-[11px] uppercase font-black tracking-[0.2em] text-slate-400">Nombre</label>
@@ -278,6 +278,53 @@
         </div>
     </div>
 
+    // ... aquí termina tu función tab() original (línea 280) ...
+            btn.classList.add('active');
+            btn.classList.remove('text-slate-400');
+        }
+
+        // CONTROL DEL ENVÍO POR AJAX (Pégalo aquí, en la línea 282)
+        const form = document.getElementById("contacto-form");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const button = form.querySelector("button[type='submit']");
+            const originalText = button.innerText;
+            button.innerText = "ENVIANDO...";
+            button.disabled = true;
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.innerHTML = `
+                        <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
+                            <div class="text-6xl mb-6">✉️</div>
+                            <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
+                            <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
+                        </div>
+                    `;
+                } else {
+                    alert("Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.");
+                    button.innerText = originalText;
+                    button.disabled = false;
+                }
+            } catch (error) {
+                alert("Error de conexión. Revisa tu red e inténtalo más tarde.");
+                button.innerText = originalText;
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
     <script>
         // Reveal animation
         const observer = new IntersectionObserver(entries => {
