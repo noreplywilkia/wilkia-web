@@ -25,10 +25,10 @@
 
         .logo-ribete {
             filter: 
-                drop-shadow(1px 1px 0px white) \
-                drop-shadow(-1px -1px 0px white) \
-                drop-shadow(1px -1px 0px white) \
-                drop-shadow(-1px 1px 0px white) \
+                drop-shadow(1px 1px 0px white) 
+                drop-shadow(-1px -1px 0px white) 
+                drop-shadow(1px -1px 0px white) 
+                drop-shadow(-1px 1px 0px white)
                 drop-shadow(0 0 8px rgba(255,255,255,0.5));
         }
 
@@ -72,7 +72,6 @@
 </head>
 <body class="relative">
 
-    <!-- NAVBAR -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -93,7 +92,6 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
@@ -110,7 +108,6 @@
         </div>
     </section>
 
-    <!-- METRICAS -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -128,7 +125,6 @@
         </div>
     </section>
 
-    <!-- SOFTWARE TABS -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -141,12 +137,11 @@
                 </div>
             </div>
             <div class="flex-1 p-6 md:p-14 flex items-center justify-center bg-black/40 min-h-[400px] md:min-h-[650px]">
-                <img id="view" src="images/escandallo.png" class="max-w-full h-auto rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 transition-opacity duration-300">
+                <img id="view" src="images/escandallo.png" class="max-w-full h-auto rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 transition-opacity duration-300" alt="Módulos">
             </div>
         </div>
     </section>
 
-    <!-- METODO -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -172,7 +167,6 @@
         </div>
     </section>
 
-    <!-- MULTIDISPOSITIVO -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -184,17 +178,16 @@
                 <div class="lg:w-1/2 relative flex items-center justify-center reveal py-12">
                     <div class="absolute inset-0 bg-blue-600/15 blur-[120px] rounded-full"></div>
                     <div class="relative z-10 w-full max-w-[480px] aspect-[4/3] bg-[#0f172a] rounded-[2rem] border-[12px] border-[#1e293b] shadow-[0_50px_100px_rgba(0,0,0,0.8)] transform -rotate-3 overflow-hidden">
-                        <img src="images/articulos.png" class="w-full h-full object-cover" alt="Artículos">
+                        <img src="images/articulos.png" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute z-30 bottom-[-20px] right-[-10px] w-[180px] md:w-[220px] aspect-[9/19] bg-[#0f172a] rounded-[2.5rem] border-[7px] border-[#334155] shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform rotate-6 overflow-hidden">
-                        <img src="images/formatos2.png" class="w-full h-full object-cover pt-4" alt="Formatos">
+                        <img src="images/formatos2.png" class="w-full h-full object-cover pt-4">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">Preguntas Frecuentes</h2>
@@ -209,7 +202,6 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -243,7 +235,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
@@ -252,7 +243,6 @@
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
-    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 z-[200] max-w-4xl mx-auto">
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
@@ -266,7 +256,6 @@
         </div>
     </div>
 
-    <!-- CONFIG COOKIES MODAL -->
     <div id="cookie-config" class="hidden fixed inset-0 z-[210] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6">
         <div class="glass-card max-w-md w-full p-10 border-white/10">
             <h3 class="text-2xl font-bold mb-6 text-white italic">Ajustes de Cookies</h3>
@@ -278,15 +267,14 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
-        // Animación Reveal original
+        // Animaciones de scroll (Reveal)
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Lógica de pestañas (Tabs) original
+        // Lógica de pestañas (Tabs)
         function tab(name, btn) {
             const img = document.getElementById('view');
             img.style.opacity = '0';
@@ -302,7 +290,7 @@
             btn.classList.remove('text-slate-400');
         }
 
-        // Lógica de Cookies original
+        // Gestión de Cookies
         window.onload = function() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
@@ -317,68 +305,15 @@
             document.getElementById('cookie-config').classList.add('hidden');
         }
 
-        // Intercepción del formulario compatible al 100% con el filtro reCAPTCHA nativo de Formspree
+        // Cambio de texto cosmético al hacer clic en enviar
         const form = document.getElementById("contacto-form");
-        
         if (form) {
-            form.addEventListener("submit", async function(event) {
-                event.preventDefault(); // Evita recarga o saltos de página incómodos
-                
+            form.addEventListener("submit", function() {
                 const button = form.querySelector("button[type='submit']");
-                const originalText = button.innerText;
-                button.innerText = "ENVIANDO...";
-                button.disabled = true;
-
-                // Enviamos los datos usando FormData puro (clave para que Formspree no devuelva error general)
-                const data = new FormData(form);
-                
-                try {
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: data,
-                        headers: {
-                            'Accept': 'application/json' // Le dice a Formspree que responda en JSON en vez de redirigir
-                        }
-                    });
-
-                    // Caso 1: Envío procesado limpio (El usuario pasó el filtro invisible de SPAM)
-                    if (response.ok) {
-                        mostrarExito();
-                    } 
-                    // Caso 2: El filtro de Formspree exige que el usuario resuelva un reCAPTCHA (Código HTTP 402)
-                    else if (response.status === 402) {
-                        button.innerText = originalText;
-                        button.disabled = false;
-                        
-                        // Redirección directa al reCAPTCHA nativo oficial de este formulario de Formspree
-                        window.location.href = form.action + "/recaptcha";
-                    } 
-                    // Caso 3: Error de configuración en la cuenta u otro código HTTP
-                    else {
-                        alert("Hubo un problema al procesar los datos en Formspree. Asegúrate de que el formulario esté activo.");
-                        button.innerText = originalText;
-                        button.disabled = false;
-                    }
-                } catch (error) {
-                    alert("Error de conexión. Revisa tu red de internet.");
-                    button.innerText = originalText;
-                    button.disabled = false;
-                }
+                button.innerText = "PROCESANDO ENVÍO...";
+                button.style.opacity = "0.7";
             });
         }
-
-        // Renderizado del mensaje de éxito dinámico en pantalla
-        function mostrarExito() {
-            form.innerHTML = `
-                <div class="flex flex-col items-center justify-center text-center py-12 reveal active">
-                    <div class="text-6xl mb-6">✉️</div>
-                    <h3 class="text-2xl font-bold mb-3 text-white italic">¡Solicitud Recibida!</h3>
-                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed">Hemos recibido tus datos correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
-                </div>
-            `;
-        }
     </script>
-</body>
-</html>
 </body>
 </html>
