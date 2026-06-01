@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>wilkIA | Management OS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&display=swap');
         
@@ -46,7 +46,6 @@
 </head>
 <body class="relative">
 
-    <!-- NAVBAR -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -67,7 +66,6 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
@@ -84,7 +82,6 @@
         </div>
     </section>
 
-    <!-- METRICAS -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -102,7 +99,6 @@
         </div>
     </section>
 
-    <!-- SOFTWARE TABS -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -120,7 +116,6 @@
         </div>
     </section>
 
-    <!-- METODO -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -146,7 +141,6 @@
         </div>
     </section>
 
-    <!-- MULTIDISPOSITIVO -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -168,7 +162,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN NOSOTROS -->
     <section id="nosotros" class="py-28 px-6 bg-slate-950/20 relative">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-20 reveal">
@@ -199,7 +192,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">Preguntas Frecuentes</h2>
@@ -214,7 +206,6 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -254,7 +245,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
@@ -263,12 +253,11 @@
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
-    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 z-[200] max-w-4xl mx-auto">
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
                 <h4 class="text-white font-bold text-lg mb-1">🍪 Privacidad</h4>
-                <p class="text-slate-400 text-sm">Usamos cookies para mejorar tu experience.</p>
+                <p class="text-slate-400 text-sm">Usamos cookies para mejorar tu experiencia.</p>
             </div>
             <div class="flex gap-4 w-full md:w-auto">
                 <button onclick="acceptCookies()" class="flex-1 md:flex-none bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transition-all">Aceptar</button>
@@ -277,7 +266,6 @@
         </div>
     </div>
 
-    <!-- CONFIG COOKIES MODAL -->
     <div id="cookie-config" class="hidden fixed inset-0 z-[210] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6">
         <div class="glass-card max-w-md w-full p-10 border-white/10">
             <h3 class="text-2xl font-bold mb-6 text-white italic">Ajustes de Cookies</h3>
@@ -289,7 +277,6 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
