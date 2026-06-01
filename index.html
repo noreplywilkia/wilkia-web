@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>wilkIA | Management OS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- SCRIPT OFICIAL DE RECAPTCHA DE GOOGLE -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&display=swap');
         
         :root { --accent: #2563eb; }
         
@@ -58,7 +57,7 @@
                 <a href="#" class="text-white transition-all">Inicio</a>
                 <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
                 <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
-                <a href="nosotros.html" class="hover:text-blue-400 transition-all">Nosotros</a>
+                <a href="#nosotros" class="hover:text-blue-400 transition-all">Nosotros</a>
                 <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
                 <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
             </div>
@@ -169,6 +168,37 @@
         </div>
     </section>
 
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="py-28 px-6 bg-slate-950/20 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4">La empresa</p>
+                <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter leading-tight">Nosotros.</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-500">¿Qué es wilkIA?</h3>
+                    <p class="text-slate-300 text-base md:text-lg leading-relaxed mb-6 opacity-80">
+                        Nacimos para dar respuesta a la creciente complejidad en la gestión de costes y control de márgenes de las corporaciones actuales. No desarrollamos software genérico; estructuramos sistemas inteligentes de control operativo.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed opacity-70">
+                        Nuestra filosofía se basa en la absoluta transparencia del dato. Centralizamos la analítica para que tu toma de decisiones estratégicas deje de depender de estimaciones y pase a sustentarse en realidades financieras inmediatas.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full reveal">
+                    <div class="glass-card p-8 bg-white/[0.02] border-white/5">
+                        <h4 class="text-white font-bold text-lg mb-2">Precisión</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Cálculos matemáticos exactos adaptados a tus procesos de producción y distribución en tiempo real.</p>
+                    </div>
+                    <div class="glass-card p-8 bg-white/[0.02] border-white/5 lg:mt-6">
+                        <h4 class="text-white font-bold text-lg mb-2">Simplicidad</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Reducimos interfaces densas a cuadros de mando limpios y accesibles desde cualquier dispositivo corporativo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
@@ -213,9 +243,8 @@
                             <textarea name="mensaje" rows="3" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all"></textarea>
                         </div>
 
-                        <!-- EL BLOQUE DEL RECAPTCHA VISUAL INTEGRADO EN TU WEB -->
                         <div class="mb-8 flex justify-start">
-                            <div class="g-recaptcha" data-sitekey="6LdTpgQtAAAAAHVadiBzKhPL1IdPWQdkgQZAtG7B" data-theme="dark"></div>
+                            <div class="g-recaptcha" data-sitekey="6LfuYpEqAAAAAByG24y5vX25o-Xb7R9Y2uD8bH6k" data-theme="dark"></div>
                         </div>
 
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm shadow-2xl shadow-blue-600/40 active:scale-95 transition-all">Solicitar Acceso</button>
@@ -239,7 +268,7 @@
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
                 <h4 class="text-white font-bold text-lg mb-1">🍪 Privacidad</h4>
-                <p class="text-slate-400 text-sm">Usamos cookies para mejorar tu experiencia.</p>
+                <p class="text-slate-400 text-sm">Usamos cookies para mejorar tu experience.</p>
             </div>
             <div class="flex gap-4 w-full md:w-auto">
                 <button onclick="acceptCookies()" class="flex-1 md:flex-none bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transition-all">Aceptar</button>
@@ -296,7 +325,6 @@
             document.getElementById('cookie-config').classList.add('hidden');
         }
 
-        // CONTROL AJAX + VALIDACIÓN DE RECAPTCHA INTERNO
         const form = document.getElementById("contacto-form");
         const contenedor = document.getElementById("contenedor-formulario");
 
@@ -304,7 +332,6 @@
             form.addEventListener("submit", async function(event) {
                 event.preventDefault();
                 
-                // Comprobamos si el usuario ha marcado el cuadro del captcha antes de enviar
                 const recaptchaResponse = grecaptcha.getResponse();
                 if (!recaptchaResponse) {
                     alert("Por favor, marca la casilla del reCAPTCHA antes de enviar.");
