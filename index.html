@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>wilkIA | Management OS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SCRIPT OFICIAL DE RECAPTCHA DE GOOGLE -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
         :root { --accent: #2563eb; }
         
@@ -46,6 +47,7 @@
 </head>
 <body class="relative">
 
+    <!-- NAVBAR -->
     <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3">
@@ -56,7 +58,7 @@
                 <a href="#" class="text-white transition-all">Inicio</a>
                 <a href="#solucion" class="hover:text-blue-400 transition-all">Software</a>
                 <a href="#proceso" class="hover:text-blue-400 transition-all">Método</a>
-                <a href="#nosotros" class="hover:text-blue-400 transition-all">Nosotros</a>
+                <a href="nosotros.html" class="hover:text-blue-400 transition-all">Nosotros</a>
                 <a href="#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
                 <a href="#faq" class="hover:text-blue-400 transition-all">FAQ</a>
             </div>
@@ -66,6 +68,7 @@
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="pt-56 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/10 blur-[130px] -z-10"></div>
         <div class="max-w-5xl mx-auto reveal">
@@ -82,6 +85,7 @@
         </div>
     </section>
 
+    <!-- METRICAS -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
             <div class="glass-card p-12 text-center border-blue-500/30">
@@ -99,6 +103,7 @@
         </div>
     </section>
 
+    <!-- SOFTWARE TABS -->
     <section id="solucion" class="py-12 px-4">
         <div class="max-w-7xl mx-auto reveal glass-card overflow-hidden flex flex-col lg:flex-row">
             <div class="w-full lg:w-80 p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
@@ -116,6 +121,7 @@
         </div>
     </section>
 
+    <!-- METODO -->
     <section id="proceso" class="py-28 px-6 bg-slate-950/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24 reveal">
@@ -141,6 +147,7 @@
         </div>
     </section>
 
+    <!-- MULTIDISPOSITIVO -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto glass-card bg-gradient-to-br from-blue-900/20 to-black/40 p-10 md:p-20 border-blue-500/20">
             <div class="flex flex-col lg:flex-row items-center gap-20">
@@ -162,36 +169,7 @@
         </div>
     </section>
 
-    <section id="nosotros" class="py-28 px-6 bg-slate-950/20 relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4">La empresa</p>
-                <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter leading-tight">Nosotros.</h2>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-500">¿Qué es wilkIA?</h3>
-                    <p class="text-slate-300 text-base md:text-lg leading-relaxed mb-6 opacity-80">
-                        Nacimos para dar respuesta a la creciente complejidad en la gestión de costes y control de márgenes de las corporaciones actuales. No desarrollamos software genérico; estructuramos sistemas inteligentes de control operativo.
-                    </p>
-                    <p class="text-slate-400 text-sm leading-relaxed opacity-70">
-                        Nuestra filosofía se basa en la absoluta transparencia del dato. Centralizamos la analítica para que tu toma de decisiones estratégicas deje de depender de estimaciones y pase a sustentarse en realidades financieras inmediatas.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full reveal">
-                    <div class="glass-card p-8 bg-white/[0.02] border-white/5">
-                        <h4 class="text-white font-bold text-lg mb-2">Precisión</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Cálculos matemáticos exactos adaptados a tus procesos de producción y distribución en tiempo real.</p>
-                    </div>
-                    <div class="glass-card p-8 bg-white/[0.02] border-white/5 lg:mt-6">
-                        <h4 class="text-white font-bold text-lg mb-2">Simplicidad</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Reducimos interfaces densas a cuadros de mando limpios y accesibles desde cualquier dispositivo corporativo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- FAQ -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-16 text-center italic reveal">Preguntas Frecuentes</h2>
@@ -206,6 +184,7 @@
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto" class="py-28 px-4 relative">
         <div class="max-w-6xl mx-auto reveal">
             <div class="glass-card overflow-hidden border-blue-500/30">
@@ -234,8 +213,9 @@
                             <textarea name="mensaje" rows="3" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all"></textarea>
                         </div>
 
+                        <!-- EL BLOQUE DEL RECAPTCHA VISUAL INTEGRADO EN TU WEB -->
                         <div class="mb-8 flex justify-start">
-                            <div class="g-recaptcha" data-sitekey="6LfuYpEqAAAAAByG24y5vX25o-Xb7R9Y2uD8bH6k" data-theme="dark"></div>
+                            <div class="g-recaptcha" data-sitekey="6LdTpgQtAAAAAHVadiBzKhPL1IdPWQdkgQZAtG7B" data-theme="dark"></div>
                         </div>
 
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-sm shadow-2xl shadow-blue-600/40 active:scale-95 transition-all">Solicitar Acceso</button>
@@ -245,6 +225,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="py-24 text-center border-t border-white/10">
         <div class="flex justify-center items-center gap-4 mb-10">
             <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
@@ -253,6 +234,7 @@
         <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
     </footer>
 
+    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 z-[200] max-w-4xl mx-auto">
         <div class="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-blue-500/40">
             <div class="text-left">
@@ -266,6 +248,7 @@
         </div>
     </div>
 
+    <!-- CONFIG COOKIES MODAL -->
     <div id="cookie-config" class="hidden fixed inset-0 z-[210] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6">
         <div class="glass-card max-w-md w-full p-10 border-white/10">
             <h3 class="text-2xl font-bold mb-6 text-white italic">Ajustes de Cookies</h3>
@@ -277,6 +260,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
@@ -312,14 +296,57 @@
             document.getElementById('cookie-config').classList.add('hidden');
         }
 
-        // Validación cliente para forzar el clic en el captcha antes de procesar nativamente
-        document.getElementById("contacto-form").addEventListener("submit", function(e) {
-            const response = grecaptcha.getResponse();
-            if (!response) {
-                alert("Por favor, marca la casilla del reCAPTCHA antes de enviar.");
-                e.preventDefault();
-            }
-        });
+        // CONTROL AJAX + VALIDACIÓN DE RECAPTCHA INTERNO
+        const form = document.getElementById("contacto-form");
+        const contenedor = document.getElementById("contenedor-formulario");
+
+        if (form && contenedor) {
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                
+                // Comprobamos si el usuario ha marcado el cuadro del captcha antes de enviar
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    alert("Por favor, marca la casilla del reCAPTCHA antes de enviar.");
+                    return;
+                }
+
+                const button = form.querySelector("button[type='submit']");
+                const originalText = button.innerText;
+                button.innerText = "PROCESANDO SOLICITUD...";
+                button.disabled = true;
+
+                const data = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        contenedor.innerHTML = `
+                            <div class="w-full flex flex-col items-center justify-center text-center py-20 px-10 animate-[fadeIn_0.5s_ease]">
+                                <div class="text-6xl mb-6 select-none">✉️</div>
+                                <h3 class="text-3xl font-black mb-4 text-white italic tracking-tight">¡Solicitud Recibida!</h3>
+                                <p class="text-slate-400 max-w-md text-sm leading-relaxed opacity-90">
+                                    Hemos guardado tus datos correctamente en nuestro sistema de seguridad. Un especialista de wilkIA se pondrá en contacto contigo muy pronto.
+                                </p>
+                            </div>
+                        `;
+                    } else {
+                        alert("Error al verificar los datos con Formspree. Por favor, inténtalo de nuevo.");
+                        button.innerText = originalText;
+                        button.disabled = false;
+                    }
+                } catch (error) {
+                    alert("Error de conexión al validar el formulario.");
+                    button.innerText = originalText;
+                    button.disabled = false;
+                }
+            });
+        }
     </script>
 </body>
 </html>
