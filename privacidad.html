@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Política de Privacidad | wilkIA Management OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        
+        :root { --accent: #2563eb; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .brand-fix { filter: drop-shadow(0 0 12px rgba(255,255,255,0.3)) brightness(1.2); }
+        .logo-ribete {
+            filter: drop-shadow(1px 1px 0px white) drop-shadow(-1px -1px 0px white) drop-shadow(1px -1px 0px white) drop-shadow(-1px 1px 0px white) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 50px -15px rgba(0,0,0,0.6);
+        }
+
+        .glow-text { text-shadow: 0 0 25px rgba(37, 99, 235, 0.6); }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-[100] py-4 px-6 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3">
+                <img src="images/logo.png" class="h-9 md:h-11 w-auto brand-fix" alt="Logo">
+                <img src="images/logo_nombre.png" class="h-5 md:h-6 w-auto logo-ribete" alt="wilkIA">
+            </a>
+            <div class="hidden lg:flex gap-10 font-bold text-[10px] uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-blue-400 transition-all">Inicio</a>
+                <a href="index.html#solucion" class="hover:text-blue-400 transition-all">Software</a>
+                <a href="index.html#proceso" class="hover:text-blue-400 transition-all">Método</a>
+                <a href="index.html#nosotros" class="hover:text-blue-400 transition-all">Nosotros</a>
+                <a href="index.html#contacto" class="hover:text-blue-400 transition-all">Contacto</a>
+                <a href="index.html#faq" class="hover:text-blue-400 transition-all">FAQ</a>
+            </div>
+            <a href="index.html#contacto" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">
+                Demo Gratuita
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO DE SECCIÓN -->
+    <section class="pt-48 pb-16 px-6 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-600/10 blur-[130px] -z-10"></div>
+        <div class="max-w-4xl mx-auto reveal">
+            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 text-[11px] font-black px-5 py-2 rounded-full mb-8 inline-block uppercase tracking-[0.3em]">
+                Legal & Transparencia
+            </span>
+            <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8">
+                Política de <br><span class="italic text-blue-500">Privacidad.</span>
+            </h1>
+            <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium">
+                Última actualización: 14 de agosto de 2026. En <strong class="text-white">wilkIA Systems</strong> protegemos tus datos con la misma precisión que la gestión de tus pedidos.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="pb-28 px-6 relative">
+        <div class="max-w-4xl mx-auto space-y-10">
+
+            <!-- BANNER CUMPLIMIENTO -->
+            <div class="glass-card p-8 md:p-12 border-blue-500/30 reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-black text-xl">
+                        🛡️
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Compromiso RGPD / LOPDGDD</h2>
+                        <p class="text-xs text-blue-400 font-semibold tracking-wider uppercase">Garantía de Control de Datos al 100%</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed opacity-90">
+                    De conformidad con el Reglamento General de Protección de Datos (RGPD UE 2016/679) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), te informamos de manera clara y transparente sobre cómo recopilamos, utilizamos y protegemos la información personal que nos facilitas a través de nuestro sitio web.
+                </p>
+            </div>
+
+            <!-- SECCIÓN 1: RESPONSABLE -->
+            <div class="glass-card p-8 md:p-12 border-white/10 reveal">
+                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">01. Identificación</p>
+                <h3 class="text-2xl md:text-3xl font-black italic text-white mb-6">Responsable del Tratamiento</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300">
+                    <div class="bg-white/[0.02] p-5 rounded-2xl border border-white/5">
+                        <span class="text-slate-500 text-[10px] uppercase font-black tracking-widest block mb-1">Denominación Social</span>
+                        <strong class="text-white text-base">WILKIA SYSTEMS S.L.</strong>
+                    </div>
+                    <div class="bg-white/[0.02] p-5 rounded-2xl border border-white/5">
+                        <span class="text-slate-500 text-[10px] uppercase font-black tracking-widest block mb-1">NIF / CIF</span>
+                        <strong class="text-white text-base">B-12345678</strong>
+                    </div>
+                    <div class="bg-white/[0.02] p-5 rounded-2xl border border-white/5">
+                        <span class="text-slate-500 text-[10px] uppercase font-black tracking-widest block mb-1">Email de Contacto / DPO</span>
+                        <strong class="text-blue-400 text-base">privacidad@wilkia.io</strong>
+                    </div>
+                    <div class="bg-white/[0.02] p-5 rounded-2xl border border-white/5">
+                        <span class="text-slate-500 text-[10px] uppercase font-black tracking-widest block mb-1">Actividad Principal</span>
+                        <strong class="text-white text-base">Management OS & Software SaaS</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: DATOS RECOPILADOS -->
+            <div class="glass-card p-8 md:p-12 border-white/10 reveal">
+                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">02. Recopilación</p>
+                <h3 class="text-2xl md:text-3xl font-black italic text-white mb-6">Datos que Recopilamos</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6 opacity-80">
+                    Recopilamos únicamente la información estrictamente necesaria para ofrecerte nuestros servicios y responder a tus solicitudes de demo o contacto:
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4 bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                        <span class="text-blue-500 font-bold text-lg">•</span>
+                        <div>
+                            <strong class="text-white text-sm block">Datos de Formulario de Contacto:</strong>
+                            <span class="text-slate-400 text-xs">Nombre, teléfono corporativo, dirección de correo electrónico profesional y mensaje opcional.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                        <span class="text-blue-500 font-bold text-lg">•</span>
+                        <div>
+                            <strong class="text-white text-sm block">Datos de Navegación y Cookies:</strong>
+                            <span class="text-slate-400 text-xs">Dirección IP (anonimizada), tipo de navegador, sistema operativo y métricas de uso recopiladas previo consentimiento.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                        <span class="text-blue-500 font-bold text-lg">•</span>
+                        <div>
+                            <strong class="text-white text-sm block">Seguridad Web (Google reCAPTCHA):</strong>
+                            <span class="text-slate-400 text-xs">Información de interacción técnica para verificar que el formulario es enviado por una persona y prevenir spam.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- SECCIÓN 3: FINALIDAD -->
+            <div class="glass-card p-8 md:p-12 border-white/10 reveal">
+                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">03. Finalidad</p>
+                <h3 class="text-2xl md:text-3xl font-black italic text-white mb-6">¿Para qué usamos tus datos?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <div class="text-blue-500 font-extrabold text-xl mb-2">01. Demos y Asesoramiento</div>
+                        <p class="text-slate-400 text-xs leading-relaxed">Atender solicitudes de demo gratuita y coordinar la presentación personalizada de wilkIA.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <div class="text-blue-500 font-extrabold text-xl mb-2">02. Soporte Comercial</div>
+                        <p class="text-slate-400 text-xs leading-relaxed">Resolver dudas precomerciales relativas a escandallos, gestión de artículos, formatos y marcas.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <div class="text-blue-500 font-extrabold text-xl mb-2">03. Comunicaciones</div>
+                        <p class="text-slate-400 text-xs leading-relaxed">Enviar actualizaciones sobre el software o novedades únicamente con tu autorización previa.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <div class="text-blue-500 font-extrabold text-xl mb-2">04. Protección Web</div>
+                        <p class="text-slate-400 text-xs leading-relaxed">Prevenir accesos no autorizados, abuso de formularios y ataques maliciosos a la infraestructura.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4 & 5: LEGITIMACIÓN Y DESTINATARIOS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                <div class="glass-card p-8 md:p-10 border-white/10">
+                    <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">04. Legitimación</p>
+                    <h4 class="text-xl font-bold text-white mb-4">Base Jurídica</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed opacity-90 mb-4">
+                        • <strong class="text-white">Consentimiento:</strong> otorgado expresamente al enviar formularios o aceptar la política de cookies.
+                    </p>
+                    <p class="text-slate-400 text-xs leading-relaxed opacity-90">
+                        • <strong class="text-white">Interés Legítimo:</strong> para atender consultas comerciales y mantener la seguridad técnica de la plataforma.
+                    </p>
+                </div>
+                <div class="glass-card p-8 md:p-10 border-white/10">
+                    <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">05. Destinatarios</p>
+                    <h4 class="text-xl font-bold text-white mb-4">Cesión a Terceros</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed opacity-90 mb-3">
+                        No vendemos ni comercializamos tus datos personales.
+                    </p>
+                    <p class="text-slate-400 text-xs leading-relaxed opacity-90">
+                        Solamente compartimos información necesaria con encargados de tratamiento indispensables (Formspree para recepción de mensajes y Google reCAPTCHA para seguridad anti-bot).
+                    </p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6: DERECHOS -->
+            <div class="glass-card p-8 md:p-12 border-blue-500/30 reveal">
+                <p class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-3">06. Derechos ARCO+</p>
+                <h3 class="text-2xl md:text-3xl font-black italic text-white mb-6">Control Total sobre tus Datos</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-8 opacity-80">
+                    Puedes ejercer tus derechos legales enviando un correo a <a href="mailto:privacidad@wilkia.io" class="text-blue-400 underline hover:text-blue-300">privacidad@wilkia.io</a> indicando en el asunto "Derechos de Privacidad":
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Acceso</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Rectificación</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Supresión</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Limitación</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Portabilidad</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-wider text-white">Oposición</div>
+                </div>
+            </div>
+
+            <!-- BOTÓN VOLVER -->
+            <div class="text-center pt-6 reveal">
+                <a href="index.html" class="inline-flex items-center gap-3 bg-white text-black px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-blue-600 hover:text-white transition-all shadow-xl shadow-white/5">
+                    ← Volver a Inicio
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-24 text-center border-t border-white/10">
+        <div class="flex justify-center items-center gap-4 mb-8">
+            <img src="images/logo.png" class="h-10 brand-fix" alt="Logo">
+            <img src="images/logo_nombre.png" class="h-5 logo-ribete" alt="wilkIA">
+        </div>
+        <div class="flex justify-center gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-8">
+            <a href="index.html" class="hover:text-white transition-all">Inicio</a>
+            <a href="privacidad.html" class="text-blue-400">Política de Privacidad</a>
+            <a href="index.html#contacto" class="hover:text-white transition-all">Contacto</a>
+        </div>
+        <p class="text-slate-500 text-[11px] font-black tracking-[0.5em] uppercase italic">© 2026 WILKIA SYSTEMS — SMART MANAGEMENT OS</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
